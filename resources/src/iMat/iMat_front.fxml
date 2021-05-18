@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="720.0" prefWidth="1080.0">
+      <AnchorPane prefHeight="100.0" prefWidth="1980.0">
          <children>
-            <AnchorPane layoutY="100.0" prefHeight="680.0" prefWidth="220.0" />
-            <AnchorPane layoutX="220.0" layoutY="100.0" prefHeight="680.0" prefWidth="640.0">
-               <children>
-                  <Label layoutX="304.0" layoutY="331.0" text="Label" />
-               </children></AnchorPane>
-            <AnchorPane prefHeight="100.0" prefWidth="1080.0" />
-            <AnchorPane layoutX="880.0" layoutY="100.0" prefHeight="680.0" prefWidth="220.0" />
+            <Label layoutX="30.0" layoutY="42.0" text="Label" />
          </children>
       </AnchorPane>
+      <AnchorPane layoutY="100.0" prefHeight="980.0" prefWidth="220.0" />
+      <AnchorPane layoutX="1692.0" layoutY="100.0" prefHeight="980.0" prefWidth="220.0" />
+      <AnchorPane layoutX="220.0" layoutY="100.0" prefHeight="980.0" prefWidth="1540.0" />
    </children>
-</GridPane>
+</AnchorPane>
