@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.IMatBetala">
+<AnchorPane prefHeight="3000.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.IMatBetala">
    <children>
       <AnchorPane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
          <children>
@@ -36,10 +41,111 @@
       </Label>
       <AnchorPane layoutX="246.0" layoutY="222.0" prefHeight="859.0" prefWidth="1478.0">
          <children>
-            <ScrollPane prefHeight="859.0" prefWidth="1478.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-              </content>
+            <ScrollPane prefHeight="2763.0" prefWidth="1673.0">
+               <content>
+                  <FlowPane prefHeight="1307.0" prefWidth="1476.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Pane prefHeight="461.0" prefWidth="1476.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="-2.0" prefHeight="95.0" prefWidth="1478.0" style="-fx-background-color: #7EC7F0;" text="Skriv in din adress" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="479.0" layoutY="168.0" prefHeight="59.0" prefWidth="511.0" promptText="Gatunamn + nr">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <TextField layoutX="479.0" layoutY="266.0" prefHeight="59.0" prefWidth="315.0" promptText="xxx xx">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="139.0" layoutY="183.0" prefHeight="27.0" prefWidth="167.0" text="Gatuadress:">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="136.0" layoutY="282.0" prefHeight="27.0" prefWidth="183.0" text="Postnummer:">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="385.0" prefWidth="1476.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="-2.0" prefHeight="95.0" prefWidth="1478.0" style="-fx-background-color: #7EC7F0;" text="Välj vilken tid, dag och månad ni vill ha leveransen" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox layoutX="372.0" layoutY="192.0" prefWidth="150.0" />
+                              <ComboBox layoutX="662.0" layoutY="190.0" prefWidth="150.0" />
+                              <ComboBox layoutX="982.0" layoutY="192.0" prefWidth="150.0" />
+                              <Label layoutX="432.0" layoutY="145.0" prefHeight="27.0" prefWidth="60.0" text="Tid">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="716.0" layoutY="145.0" prefHeight="27.0" prefWidth="60.0" text="Dag">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1016.0" layoutY="147.0" prefHeight="27.0" prefWidth="90.0" text="Månad">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="595.0" layoutY="308.0" text="Klockan 10:15 den 4 Maj">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="885.0" prefWidth="1476.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="3.0" layoutY="2.0" prefHeight="95.0" prefWidth="1478.0" style="-fx-background-color: #7EC7F0;" text="Kundkorgen" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="461.0" prefWidth="1476.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label alignment="CENTER" layoutY="2.0" prefHeight="95.0" prefWidth="1474.0" style="-fx-background-color: #7EC7F0;" text="Betalningsalternativ" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="553.0" prefWidth="1476.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Button layoutX="601.0" layoutY="370.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="276.0" style="-fx-background-color: #7EC7F0;" text="Spara inköpslistan">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="1041.0" layoutY="369.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="276.0" style="-fx-background-color: #7EC7F0;" text="Spara inköpslistan">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="136.0" layoutY="369.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="276.0" text="Spara inköpslistan">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </FlowPane>
+               </content>
             </ScrollPane>
          </children>
       </AnchorPane>
