@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.IMatBetala">
+   <children>
+      <AnchorPane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
+         <children>
+            <Label layoutX="813.0" layoutY="54.0" text="Leverans &amp; Betala" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="SansSerif Regular" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logga" fitHeight="150.0" fitWidth="200.0" layoutX="44.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/logga.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="backBtn" fitHeight="120.0" fitWidth="120.0" layoutX="58.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/images/back-arrow.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="39.0" layoutY="336.0" text="Tillbaka till affären">
+         <font>
+            <Font name="SansSerif Bold" size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="246.0" layoutY="222.0" prefHeight="859.0" prefWidth="1478.0">
+         <children>
+            <ScrollPane prefHeight="859.0" prefWidth="1478.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

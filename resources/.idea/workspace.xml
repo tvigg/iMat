@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f45c90be-5d05-4c1c-9dbd-d7d1201363e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/iMat/iMat_betala.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/META-INF/resources.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/iMat/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/iMat/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/iMat/iMat_front.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/iMat/iMat_front.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources.iml" beforeDir="false" afterPath="$PROJECT_DIR$/resources.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/iMat/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMat/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.21863799" />
+    <property name="project.structure.side.proportion" value="0.24196018" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="iMat.Main" />
+      <module name="resources" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../../../javafx-sdk-16/lib --add-modules=javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>

@@ -1,0 +1,7 @@
+
+resources/.idea/dbnavigator.xml
+resources/.idea/libraries/lib1.xml
+resources/resources.iml
+resources/.out
+*.iml
+resources/.DS_Store
