@@ -131,7 +131,7 @@
                                     <Font name="SansSerif Bold" size="24.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="1041.0" layoutY="369.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="276.0" style="-fx-background-color: #7EC7F0;" text="Spara inköpslistan">
+                              <Button layoutX="1041.0" layoutY="369.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="276.0" style="-fx-background-color: #7EC7F0;" text="Godkänn &amp; betala">
                                  <font>
                                     <Font name="SansSerif Bold" size="24.0" />
                                  </font>
