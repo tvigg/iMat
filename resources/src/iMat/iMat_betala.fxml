@@ -113,6 +113,23 @@
                                     <Font name="SansSerif Bold" size="24.0" />
                                  </font>
                               </Label>
+                              <AnchorPane layoutX="1.0" layoutY="95.0" prefHeight="791.0" prefWidth="1474.0">
+                                 <children>
+                                    <FlowPane layoutX="-2.0" layoutY="-3.0" prefHeight="792.0" prefWidth="1477.0">
+                                       <children>
+                                          <AnchorPane prefHeight="792.0" prefWidth="1476.0">
+                                             <children>
+                                                <Button layoutX="108.0" layoutY="667.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="276.0" style="-fx-background-color: #DA0E0E;" text="Töm kundkorgen" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="SansSerif Bold" size="24.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </Pane>
                         <Pane prefHeight="461.0" prefWidth="1476.0" style="-fx-border-color: #000000;">
@@ -122,6 +139,18 @@
                                     <Font name="SansSerif Bold" size="24.0" />
                                  </font>
                               </Label>
+                              <TextField layoutX="556.0" layoutY="195.0" prefHeight="60.0" prefWidth="363.0" promptText="xxxxxxxxxx" />
+                              <Label layoutX="274.0" layoutY="212.0" text="Kortnummer:">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="280.0" layoutY="312.0" text="CVC:">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="557.0" layoutY="298.0" prefHeight="60.0" prefWidth="127.0" promptText="xxx" />
                            </children>
                         </Pane>
                         <Pane prefHeight="553.0" prefWidth="1476.0" style="-fx-border-color: #000000;">
