@@ -1,26 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="720.0" prefWidth="1080.0">
+      <StackPane prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <AnchorPane layoutY="100.0" prefHeight="680.0" prefWidth="220.0" />
-            <AnchorPane layoutX="220.0" layoutY="100.0" prefHeight="680.0" prefWidth="640.0">
+            <AnchorPane prefHeight="1080.0" prefWidth="1920.0">
                <children>
-                  <Label layoutX="304.0" layoutY="331.0" text="Label" />
-               </children></AnchorPane>
-            <AnchorPane prefHeight="100.0" prefWidth="1080.0" />
-            <AnchorPane layoutX="880.0" layoutY="100.0" prefHeight="680.0" prefWidth="220.0" />
+                  <AnchorPane prefHeight="150.0" prefWidth="1920.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="1920.0">
+                           <children>
+                              <Label prefHeight="200.0" prefWidth="193.0" text="iMat">
+                                 <font>
+                                    <Font size="83.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="108.0" fitWidth="153.0" layoutX="1767.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="360.0">
+                     <children>
+                        <ScrollPane prefHeight="930.0" prefWidth="360.0">
+                           <content>
+                              <FlowPane prefHeight="930.0" prefWidth="360.0" />
+                           </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
+                  <AnchorPane layoutX="360.0" layoutY="150.0" prefHeight="930.0" prefWidth="1200.0" />
+                  <AnchorPane layoutX="1560.0" layoutY="150.0" prefHeight="930.0" prefWidth="360.0" />
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </StackPane>
    </children>
-</GridPane>
+</AnchorPane>
