@@ -1,17 +1,23 @@
 package iMat;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 
-public class IMatCategoryList extends AnchorPane {
+public class IMatCategoryListItem extends AnchorPane {
     private IMatCategoryController parentController;
     private ProductCategory productCategory;
 
-    public IMatCategoryList(ProductCategory productCategory, IMatCategoryController iMatCategoryController){
+    @FXML
+    private Label categoryLabel;
+
+    public IMatCategoryListItem(ProductCategory category, IMatCategoryController iMatCategoryController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMatListCategories.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -23,8 +29,7 @@ public class IMatCategoryList extends AnchorPane {
         }
         this.productCategory = productCategory;
         this.parentController = iMatCategoryController;
+
+        categoryLabel.setText(category.toString());
     }
-
-    //fxmlLoader.setRoot(this);
-
 }

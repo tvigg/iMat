@@ -1,36 +1,45 @@
 package iMat;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.ProductCategory;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import java.io.*;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ResourceBundle;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 
-public class IMatCategoryController {
+public class IMatCategoryController implements Initializable{
+    Controller backendController = new Controller();
 
     @FXML
-    private FlowPane categoryListFlowPane;
-    public void cat(){
-        // Bara testar att skriva ut kategorierna. Kan tas bort
-        System.out.println(Arrays.toString(ProductCategory.values()));
+    private VBox categoryListFlowPane;
+    
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        updateCategoryList();
     }
 
-    private void updateCategoryList{
+
+
+    private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
+        ProductCategory[] categoryList = backendController.getCategories();
 
-//        List<Recipe> recipeList = backendController.getRecipes();
-//        RecipeListItem recipeListItem;
-//        for (ProductCategory productCategory : ProductCategory.values()) {
 
-//            recipeListItem = recipeListItemMap.get(recipe.getName());
-//            recipeListFlowPane.getChildren().add(recipeListItem);
+        for (ProductCategory category : categoryList){
+            var button = new IMatCategoryListItem(category, this);
+            categoryListFlowPane.getChildren().add(button);
         }
-        for (ProductCategory productCategory : ProductCategory.values()) {
 
-            recipeListItem = recipeListItemMap.get(recipe.getName());
-            recipeListFlowPane.getChildren().add(recipeListItem);
-        }
     }
+
+
 }
