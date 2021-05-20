@@ -19,6 +19,7 @@ public class OrderItem extends AnchorPane {
     public final ShoppingItem item;
     private Controller parentController;
     @FXML private ImageView orderItemImage;
+    @FXML private Label orderItemName;
     @FXML private Label orderItemPrice;
     @FXML private Label orderItemCount;
     @FXML private Label orderItemSum;
@@ -36,6 +37,7 @@ public class OrderItem extends AnchorPane {
         }
         this.item = item;
         this.parentController = controller;
+        this.orderItemName.setText(item.getProduct().getName());
         this.orderItemPrice.setText(String.valueOf(item.getProduct().getPrice()) + " kr");
         this.orderItemCount.setText(String.valueOf(item.getAmount()) + " st");
         this.orderItemSum.setText(String.valueOf(item.getTotal()) + " kr");
@@ -48,10 +50,5 @@ public class OrderItem extends AnchorPane {
         } catch (Exception e) {
             System.err.println("Failed to load image: " + e);
         }
-    }
-
-    @FXML
-    public void onClick(Event event) {
-        parentController.onClickOrderHistory();
     }
 }

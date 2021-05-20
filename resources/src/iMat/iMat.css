@@ -10,6 +10,11 @@
     -fx-background-color: "#a8dadc";
 }
 
+.blue {
+    -fx-text-fill: "#ffffff";
+    -fx-background-color: "#457b9d";
+}
+
 .cyan-hoverable {
     -fx-background-color: "#a8dadc";
 }
@@ -21,6 +26,11 @@
     -fx-font-size: 24px;
 }
 
+.big-bold-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
 #order-again-button {
     -fx-border-color: black;
     -fx-border-radius: 5px;
@@ -28,3 +38,9 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
+#order-history-lightbox-header {
+    -fx-text-fill: "#ffffff";
+    -fx-text-alignment: center;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
