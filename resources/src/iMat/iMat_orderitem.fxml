@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+
+<fx:root prefHeight="100.0" prefWidth="1744.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="orderItemImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="orderItemPrice" layoutX="236.0" layoutY="41.0" text="Pris" />
+      <Label fx:id="orderItemCount" layoutX="551.0" layoutY="41.0" text="Antal" />
+      <Label fx:id="orderItemSum" layoutX="820.0" layoutY="41.0" text="Summa" />
+   </children>
+</fx:root>

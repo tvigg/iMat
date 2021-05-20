@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
    <children>
       <StackPane prefHeight="1080.0" prefWidth="1920.0">
          <children>
@@ -19,6 +17,37 @@
                   <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="360.0" />
                   <AnchorPane layoutX="360.0" layoutY="150.0" prefHeight="930.0" prefWidth="1200.0" />
                   <AnchorPane layoutX="1560.0" layoutY="150.0" prefHeight="930.0" prefWidth="360.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
+               <children>
+                  <AnchorPane prefHeight="150.0" prefWidth="1920.0" />
+                  <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0">
+                     <children>
+                        <TableView fx:id="orderHistoryTable" layoutX="65.0" layoutY="51.0" onMouseClicked="#onClickOrder" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="64.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="orderHistoryLightbox" onMouseClicked="#onClickOrderLightbox" prefHeight="200.0" prefWidth="200.0" styleClass="lightbox-shading">
+               <children>
+                  <AnchorPane layoutX="64.0" layoutY="64.0" styleClass="normal" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="64.0">
+                     <children>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="128.0">
+                           <content>
+                              <FlowPane fx:id="orderHistoryFlowPane" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
