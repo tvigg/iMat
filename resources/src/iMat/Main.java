@@ -11,8 +11,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("iMat_front.fxml"));
-        primaryStage.setTitle("iMat");
-        primaryStage.setScene(new Scene(root, 1980, 1080));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
 
