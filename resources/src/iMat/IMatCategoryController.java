@@ -27,10 +27,11 @@ public class IMatCategoryController {
 //            recipeListItem = recipeListItemMap.get(recipe.getName());
 //            recipeListFlowPane.getChildren().add(recipeListItem);
         }
-        for (ProductCategory productCategory : ProductCategory.values()) {
+//        for (ProductCategory productCategory : ProductCategory.values()) {
 
-            recipeListItem = recipeListItemMap.get(recipe.getName());
-            recipeListFlowPane.getChildren().add(recipeListItem);
-        }
-    }
+            //recipeListItem = recipeListItemMap.get(recipe.getName());
+            //recipeListFlowPane.getChildren().add(recipeListItem);
+//        }
+    
+}
 }
