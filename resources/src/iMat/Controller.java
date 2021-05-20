@@ -7,8 +7,8 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
@@ -105,5 +105,49 @@ public class Controller implements Initializable {
     @FXML
     public void onClickOrderLightbox(Event event) {
         orderHistoryAnchorPane.toFront();
+    }
+
+    public void onClickOrderHistory() {
+        ObservableList<Node> items = FXCollections.observableArrayList(orderHistoryFlowPane.getChildren());
+        System.out.println("Sorting items!");
+        items.sort((o1, o2) -> {
+            double c1 = ((OrderItem)o1).item.getTotal(), c2 = ((OrderItem)o2).item.getTotal();
+            System.out.println(c1 + " vs " + c2);
+            if (c1 > c2)
+                return 1;
+            else if (c1 < c2)
+                return -1;
+            else
+                return 0;
+        });
+        orderHistoryFlowPane.getChildren().setAll(items);
+    }
+
+    @FXML
+    public void mouseTrap(Event event) {
+        event.consume();
+    }
+
+    @FXML
+    public void onClickOrderAgain(Event event) {
+        if (!IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Återbeställning");
+            int count = IMatDataHandler.getInstance().getShoppingCart().getItems().size();
+            alert.setHeaderText("Du har redan " + count + (count > 1 ? " varor" : " vara") + " i dramaten. Vill du tömma dramaten och lägga till varorna från beställningen eller lägga till alla varorna i dramaten?");
+            ButtonType replace = new ButtonType("Ersätt dramatens varor med beställningens varor");
+            ButtonType addAll = new ButtonType("Lägg till beställningens varor i dramaten");
+            ButtonType cancel = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(replace, addAll, cancel);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == replace) {
+                IMatDataHandler.getInstance().getShoppingCart().clear();
+            } else if (result.get() != addAll) {
+                return;
+            }
+        }
+        for (Node node : orderHistoryFlowPane.getChildren()) {
+            IMatDataHandler.getInstance().getShoppingCart().addItem(((OrderItem)node).item);
+        }
     }
 }

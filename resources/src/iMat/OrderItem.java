@@ -1,11 +1,14 @@
 package iMat;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
@@ -13,12 +16,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class OrderItem extends AnchorPane {
-    ShoppingItem item;
+    public final ShoppingItem item;
     private Controller parentController;
     @FXML private ImageView orderItemImage;
     @FXML private Label orderItemPrice;
     @FXML private Label orderItemCount;
     @FXML private Label orderItemSum;
+    @FXML private Button orderAgainButton;
 
     public OrderItem(ShoppingItem item, Controller controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMat_orderitem.fxml"));
@@ -44,5 +48,10 @@ public class OrderItem extends AnchorPane {
         } catch (Exception e) {
             System.err.println("Failed to load image: " + e);
         }
+    }
+
+    @FXML
+    public void onClick(Event event) {
+        parentController.onClickOrderHistory();
     }
 }
