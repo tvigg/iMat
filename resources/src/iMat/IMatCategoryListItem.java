@@ -11,13 +11,13 @@ import java.util.Arrays;
 
 
 public class IMatCategoryListItem extends AnchorPane {
-    private IMatCategoryController parentController;
+    private Controller parentController;
     private ProductCategory productCategory;
 
     @FXML
     private Label categoryLabel;
 
-    public IMatCategoryListItem(ProductCategory category, IMatCategoryController iMatCategoryController){
+    public IMatCategoryListItem(ProductCategory category, Controller iMatCategoryController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMatListCategories.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
