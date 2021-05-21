@@ -29,6 +29,7 @@ public class Controller implements Initializable {
     @FXML private FlowPane orderHistoryFlowPane;
     @FXML private AnchorPane orderHistoryAnchorPane;
     @FXML private AnchorPane orderHistoryLightbox;
+    @FXML private AnchorPane categoryAnchorPane;
     @FXML private FlowPane orderHistoryDetailFlowPane;
     @FXML private AnchorPane orderItemHeader;
     @FXML private Label orderHistoryLightboxHeader;
@@ -90,6 +91,11 @@ public class Controller implements Initializable {
     @FXML
     public void mouseTrap(Event event) {
         event.consume();
+    }
+
+    @FXML
+    public void onClickIMat(Event event) {
+        categoryAnchorPane.toFront();
     }
 
     @FXML

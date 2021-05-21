@@ -10,11 +10,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
    <children>
-      <StackPane prefHeight="1080.0" prefWidth="1920.0">
+      <StackPane layoutY="150.0" prefHeight="1080.0" prefWidth="1920.0">
          <children>
             <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                <children>
-                  <AnchorPane prefHeight="150.0" prefWidth="1920.0" />
                   <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0">
                      <children>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="64.0">
@@ -78,23 +77,9 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
+            <AnchorPane fx:id="categoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
                <children>
-                  <AnchorPane prefHeight="150.0" prefWidth="1920.0">
-                     <children>
-                        <Pane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
-                           <children>
-                              <Label prefHeight="200.0" prefWidth="193.0" text="iMat">
-                                 <font>
-                                    <Font size="83.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fitHeight="108.0" fitWidth="153.0" layoutX="1767.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </Pane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="360.0">
+                  <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <ScrollPane prefHeight="930.0" prefWidth="360.0" style="-fx-background-color: #F4F4F4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
@@ -108,12 +93,28 @@
                               <DropShadow />
                            </effect>
                         </ScrollPane>
-                     </children></AnchorPane>
-                  <AnchorPane layoutX="360.0" layoutY="150.0" prefHeight="930.0" prefWidth="1200.0" />
-                  <AnchorPane layoutX="1560.0" layoutY="150.0" prefHeight="930.0" prefWidth="360.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="930.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </children>
       </StackPane>
+        <AnchorPane prefHeight="150.0" prefWidth="1920.0">
+         <children>
+            <Pane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
+               <children>
+                  <Label onMouseClicked="#onClickIMat" prefHeight="150.0" prefWidth="193.0" text="iMat">
+                     <font>
+                        <Font size="83.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="108.0" fitWidth="153.0" layoutX="1767.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="1707.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#onClickOrderLightbox" text="Beställningar" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
