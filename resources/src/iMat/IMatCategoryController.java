@@ -17,7 +17,7 @@ public class IMatCategoryController {
         System.out.println(Arrays.toString(ProductCategory.values()));
     }
 
-    private void updateCategoryList{
+    private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
 
 //        List<Recipe> recipeList = backendController.getRecipes();
@@ -34,4 +34,4 @@ public class IMatCategoryController {
 //        }
     
 }
-}
+

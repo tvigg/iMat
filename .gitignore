@@ -5,3 +5,7 @@ resources/resources.iml
 resources/.out
 *.iml
 resources/.DS_Store
+resources/.idea/libraries/lib.xml
+.DS_Store
+resources/.idea/libraries/lib.xml
+resources/.idea/workspace.xml
