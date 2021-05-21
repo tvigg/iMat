@@ -10,32 +10,79 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
    <children>
-      <StackPane layoutY="150.0" prefHeight="1080.0" prefWidth="1920.0">
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
+            <AnchorPane fx:id="storeAnchorPane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0">
                <children>
-                  <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0">
+                  <StackPane prefHeight="1080.0" prefWidth="1920.0">
                      <children>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="64.0">
-                           <content>
-                              <FlowPane fx:id="orderHistoryFlowPane" prefHeight="200.0" prefWidth="200.0">
-                                 <padding>
-                                    <Insets bottom="12.0" />
-                                 </padding>
+                        <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
+                           <children>
+                              <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0">
                                  <children>
-                                    <AnchorPane fx:id="orderHistoryAnchorPaneHeader" prefHeight="64.0" prefWidth="1790.0">
-                                       <children>
-                                           <Label layoutX="236.0" layoutY="41.0" styleClass="blue" text="Datum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="0.0" />
-                                           <Label layoutX="288.0" layoutY="41.0" styleClass="blue" text="Ordernummer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="0.0" />
-                                           <Label layoutX="820.0" layoutY="41.0" styleClass="blue" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1400.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                       <styleClass>
-                                          <String fx:value="blue" />
-                                          <String fx:value="big-bold-text" />
-                                       </styleClass></AnchorPane>
-                                 </children></FlowPane>
-                           </content>
-                        </ScrollPane>
+                                    <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="64.0">
+                                       <content>
+                                          <FlowPane fx:id="orderHistoryFlowPane" prefHeight="200.0" prefWidth="200.0">
+                                             <padding>
+                                                <Insets bottom="12.0" />
+                                             </padding>
+                                             <children>
+                                                <AnchorPane fx:id="orderHistoryAnchorPaneHeader" prefHeight="64.0" prefWidth="1790.0">
+                                                   <children>
+                                                       <Label layoutX="236.0" layoutY="41.0" styleClass="blue" text="Datum" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="0.0" />
+                                                       <Label layoutX="288.0" layoutY="41.0" styleClass="blue" text="Ordernummer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="0.0" />
+                                                       <Label layoutX="820.0" layoutY="41.0" styleClass="blue" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1400.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                   <styleClass>
+                                                      <String fx:value="blue" />
+                                                      <String fx:value="big-bold-text" />
+                                                   </styleClass>
+                                                </AnchorPane>
+                                             </children>
+                                          </FlowPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="categoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
+                           <children>
+                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ScrollPane prefHeight="930.0" prefWidth="360.0" style="-fx-background-color: #F4F4F4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <VBox fx:id="categoryListFlowPane" alignment="CENTER" prefHeight="603.0" prefWidth="319.0" spacing="20.0">
+                                             <padding>
+                                                <Insets left="20.0" top="20.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="930.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0" />
+                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                    <AnchorPane prefHeight="150.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
+                           <children>
+                              <Label onMouseClicked="#onClickIMat" prefHeight="150.0" prefWidth="193.0" text="iMat">
+                                 <font>
+                                    <Font size="83.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="108.0" fitWidth="153.0" layoutX="1767.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button layoutX="1707.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#onClickOrderLightbox" text="Beställningar" />
+                           </children>
+                        </Pane>
                      </children>
                   </AnchorPane>
                </children>
@@ -60,7 +107,8 @@
                                           <String fx:value="big-bold-text" />
                                        </styleClass>
                                     </AnchorPane>
-                                 </children></FlowPane>
+                                 </children>
+                              </FlowPane>
                            </content>
                         </ScrollPane>
                         <Button id="order-again-button" layoutX="24.0" layoutY="869.0" mnemonicParsing="false" onMouseClicked="#onClickOrderAgain" styleClass="cyan-hoverable" text="Beställ igen" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0">
@@ -77,44 +125,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="categoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
-               <children>
-                  <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <ScrollPane prefHeight="930.0" prefWidth="360.0" style="-fx-background-color: #F4F4F4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <content>
-                              <VBox fx:id="categoryListFlowPane" alignment="CENTER" prefHeight="603.0" prefWidth="319.0" spacing="20.0">
-                                 <padding>
-                                    <Insets left="20.0" top="20.0" />
-                                 </padding>
-                              </VBox>
-                           </content>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </ScrollPane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="930.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0" />
-                  <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-            </AnchorPane>
          </children>
       </StackPane>
-        <AnchorPane prefHeight="150.0" prefWidth="1920.0">
-         <children>
-            <Pane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
-               <children>
-                  <Label onMouseClicked="#onClickIMat" prefHeight="150.0" prefWidth="193.0" text="iMat">
-                     <font>
-                        <Font size="83.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="108.0" fitWidth="153.0" layoutX="1767.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button layoutX="1707.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#onClickOrderLightbox" text="Beställningar" />
-               </children>
-            </Pane>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
     @FXML private FlowPane orderHistoryFlowPane;
+    @FXML private AnchorPane storeAnchorPane;
     @FXML private AnchorPane orderHistoryAnchorPane;
     @FXML private AnchorPane orderHistoryLightbox;
     @FXML private AnchorPane categoryAnchorPane;
@@ -86,6 +87,7 @@ public class Controller implements Initializable {
     @FXML
     public void onClickOrderLightbox(Event event) {
         orderHistoryAnchorPane.toFront();
+        storeAnchorPane.toFront();
     }
 
     @FXML
