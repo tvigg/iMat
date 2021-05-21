@@ -48,7 +48,7 @@ public class Controller implements Initializable {
             orderHistoryFlowPane.getChildren().add(new OrderHistoryItem(o, this));
         }
 
-        orderHistoryFlowPane.setVgap(4);
+        orderHistoryFlowPane.setVgap(2);
         orderHistoryLightbox.toBack();
     }
 
