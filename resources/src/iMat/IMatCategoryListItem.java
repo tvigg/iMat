@@ -17,7 +17,7 @@ public class IMatCategoryListItem extends AnchorPane {
     @FXML
     private Label categoryLabel;
 
-    public IMatCategoryListItem(ProductCategory category, Controller iMatCategoryController){
+    public IMatCategoryListItem(OurProductCategory category, Controller iMatCategoryController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMatListCategories.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -30,6 +30,6 @@ public class IMatCategoryListItem extends AnchorPane {
         this.productCategory = productCategory;
         this.parentController = iMatCategoryController;
 
-        categoryLabel.setText(category.toString());
+        categoryLabel.setText(category.getName());
     }
 }

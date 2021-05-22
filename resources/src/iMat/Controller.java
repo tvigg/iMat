@@ -47,10 +47,10 @@ public class Controller implements Initializable {
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
-        ProductCategory[] categoryList = getCategories();
+        OurProductCategory[] categoryList = getCategories();
 
 
-        for (ProductCategory category : categoryList){
+        for (OurProductCategory category : categoryList){
             var button = new IMatCategoryListItem(category, this);
             categoryListFlowPane.getChildren().add(button);
         }
@@ -123,7 +123,8 @@ public class Controller implements Initializable {
         }
     }
 
-    public ProductCategory[] getCategories(){
-        return ProductCategory.values();
+    public OurProductCategory[] getCategories(){
+        return OurProductCategory.values();
+        //return ProductCategory.values();
     }
 }
