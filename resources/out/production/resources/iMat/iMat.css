@@ -31,10 +31,11 @@
     -fx-font-weight: bold;
 }
 
-#order-again-button {
+.big-button {
     -fx-border-color: black;
     -fx-border-radius: 5px;
     -fx-border-width: 3px;
+    -fx-font-size: 32px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 

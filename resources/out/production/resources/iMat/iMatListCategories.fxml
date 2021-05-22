@@ -10,9 +10,9 @@
    <children>
       <TilePane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="130.0" prefWidth="244.0" text="LabelLabelLabel" textAlignment="CENTER">
+            <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="117.0" prefWidth="196.0" text="Label" textAlignment="CENTER">
                <font>
-                  <Font size="28.0" />
+                  <Font size="36.0" />
                </font>
                <opaqueInsets>
                   <Insets />
