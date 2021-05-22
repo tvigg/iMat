@@ -1,4 +1,5 @@
 package iMat;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
@@ -32,6 +33,7 @@ public class Controller implements Initializable {
     @FXML private AnchorPane orderHistoryLightbox;
     @FXML private AnchorPane categoryAnchorPane;
     @FXML private AnchorPane betalaAnchorpane;
+    @FXML private ImageView imatLogga;
     @FXML private FlowPane orderHistoryDetailFlowPane;
     @FXML private AnchorPane orderItemHeader;
     @FXML private Label orderHistoryLightboxHeader;
