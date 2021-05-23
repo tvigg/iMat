@@ -1,29 +1,21 @@
 package iMat;
-import javafx.beans.value.ChangeListener;
-import javafx.event.ActionEvent;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.*;
 
-import java.lang.reflect.Array;
 import java.util.List;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.value.ObservableValue;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
     @FXML private FlowPane orderHistoryFlowPane;
@@ -36,6 +28,8 @@ public class Controller implements Initializable {
     @FXML private AnchorPane savedAddressAnchorPane;
     @FXML private AnchorPane paymentCartAnchorPane;
     @FXML private AnchorPane paymentCreditCardAnchorPane;
+    @FXML private AnchorPane confirmPurchaseAnchorPane;
+    @FXML private AnchorPane paymentDeliveryDateAnchorPane;
     @FXML private TextField addressTextField;
     @FXML private TextField postCodeTextField;
     @FXML private Label displayAddressLabel;
@@ -47,6 +41,9 @@ public class Controller implements Initializable {
     @FXML private Button useCurrentAddressButton;
     @FXML private Button goToCartButton;
     @FXML private Button goToCreditCardButton;
+    @FXML private ComboBox dayComboBox;
+    @FXML private ComboBox timeComboBox;
+    @FXML private ComboBox monthComboBox;
 
     //Orders
     @FXML private FlowPane orderHistoryDetailFlowPane;
@@ -62,6 +59,7 @@ public class Controller implements Initializable {
         initializeOrderHistory();
         updateCategoryList();
         createUser();
+        populateDayComboBox();
     }
 
     private void updateCategoryList(){
@@ -219,12 +217,32 @@ public class Controller implements Initializable {
         postCodeTextField.setText("");
     }
 
+    private void populateDayComboBox(){
+        dayComboBox.getItems().addAll(generateDates(31));
+    }
+
+    private Integer[] generateDates(int limit){
+        Integer[] res = new Integer[limit];
+        for (int i = 1; i < res.length; i++) {
+            res[i] = i;
+        }
+        return res;
+    }
+
+    @FXML public void onClickShowDeliveryDates(Event event){
+        paymentDeliveryDateAnchorPane.toFront();
+    }
+
     @FXML public void onClickShowCart(Event event){
         paymentCartAnchorPane.toFront();
     }
 
     @FXML public void onClickShowCreditCard(Event event){
         paymentCreditCardAnchorPane.toFront();
+    }
+
+    @FXML public void onClickShowOrderConfirmation(Event event){
+        confirmPurchaseAnchorPane.toFront();
     }
 
 }
