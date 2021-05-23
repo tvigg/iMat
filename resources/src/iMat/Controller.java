@@ -101,25 +101,16 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void onClickOrderAgain(Event event) {
-        if (!IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Återbeställning");
-            int count = IMatDataHandler.getInstance().getShoppingCart().getItems().size();
-            alert.setHeaderText("Du har redan " + count + (count > 1 ? " varor" : " vara") + " i dramaten. Vill du tömma dramaten och lägga till varorna från beställningen eller lägga till alla varorna i dramaten?");
-            ButtonType replace = new ButtonType("Ersätt dramatens varor med beställningens varor");
-            ButtonType addAll = new ButtonType("Lägg till beställningens varor i dramaten");
-            ButtonType cancel = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
-            alert.getButtonTypes().setAll(replace, addAll, cancel);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == replace) {
-                IMatDataHandler.getInstance().getShoppingCart().clear();
-            } else if (result.get() != addAll) {
-                return;
-            }
-        }
-        for (Node node : orderHistoryFlowPane.getChildren()) {
-            IMatDataHandler.getInstance().getShoppingCart().addItem(((OrderItem) node).item);
+    public void onClickOrderReplace(Event event) {
+        IMatDataHandler.getInstance().getShoppingCart().clear();
+        onClickOrderAdd(event);
+    }
+
+    @FXML
+    public void onClickOrderAdd(Event event) {
+        for (Node node : orderHistoryDetailFlowPane.getChildren()) {
+            if (node instanceof OrderItem)
+                IMatDataHandler.getInstance().getShoppingCart().addItem(((OrderItem) node).item);
         }
     }
 

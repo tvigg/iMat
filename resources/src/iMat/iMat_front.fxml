@@ -111,11 +111,28 @@
                               </FlowPane>
                            </content>
                         </ScrollPane>
-                        <Button id="order-again-button" layoutX="24.0" layoutY="869.0" mnemonicParsing="false" onMouseClicked="#onClickOrderAgain" styleClass="cyan-hoverable" text="Beställ igen" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0">
-                           <font>
-                              <Font size="31.0" />
-                           </font>
-                        </Button>
+                        <HBox layoutX="1413.0" layoutY="718.0" spacing="24.0" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="24.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMouseClicked="#onClickOrderReplace" text="Ersätt kundvagnens innehåll">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="order-history-button" />
+                                    <String fx:value="cyan-hoverable" />
+                                 </styleClass>
+                              </Button>
+                              <Button mnemonicParsing="false" onMouseClicked="#onClickOrderAdd" text="Lägg till i kundvagnen">
+                                 <styleClass>
+                                    <String fx:value="order-history-button" />
+                                    <String fx:value="cyan-hoverable" />
+                                 </styleClass>
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
                         <AnchorPane prefHeight="64.0" prefWidth="246.0" styleClass="blue" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label id="order-history-lightbox-header" fx:id="orderHistoryLightboxHeader" alignment="CENTER" layoutX="917.0" layoutY="23.0" text="Label" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
