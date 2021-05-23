@@ -2,12 +2,11 @@ package iMat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.ProductCategory;
-
 import java.io.IOException;
-import java.util.Arrays;
+
 
 
 public class IMatCategoryListItem extends AnchorPane {
@@ -15,7 +14,7 @@ public class IMatCategoryListItem extends AnchorPane {
     private ProductCategory productCategory;
 
     @FXML
-    private Label categoryLabel;
+    private Button categoryLabel;
 
     public IMatCategoryListItem(OurProductCategory category, Controller iMatCategoryController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMatListCategories.fxml"));

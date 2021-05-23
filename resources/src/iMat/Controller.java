@@ -1,6 +1,6 @@
 package iMat;
 import javafx.scene.layout.VBox;
-import se.chalmers.cse.dat216.project.ProductCategory;
+import se.chalmers.cse.dat216.project.*;
 
 import java.lang.reflect.Array;
 import java.util.List;
@@ -17,9 +17,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Order;
-import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
 import java.util.*;
@@ -35,6 +32,7 @@ public class Controller implements Initializable {
     @FXML private AnchorPane orderItemHeader;
     @FXML private Label orderHistoryLightboxHeader;
     @FXML private VBox categoryListFlowPane;
+    @FXML private FlowPane productListFlowPane;
     private final Map<Integer, List<OrderItem>> orderItemMap = new HashMap<>();
 
     private IMatDataHandler handler = IMatDataHandler.getInstance();
@@ -43,16 +41,28 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeOrderHistory();
         updateCategoryList();
+        updateProductList();
     }
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
         OurProductCategory[] categoryList = getCategories();
 
-
         for (OurProductCategory category : categoryList){
             var button = new IMatCategoryListItem(category, this);
             categoryListFlowPane.getChildren().add(button);
+        }
+
+    }
+
+    private void updateProductList(){
+        productListFlowPane.getChildren().clear();
+        List<Product> productList = IMatDataHandler.getInstance().getProducts();
+        System.out.println("productListLength " + productList.size()); // =0? List<Product>getProducts()
+
+        for (Product product : productList){
+            var button = new IMatProductListItem(product, this);
+            productListFlowPane.getChildren().add(button);
         }
 
     }
@@ -125,6 +135,5 @@ public class Controller implements Initializable {
 
     public OurProductCategory[] getCategories(){
         return OurProductCategory.values();
-        //return ProductCategory.values();
     }
 }
