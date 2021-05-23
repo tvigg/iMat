@@ -1,7 +1,9 @@
 package iMat;
+import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import se.chalmers.cse.dat216.project.ProductCategory;
+import se.chalmers.cse.dat216.project.*;
 
 import java.lang.reflect.Array;
 import java.util.List;
@@ -18,9 +20,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Order;
-import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.net.URL;
 import java.util.*;
@@ -32,8 +31,24 @@ public class Controller implements Initializable {
     @FXML private AnchorPane orderHistoryAnchorPane;
     @FXML private AnchorPane orderHistoryLightbox;
     @FXML private AnchorPane categoryAnchorPane;
+    //Payments
     @FXML private AnchorPane betalaAnchorpane;
-    @FXML private ImageView imatLogga;
+    @FXML private AnchorPane savedAddressAnchorPane;
+    @FXML private AnchorPane paymentCartAnchorPane;
+    @FXML private AnchorPane paymentCreditCardAnchorPane;
+    @FXML private TextField addressTextField;
+    @FXML private TextField postCodeTextField;
+    @FXML private Label displayAddressLabel;
+    @FXML private Label displayPostCodeLabel;
+    @FXML private Label noAddressEnteredLabel;
+    @FXML private Label noPostCodeEnteredLabel;
+    @FXML private Button saveAddressButton;
+    @FXML private Button clearFieldsButton;
+    @FXML private Button useCurrentAddressButton;
+    @FXML private Button goToCartButton;
+    @FXML private Button goToCreditCardButton;
+
+    //Orders
     @FXML private FlowPane orderHistoryDetailFlowPane;
     @FXML private AnchorPane orderItemHeader;
     @FXML private Label orderHistoryLightboxHeader;
@@ -46,12 +61,12 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeOrderHistory();
         updateCategoryList();
+        createUser();
     }
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
         ProductCategory[] categoryList = getCategories();
-
 
         for (ProductCategory category : categoryList){
             var button = new IMatCategoryListItem(category, this);
@@ -134,4 +149,82 @@ public class Controller implements Initializable {
     public ProductCategory[] getCategories(){
         return ProductCategory.values();
     }
+
+    //===============Payments=================//
+    public void createUser(){
+        //IMatDataHandler.getInstance().getCustomer().setAddress("cool street 1337");
+        //if there is an address, display it
+
+        if(IMatDataHandler.getInstance().getCustomer().getAddress().isBlank() || IMatDataHandler.getInstance().getCustomer().getPostAddress().isBlank()){
+            savedAddressAnchorPane.setVisible(false);
+        }
+        else {
+            displayAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
+            displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());
+            savedAddressAnchorPane.setVisible(true);
+        }
+    }
+
+    public void updateCustomerAddress(Event event){
+        if (addressTextField.getText().isEmpty() || postCodeTextField.getText().isEmpty()){
+            noAddressEnteredLabel.setText("Var vänlig fyll i fältet.");
+            noPostCodeEnteredLabel.setText("Var vänlig fyll i fältet.");
+            if (!addressTextField.getText().isEmpty()) {
+                noAddressEnteredLabel.setText("");
+            }
+            if(!postCodeTextField.getText().isEmpty()){
+                noPostCodeEnteredLabel.setText("");
+            }
+        }
+        else {
+            savedAddressAnchorPane.setVisible(true);
+            //useCurrentAddressButton.setVisible(false);
+            noAddressEnteredLabel.setText("");
+            noPostCodeEnteredLabel.setText("");
+            IMatDataHandler.getInstance().getCustomer().setAddress(addressTextField.getText());
+            IMatDataHandler.getInstance().getCustomer().setPostAddress(postCodeTextField.getText());
+            displayAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
+            displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());
+        }
+    }
+
+    @FXML
+    public void confirmEmptyFields(Event event){
+        if (!addressTextField.getText().isEmpty() || !postCodeTextField.getText().isEmpty()) {
+            showAlert();
+        }
+    }
+
+    public void showAlert(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Bekräftelse");
+        alert.setHeaderText("Tämma båda fälten");
+        alert.setContentText("Är du säker på att du vill tömma fälten address och postnummer?");
+
+        ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.APPLY);
+        ButtonType buttonTypeCancel = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            emptyAddressFields();
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+    }
+
+    public void emptyAddressFields(){
+        addressTextField.setText("");
+        postCodeTextField.setText("");
+    }
+
+    @FXML public void onClickShowCart(Event event){
+        paymentCartAnchorPane.toFront();
+    }
+
+    @FXML public void onClickShowCreditCard(Event event){
+        paymentCreditCardAnchorPane.toFront();
+    }
+
 }

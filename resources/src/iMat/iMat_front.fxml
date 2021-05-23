@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -61,28 +62,6 @@
                <children>
                   <StackPane prefHeight="1080.0" prefWidth="1920.0">
                      <children>
-                        <AnchorPane fx:id="categoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
-                           <children>
-                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <ScrollPane prefHeight="930.0" prefWidth="360.0" style="-fx-background-color: #F4F4F4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <content>
-                                          <VBox fx:id="categoryListFlowPane" alignment="CENTER" prefHeight="603.0" prefWidth="319.0" spacing="20.0">
-                                             <padding>
-                                                <Insets left="20.0" top="20.0" />
-                                             </padding>
-                                          </VBox>
-                                       </content>
-                                       <effect>
-                                          <DropShadow />
-                                       </effect>
-                                    </ScrollPane>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="930.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0" />
-                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
                         <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                            <children>
                               <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0">
@@ -113,13 +92,148 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
+                        <AnchorPane fx:id="paymentCreditCardAnchorPane" prefHeight="1080.0" prefWidth="1930.0">
+                           <children>
+                              <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
+                                 <children>
+                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
+                                       <content>
+                                          <FlowPane fx:id="betalaAddresserFlowPane11" prefHeight="619.0" prefWidth="1501.0">
+                                             <children>
+                                                <AnchorPane prefHeight="615.0" prefWidth="1492.0" />
+                                             </children>
+                                          </FlowPane>
+                                       </content>
+                                    </ScrollPane>
+                                    <AnchorPane fx:id="orderHistoryAnchorPaneHeader111" layoutX="232.0" layoutY="66.0" prefHeight="92.0" prefWidth="1502.0">
+                                       <children>
+                                          <Label layoutX="590.0" prefHeight="92.0" prefWidth="383.0" styleClass="blue" text="Betalningsalternativ" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="590.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="SansSerif Regular" size="36.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="blue" />
+                                          <String fx:value="big-bold-text" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <ImageView fitHeight="91.0" fitWidth="108.0" layoutX="29.0" layoutY="26.0" onMouseClicked="#onClickIMat" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/back-arrow.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="30.0" layoutY="110.0" prefHeight="78.0" prefWidth="129.0" text="Tillbaka till affären" wrapText="true">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="1499.0" layoutY="833.0" mnemonicParsing="false" text="Genomför köp">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="24.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
                         <AnchorPane fx:id="betalaAnchorpane" prefHeight="1080.0" prefWidth="1930.0">
                            <children>
                               <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
                                  <children>
                                     <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
                                        <content>
-                                          <FlowPane prefHeight="619.0" prefWidth="1501.0" />
+                                          <FlowPane fx:id="betalaAddresserFlowPane" prefHeight="619.0" prefWidth="1501.0">
+                                             <children>
+                                                <AnchorPane prefHeight="615.0" prefWidth="1492.0">
+                                                   <children>
+                                                      <AnchorPane fx:id="savedAddressAnchorPane" layoutX="856.0" layoutY="8.0" prefHeight="541.0" prefWidth="607.0" style="-fx-border-color: #000000;">
+                                                         <children>
+                                                            <Label fx:id="displayAddressLabel" layoutX="234.0" layoutY="130.0" prefHeight="40.0" prefWidth="333.0">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="displayPostCodeLabel" layoutX="234.0" layoutY="216.0" prefHeight="40.0" prefWidth="284.0">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="91.0" layoutY="136.0" text="Address:">
+                                                               <font>
+                                                                  <Font name="SansSerif Bold" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="46.0" layoutY="222.0" text="Postnummer:">
+                                                               <font>
+                                                                  <Font name="SansSerif Bold" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="180.0" layoutY="20.0" text="Sparad address">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="36.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Button fx:id="useCurrentAddressButton" layoutX="306.0" layoutY="454.0" mnemonicParsing="false" onMouseClicked="#onClickShowCart" text="Använd denna address">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Button>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="35.0" layoutY="7.0" prefHeight="541.0" prefWidth="745.0" style="-fx-border-color: #000000;">
+                                                         <children>
+                                                            <TextField fx:id="addressTextField" layoutX="160.0" layoutY="147.0" prefHeight="39.0" prefWidth="342.0" promptText="Address">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="18.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <TextField fx:id="postCodeTextField" layoutX="160.0" layoutY="248.0" prefHeight="35.0" prefWidth="176.0" promptText="Post nr.">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="18.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <Label alignment="CENTER_RIGHT" layoutX="11.0" layoutY="153.0" prefHeight="27.0" prefWidth="135.0" text="Address:">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="8.0" layoutY="252.0" prefHeight="27.0" prefWidth="150.0" text="Postnummer:">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Button fx:id="saveAddressButton" layoutX="455.0" layoutY="453.0" mnemonicParsing="false" onMouseClicked="#updateCustomerAddress" text="Spara ny address">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Button>
+                                                            <Button fx:id="clearFieldsButton" layoutX="55.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#confirmEmptyFields" text="Töm fälten">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Button>
+                                                            <Label fx:id="noAddressEnteredLabel" layoutX="509.0" layoutY="145.0" prefHeight="40.0" prefWidth="234.0">
+                                                               <font>
+                                                                  <Font name="SansSerif Italic" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="noPostCodeEnteredLabel" layoutX="362.0" layoutY="244.0" prefHeight="40.0" prefWidth="234.0">
+                                                               <font>
+                                                                  <Font name="SansSerif Italic" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="287.0" layoutY="48.0" text="Ny address">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="36.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </FlowPane>
                                        </content>
                                     </ScrollPane>
                                     <AnchorPane fx:id="orderHistoryAnchorPaneHeader1" layoutX="232.0" layoutY="66.0" prefHeight="92.0" prefWidth="1502.0">
@@ -145,9 +259,81 @@
                                           <Font name="SansSerif Regular" size="24.0" />
                                        </font>
                                     </Label>
+                                    <Button fx:id="goToCartButton" layoutX="1499.0" layoutY="833.0" mnemonicParsing="false" onMouseClicked="#onClickShowCart" text="Gå till nästa steg">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="24.0" />
+                                       </font>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                            </children></AnchorPane>
+                        <AnchorPane fx:id="paymentCartAnchorPane" prefHeight="1080.0" prefWidth="1930.0">
+                           <children>
+                              <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
+                                 <children>
+                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
+                                       <content>
+                                          <FlowPane fx:id="betalaAddresserFlowPane1" prefHeight="619.0" prefWidth="1501.0">
+                                             <children>
+                                                <AnchorPane prefHeight="615.0" prefWidth="1492.0" />
+                                             </children>
+                                          </FlowPane>
+                                       </content>
+                                    </ScrollPane>
+                                    <AnchorPane fx:id="orderHistoryAnchorPaneHeader11" layoutX="232.0" layoutY="66.0" prefHeight="92.0" prefWidth="1502.0">
+                                       <children>
+                                          <Label layoutX="666.0" prefHeight="92.0" prefWidth="307.0" styleClass="blue" text="Kundkorgen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="666.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="SansSerif Regular" size="36.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="blue" />
+                                          <String fx:value="big-bold-text" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <ImageView fitHeight="91.0" fitWidth="108.0" layoutX="29.0" layoutY="26.0" onMouseClicked="#onClickIMat" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/back-arrow.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="30.0" layoutY="110.0" prefHeight="78.0" prefWidth="129.0" text="Tillbaka till affären" wrapText="true">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="goToCreditCardButton" layoutX="1499.0" layoutY="833.0" mnemonicParsing="false" onMouseClicked="#onClickShowCreditCard" text="Gå till nästa steg">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="24.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="categoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
+                           <children>
+                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ScrollPane prefHeight="930.0" prefWidth="360.0" style="-fx-background-color: #F4F4F4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <VBox fx:id="categoryListFlowPane" alignment="CENTER" prefHeight="603.0" prefWidth="319.0" spacing="20.0">
+                                             <padding>
+                                                <Insets left="20.0" top="20.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="930.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0" />
+                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </StackPane>
                     <AnchorPane prefHeight="150.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
