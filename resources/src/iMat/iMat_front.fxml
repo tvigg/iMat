@@ -16,6 +16,28 @@
                <children>
                   <StackPane prefHeight="1080.0" prefWidth="1920.0">
                      <children>
+                        <AnchorPane fx:id="categoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
+                           <children>
+                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ScrollPane prefHeight="930.0" prefWidth="360.0" style="-fx-background-color: #F4F4F4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <VBox fx:id="categoryListFlowPane" alignment="CENTER" prefHeight="603.0" prefWidth="319.0" spacing="20.0">
+                                             <padding>
+                                                <Insets left="20.0" top="20.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="930.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0" />
+                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
                         <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                            <children>
                               <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0">
@@ -46,28 +68,122 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="categoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
+                        <AnchorPane fx:id="myPageAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                            <children>
-                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="278.0">
                                  <children>
-                                    <ScrollPane prefHeight="930.0" prefWidth="360.0" style="-fx-background-color: #F4F4F4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <content>
-                                          <VBox fx:id="categoryListFlowPane" alignment="CENTER" prefHeight="603.0" prefWidth="319.0" spacing="20.0">
-                                             <padding>
-                                                <Insets left="20.0" top="20.0" />
-                                             </padding>
-                                          </VBox>
-                                       </content>
-                                       <effect>
-                                          <DropShadow />
-                                       </effect>
-                                    </ScrollPane>
+                                    <StackPane fx:id="myPageStackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <GridPane fx:id="myPageHome" styleClass="normal">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Button mnemonicParsing="false" onMouseClicked="#editUserRecords" text="Mina uppgifter" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                   <styleClass>
+                                                      <String fx:value="cyan-hoverable" />
+                                                      <String fx:value="big-button" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onMouseClicked="#goToOrders" text="Mina beställningar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                   <styleClass>
+                                                      <String fx:value="cyan-hoverable" />
+                                                      <String fx:value="big-button" />
+                                                   </styleClass>
+                                                </Button>
+                                             </children>
+                                          </GridPane>
+                                          <GridPane fx:id="myPageRecords">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <TextField fx:id="myPageRecordsAddress" GridPane.columnIndex="1" />
+                                                <TextField fx:id="myPageRecordsEmail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="myPageRecordsFirstName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="myPageRecordsLastName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField fx:id="myPageRecordsPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <TextField fx:id="myPageRecordsMobileNumber" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <TextField fx:id="myPageRecordsPostAddress" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <TextField fx:id="myPageRecordsPostCode" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label text="Adress" GridPane.halignment="RIGHT">
+                                                   <GridPane.margin>
+                                                      <Insets right="12.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Label layoutX="476.0" layoutY="35.0" text="Email" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets right="12.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Label layoutX="476.0" layoutY="35.0" text="Förnamn" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets right="12.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Label layoutX="10.0" layoutY="35.0" text="Efternamn" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets right="12.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Label layoutX="476.0" layoutY="35.0" text="Telefonnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets right="12.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Label layoutX="10.0" layoutY="35.0" text="Mobiltelefonnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets right="12.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Label layoutX="10.0" layoutY="35.0" text="Postadress" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets right="12.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Label layoutX="10.0" layoutY="35.0" text="Postnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets right="12.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Button mnemonicParsing="false" onMouseClicked="#saveUserRecords" text="Spara" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="12.0" />
+                                                   </GridPane.margin>
+                                                   <styleClass>
+                                                      <String fx:value="big-button" />
+                                                      <String fx:value="cyan-hoverable" />
+                                                   </styleClass></Button>
+                                             </children>
+                                             <styleClass>
+                                                <String fx:value="normal" />
+                                                <String fx:value="big-text" />
+                                             </styleClass>
+                                          </GridPane>
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="930.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0" />
-                              <AnchorPane prefHeight="930.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
+                           </children></AnchorPane>
                      </children>
                   </StackPane>
                     <AnchorPane prefHeight="150.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -80,14 +196,15 @@
                                  </font>
                               </Label>
                               <ImageView fitHeight="108.0" fitWidth="153.0" layoutX="1767.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button layoutX="1707.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#onClickOrderLightbox" text="Beställningar" />
+                              <Button layoutX="1707.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#goToOrders" text="Beställningar" />
+                              <Button layoutX="1596.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#goToMyPage" text="Min sida" />
                            </children>
                         </Pane>
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="orderHistoryLightbox" onMouseClicked="#onClickOrderLightbox" prefHeight="200.0" prefWidth="200.0" styleClass="lightbox-shading">
+            <AnchorPane fx:id="orderHistoryLightbox" onMouseClicked="#goToOrders" prefHeight="200.0" prefWidth="200.0" styleClass="lightbox-shading">
                <children>
                   <AnchorPane layoutX="64.0" layoutY="64.0" onMouseClicked="#mouseTrap" styleClass="normal" AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="128.0">
                      <children>
@@ -118,13 +235,13 @@
                                     <Font size="32.0" />
                                  </font>
                                  <styleClass>
-                                    <String fx:value="order-history-button" />
+                                    <String fx:value="big-button" />
                                     <String fx:value="cyan-hoverable" />
                                  </styleClass>
                               </Button>
                               <Button mnemonicParsing="false" onMouseClicked="#onClickOrderAdd" text="Lägg till i kundvagnen">
                                  <styleClass>
-                                    <String fx:value="order-history-button" />
+                                    <String fx:value="big-button" />
                                     <String fx:value="cyan-hoverable" />
                                  </styleClass>
                                  <font>
