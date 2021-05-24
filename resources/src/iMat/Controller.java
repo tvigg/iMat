@@ -241,7 +241,7 @@ public class Controller implements Initializable {
             noAddressEnteredLabel.setText("");
             noPostCodeEnteredLabel.setText("");
             IMatDataHandler.getInstance().getCustomer().setAddress(addressTextField.getText());
-            IMatDataHandler.getInstance().getCustomer().setPostAddress(postCodeTextField.getText());
+            IMatDataHandler.getInstance().getCustomer().setPostCode(postCodeTextField.getText());
             displayAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
             displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());
         }

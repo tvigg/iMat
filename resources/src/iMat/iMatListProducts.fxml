@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="130.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="130.0" stylesheets="@iMat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="180.0" prefWidth="130.0">
          <children>
@@ -27,9 +27,9 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="removeOne" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button id="remove-button" fx:id="removeOne" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" styleClass="product-button" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label fx:id="productAmount" styleClass="centered-text" stylesheets="@iMat.css" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Button fx:id="addOne" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button id="add-button" fx:id="addOne" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" styleClass="product-button" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>

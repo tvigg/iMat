@@ -33,12 +33,13 @@
 
 .centered-text {
     -fx-font-size: 16px;
-    -fx-test-alignment: center;
+    -fx-text-alignment: center;
 }
 
 .big-button {
     -fx-border-color: black;
     -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
     -fx-border-width: 3px;
     -fx-font-size: 32px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
@@ -54,6 +55,25 @@
 #category-button {
     -fx-border-color: black;
     -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
     -fx-border-width: 2px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.product-button {
+    -fx-background-color: "#457b9d";
+    -fx-text-fill: "#ffffff";
+    -fx-font-weight: bold;
+}
+
+.product-button:hover {
+    -fx-background-color: "#558bad";
+}
+
+#add-button {
+    -fx-background-radius: 5% 50% 50% 5%;
+}
+
+#remove-button {
+    -fx-background-radius: 50% 5% 5% 50%;
 }
