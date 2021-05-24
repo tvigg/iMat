@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -226,140 +213,6 @@
                                           </FlowPane>
                                        </content>
                                     </ScrollPane>
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="confirmPurchaseAnchorPaneconfirmPurchaseAnchorPane" prefHeight="1080.0" prefWidth="1930.0">
-                           <children>
-                              <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
-                                 <children>
-                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
-                                       <content>
-                                          <FlowPane fx:id="betalaAddresserFlowPane12" prefHeight="619.0" prefWidth="1501.0">
-                                             <children>
-                                                <AnchorPane prefHeight="615.0" prefWidth="1492.0">
-                                                   <children>
-                                                      <AnchorPane layoutX="128.0" layoutY="56.0">
-                                                         <children>
-                                                            <Label text="Leveransaddress:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="5.0" layoutY="48.0" text="Postnummer:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="246.0" text="Leveransaddress">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="187.0" layoutY="48.0" text="Postnummer">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane layoutX="126.0" layoutY="204.0">
-                                                         <children>
-                                                            <Label text="Datum och tid för leverans:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="363.0" layoutY="1.0" text="Dag">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="489.0" layoutY="2.0" text="Tid">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="621.0" layoutY="3.0" text="Månad">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane layoutX="125.0" layoutY="311.0">
-                                                         <children>
-                                                            <Label layoutY="1.0" text="Kreditkort:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="164.0" text="Kreditkort">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="3.0" layoutY="46.0" text="CVC:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="111.0" layoutY="45.0" text="CVC">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane layoutX="135.0" layoutY="490.0">
-                                                         <children>
-                                                            <Label layoutY="1.0" text="Pris:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="171.0" text="Pris">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </AnchorPane>
-                                             </children>
-                                          </FlowPane>
-                                       </content>
-                                    </ScrollPane>
-                                    <AnchorPane fx:id="orderHistoryAnchorPaneHeader112" layoutX="232.0" layoutY="66.0" prefHeight="92.0" prefWidth="1502.0">
-                                       <children>
-                                          <Label layoutX="537.0" prefHeight="92.0" prefWidth="436.0" styleClass="blue" text="Sammanfattning av order" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="537.0" AnchorPane.topAnchor="0.0">
-                                             <font>
-                                                <Font name="SansSerif Regular" size="36.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                       <styleClass>
-                                          <String fx:value="blue" />
-                                          <String fx:value="big-bold-text" />
-                                       </styleClass>
-                                    </AnchorPane>
-                                    <ImageView fitHeight="91.0" fitWidth="108.0" layoutX="29.0" layoutY="26.0" onMouseClicked="#onClickIMat" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@resources/images/back-arrow.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label layoutX="30.0" layoutY="110.0" prefHeight="78.0" prefWidth="129.0" text="Tillbaka till affären" wrapText="true">
-                                       <font>
-                                          <Font name="SansSerif Regular" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Button layoutX="1499.0" layoutY="833.0" mnemonicParsing="false" onMouseClicked="#onClickShowCreditCard" text="Betala">
-                                       <font>
-                                          <Font name="SansSerif Regular" size="24.0" />
-                                       </font>
-                                    </Button>
                                  </children>
                               </AnchorPane>
                            </children>
