@@ -3,16 +3,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.*;
 
-import java.lang.reflect.Array;
 import java.util.List;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.value.ObservableValue;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -21,7 +18,6 @@ import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
     @FXML private FlowPane orderHistoryFlowPane;
@@ -30,6 +26,29 @@ public class Controller implements Initializable {
     @FXML private AnchorPane myPageAnchorPane;
     @FXML private AnchorPane orderHistoryLightbox;
     @FXML private AnchorPane categoryAnchorPane;
+    //Payments
+    @FXML private AnchorPane betalaAnchorpane;
+    @FXML private AnchorPane savedAddressAnchorPane;
+    @FXML private AnchorPane paymentCartAnchorPane;
+    @FXML private AnchorPane paymentCreditCardAnchorPane;
+    @FXML private AnchorPane confirmPurchaseAnchorPane;
+    @FXML private AnchorPane paymentDeliveryDateAnchorPane;
+    @FXML private TextField addressTextField;
+    @FXML private TextField postCodeTextField;
+    @FXML private Label displayAddressLabel;
+    @FXML private Label displayPostCodeLabel;
+    @FXML private Label noAddressEnteredLabel;
+    @FXML private Label noPostCodeEnteredLabel;
+    @FXML private Button saveAddressButton;
+    @FXML private Button clearFieldsButton;
+    @FXML private Button useCurrentAddressButton;
+    @FXML private Button goToCartButton;
+    @FXML private Button goToCreditCardButton;
+    @FXML private ComboBox dayComboBox;
+    @FXML private ComboBox timeComboBox;
+    @FXML private ComboBox monthComboBox;
+
+    //Orders
     @FXML private FlowPane orderHistoryDetailFlowPane;
     @FXML private AnchorPane orderItemHeader;
     @FXML private Label orderHistoryLightboxHeader;
@@ -54,12 +73,13 @@ public class Controller implements Initializable {
         initializeOrderHistory();
         updateCategoryList();
         initializeMyPageRecords();
+        createUser();
+        populateDayComboBox();
     }
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
         ProductCategory[] categoryList = getCategories();
-
 
         for (ProductCategory category : categoryList){
             var button = new IMatCategoryListItem(category, this);
@@ -163,7 +183,109 @@ public class Controller implements Initializable {
         }
     }
 
+    public void onClickPayments(Event event) {
+        betalaAnchorpane.toFront();
+    }
+
     public ProductCategory[] getCategories(){
         return ProductCategory.values();
     }
+
+    //===============Payments=================//
+    public void createUser(){
+        //IMatDataHandler.getInstance().getCustomer().setAddress("cool street 1337");
+        //if there is an address, display it
+
+        if(IMatDataHandler.getInstance().getCustomer().getAddress().isBlank() || IMatDataHandler.getInstance().getCustomer().getPostAddress().isBlank()){
+            savedAddressAnchorPane.setVisible(false);
+        }
+        else {
+            displayAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
+            displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());
+            savedAddressAnchorPane.setVisible(true);
+        }
+    }
+
+    public void updateCustomerAddress(Event event){
+        if (addressTextField.getText().isEmpty() || postCodeTextField.getText().isEmpty()){
+            noAddressEnteredLabel.setText("Var vänlig fyll i fältet.");
+            noPostCodeEnteredLabel.setText("Var vänlig fyll i fältet.");
+            if (!addressTextField.getText().isEmpty()) {
+                noAddressEnteredLabel.setText("");
+            }
+            if(!postCodeTextField.getText().isEmpty()){
+                noPostCodeEnteredLabel.setText("");
+            }
+        }
+        else {
+            savedAddressAnchorPane.setVisible(true);
+            //useCurrentAddressButton.setVisible(false);
+            noAddressEnteredLabel.setText("");
+            noPostCodeEnteredLabel.setText("");
+            IMatDataHandler.getInstance().getCustomer().setAddress(addressTextField.getText());
+            IMatDataHandler.getInstance().getCustomer().setPostAddress(postCodeTextField.getText());
+            displayAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
+            displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());
+        }
+    }
+
+    @FXML
+    public void confirmEmptyFields(Event event){
+        if (!addressTextField.getText().isEmpty() || !postCodeTextField.getText().isEmpty()) {
+            showAlert();
+        }
+    }
+
+    public void showAlert(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Bekräftelse");
+        alert.setHeaderText("Tämma båda fälten");
+        alert.setContentText("Är du säker på att du vill tömma fälten address och postnummer?");
+
+        ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.APPLY);
+        ButtonType buttonTypeCancel = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            emptyAddressFields();
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+    }
+
+    public void emptyAddressFields(){
+        addressTextField.setText("");
+        postCodeTextField.setText("");
+    }
+
+    private void populateDayComboBox(){
+        dayComboBox.getItems().addAll(generateDates(31));
+    }
+
+    private Integer[] generateDates(int limit){
+        Integer[] res = new Integer[limit];
+        for (int i = 1; i < res.length; i++) {
+            res[i] = i;
+        }
+        return res;
+    }
+
+    @FXML public void onClickShowDeliveryDates(Event event){
+        paymentDeliveryDateAnchorPane.toFront();
+    }
+
+    @FXML public void onClickShowCart(Event event){
+        paymentCartAnchorPane.toFront();
+    }
+
+    @FXML public void onClickShowCreditCard(Event event){
+        paymentCreditCardAnchorPane.toFront();
+    }
+
+    @FXML public void onClickShowOrderConfirmation(Event event){
+        confirmPurchaseAnchorPane.toFront();
+    }
+
 }
