@@ -72,119 +72,47 @@
                      <children>
                         <AnchorPane fx:id="myPageAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                            <children>
-                              <AnchorPane style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="278.0">
+                              <StackPane fx:id="myPageStackPane" layoutX="161.0" layoutY="279.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="310.0">
                                  <children>
-                                    <StackPane fx:id="myPageStackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <GridPane fx:id="myPageHome" styleClass="normal">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
                                        <children>
-                                          <GridPane fx:id="myPageHome" styleClass="normal">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <Button mnemonicParsing="false" onMouseClicked="#editUserRecords" text="Mina uppgifter" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                   <styleClass>
-                                                      <String fx:value="cyan-hoverable" />
-                                                      <String fx:value="big-button" />
-                                                   </styleClass>
-                                                </Button>
-                                                <Button mnemonicParsing="false" onMouseClicked="#goToOrders" text="Mina beställningar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                   <styleClass>
-                                                      <String fx:value="cyan-hoverable" />
-                                                      <String fx:value="big-button" />
-                                                   </styleClass>
-                                                </Button>
-                                             </children>
-                                          </GridPane>
-                                          <GridPane fx:id="myPageRecords">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <TextField fx:id="myPageRecordsAddress" GridPane.columnIndex="1" />
-                                                <TextField fx:id="myPageRecordsEmail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField fx:id="myPageRecordsFirstName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <TextField fx:id="myPageRecordsLastName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <TextField fx:id="myPageRecordsPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <TextField fx:id="myPageRecordsMobileNumber" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <TextField fx:id="myPageRecordsPostAddress" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <TextField fx:id="myPageRecordsPostCode" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label text="Adress" GridPane.halignment="RIGHT">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="476.0" layoutY="35.0" text="Email" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="476.0" layoutY="35.0" text="Förnamn" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="10.0" layoutY="35.0" text="Efternamn" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="476.0" layoutY="35.0" text="Telefonnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="10.0" layoutY="35.0" text="Mobiltelefonnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="10.0" layoutY="35.0" text="Postadress" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="10.0" layoutY="35.0" text="Postnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Button mnemonicParsing="false" onMouseClicked="#saveUserRecords" text="Spara" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="12.0" />
-                                                   </GridPane.margin>
-                                                   <styleClass>
-                                                      <String fx:value="big-button" />
-                                                      <String fx:value="cyan-hoverable" />
-                                                   </styleClass></Button>
-                                             </children>
+                                          <Button mnemonicParsing="false" onMouseClicked="#goToMyPageAccount" prefWidth="296.0" text="Konto" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                              <styleClass>
-                                                <String fx:value="normal" />
-                                                <String fx:value="big-text" />
+                                                <String fx:value="cyan-hoverable" />
+                                                <String fx:value="big-button" />
                                              </styleClass>
-                                          </GridPane>
+                                          </Button>
+                                          <Button layoutX="273.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#goToMyPageAddress" prefWidth="296.0" text="Adress" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="cyan-hoverable" />
+                                                <String fx:value="big-button" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button mnemonicParsing="false" onMouseClicked="#goToMyPagePersonal" text="Personuppgifter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="big-button" />
+                                                <String fx:value="cyan-hoverable" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button layoutX="1134.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#goToMyPageCreditCard" prefWidth="296.0" text="Kreditkort" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="big-button" />
+                                                <String fx:value="cyan-hoverable" />
+                                             </styleClass>
+                                          </Button>
                                        </children>
-                                    </StackPane>
+                                    </GridPane>
                                  </children>
-                              </AnchorPane>
+                              </StackPane>
                            </children></AnchorPane>
                         <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                            <children>

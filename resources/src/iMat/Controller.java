@@ -58,6 +58,7 @@ public class Controller implements Initializable {
     // User page
     @FXML private GridPane myPageHome;
     @FXML private GridPane myPageRecords;
+    @FXML private StackPane myPageStackPane;
 
     @FXML private TextField myPageRecordsAddress;
     @FXML private TextField myPageRecordsEmail;
@@ -104,19 +105,71 @@ public class Controller implements Initializable {
         initializeOrderHistory();
         updateCategoryList();
         updateProductList();
-        initializeMyPageRecords();
         createUser();
         populateDayComboBox();
+        accountCreationCardType.getItems().add("MasterCard");
+        accountCreationCardType.getItems().add("Visa");
         if (IMatDataHandler.getInstance().isFirstRun())
             setupAccount();
+        else
+            setupMyPage(true);
+    }
+
+    private void setupMyPage(boolean loadUser) {
+        myPageStackPane.getChildren().add(accountCreationPersonal);
+        myPageStackPane.getChildren().add(accountCreationAccount);
+        myPageStackPane.getChildren().add(accountCreationAddress);
+        myPageStackPane.getChildren().add(accountCreationCreditCard);
+        if (loadUser) {
+            User user = IMatDataHandler.getInstance().getUser();
+            accountCreationUser.setText(user.getUserName());
+            accountCreationPassword1.setText(user.getPassword());
+            accountCreationPassword2.setText(user.getPassword());
+
+            Customer customer = IMatDataHandler.getInstance().getCustomer();
+            accountCreationFirstName.setText(customer.getFirstName());
+            accountCreationLastName.setText(customer.getLastName());
+            accountCreationPhone.setText(customer.getPhoneNumber());
+            accountCreationMobile.setText(customer.getMobilePhoneNumber());
+            accountCreationEmail.setText(customer.getEmail());
+            accountCreationHomeAddress.setText(customer.getAddress());
+            accountCreationPostAddress.setText(customer.getPostAddress());
+            accountCreationPostCode.setText(customer.getPostCode());
+
+            CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+            accountCreationCardNumber.setText(card.getCardNumber());
+            accountCreationCardType.getSelectionModel().select(card.getCardType());
+            accountCreationCardValidMonth.setText(String.valueOf(card.getValidMonth()));
+            accountCreationCardValidYear.setText(String.valueOf(card.getValidYear()));
+            accountCreationCardValidCode.setText(String.valueOf(card.getVerificationCode()));
+        }
+        myPageHome.toFront();
+    }
+
+    @FXML
+    public void goToMyPageAccount(Event event) {
+        accountCreationAccount.toFront();
+    }
+
+    @FXML
+    public void goToMyPagePersonal(Event event) {
+        accountCreationPersonal.toFront();
+    }
+
+    @FXML
+    public void goToMyPageAddress(Event event) {
+        accountCreationAddress.toFront();
+    }
+
+    @FXML
+    public void goToMyPageCreditCard(Event event) {
+        accountCreationCreditCard.toFront();
     }
 
     private void setupAccount() {
         accountCreationAnchorPane.toFront();
         accountCreationAccount.toFront();
         accountCreationPrevButton.setDisable(true);
-        accountCreationCardType.getItems().add("MasterCard");
-        accountCreationCardType.getItems().add("Visa");
     }
 
     @FXML
@@ -206,6 +259,7 @@ public class Controller implements Initializable {
             card.setValidYear(Integer.parseInt(accountCreationCardValidYear.getText()));
             card.setVerificationCode(Integer.parseInt(accountCreationCardValidCode.getText()));
             categoryAnchorPane.toFront();
+            setupMyPage(false);
         }
         if (next != null)
             next.toFront();
@@ -247,18 +301,6 @@ public class Controller implements Initializable {
 
         orderHistoryFlowPane.setVgap(2);
         orderHistoryLightbox.toBack();
-    }
-
-    private void initializeMyPageRecords() {
-        Customer customer = IMatDataHandler.getInstance().getCustomer();
-        myPageRecordsAddress.setText(customer.getAddress());
-        myPageRecordsEmail.setText(customer.getEmail());
-        myPageRecordsFirstName.setText(customer.getFirstName());
-        myPageRecordsLastName.setText(customer.getLastName());
-        myPageRecordsPhoneNumber.setText(customer.getPhoneNumber());
-        myPageRecordsMobileNumber.setText(customer.getMobilePhoneNumber());
-        myPageRecordsPostAddress.setText(customer.getPostAddress());
-        myPageRecordsPostCode.setText(customer.getPostCode());
     }
 
     public void onClickOrderHistory(Order order) {
