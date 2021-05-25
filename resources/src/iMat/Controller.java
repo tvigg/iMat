@@ -91,10 +91,9 @@ public class Controller implements Initializable {
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
-        OurProductCategory.OurCategory[] categoryList = getCategories();
 
-        for (OurProductCategory.OurCategory category : categoryList){
-            var button = new IMatCategoryListItem(category, this);
+        for (ProductCategory category : ProductCategory.values()){
+            var button = new IMatCategoryListItem(new OurCategory(category), this);
             categoryListFlowPane.getChildren().add(button);
         }
 
@@ -103,7 +102,6 @@ public class Controller implements Initializable {
     private void updateProductList(){
         productListFlowPane.getChildren().clear();
         List<Product> productList = IMatDataHandler.getInstance().getProducts();
-        System.out.println("productListLength " + productList.size()); // =0? List<Product>getProducts()
 
         for (Product product : productList){
             var button = new IMatProductListItem(product, this);
@@ -225,10 +223,6 @@ public class Controller implements Initializable {
         betalaAnchorpane.toFront();
     }
 
-    public OurProductCategory.OurCategory[] getCategories(){
-        return OurProductCategory.OurCategory.values();
-    }
-
     //===============Payments=================//
     public void createUser(){
         //IMatDataHandler.getInstance().getCustomer().setAddress("cool street 1337");
@@ -328,6 +322,5 @@ public class Controller implements Initializable {
 
     public void onClickedCategory(ProductCategory category) {
         updateProductList(category);
-        System.out.println(category);
     }
 }
