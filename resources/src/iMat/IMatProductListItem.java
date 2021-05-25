@@ -27,9 +27,6 @@ public class IMatProductListItem extends AnchorPane {
     @FXML private Button removeOne;
     @FXML private Button addOne;
 
-
-
-
     public IMatProductListItem(Product product, Controller iMatCategoryController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMatListProducts.fxml"));
         fxmlLoader.setRoot(this);

@@ -1,6 +1,5 @@
 package iMat;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import se.chalmers.cse.dat216.project.*;
 
 import java.util.List;
@@ -12,8 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -71,6 +68,35 @@ public class Controller implements Initializable {
     @FXML private TextField myPageRecordsPostAddress;
     @FXML private TextField myPageRecordsPostCode;
 
+    // Account creation
+    @FXML private AnchorPane accountCreationAnchorPane;
+    @FXML private StackPane accountCreationStackPane;
+    @FXML private AnchorPane accountCreationAccount;
+    @FXML private AnchorPane accountCreationPersonal;
+    @FXML private AnchorPane accountCreationAddress;
+    @FXML private AnchorPane accountCreationOverview;
+    @FXML private AnchorPane accountCreationCreditCard;
+    @FXML private Button accountCreationPrevButton;
+    @FXML private Button accountCreationNextButton;
+    @FXML private TextField accountCreationUser;
+    @FXML private TextField accountCreationPassword1;
+    @FXML private TextField accountCreationPassword2;
+    @FXML private TextField accountCreationFirstName;
+    @FXML private TextField accountCreationLastName;
+    @FXML private TextField accountCreationPhone;
+    @FXML private TextField accountCreationMobile;
+    @FXML private TextField accountCreationEmail;
+    @FXML private TextField accountCreationHomeAddress;
+    @FXML private TextField accountCreationPostAddress;
+    @FXML private TextField accountCreationPostCode;
+    @FXML private ComboBox accountCreationCardType;
+    @FXML private TextField accountCreationCardNumber;
+    @FXML private TextField accountCreationCardValidMonth;
+    @FXML private TextField accountCreationCardValidYear;
+    @FXML private TextField accountCreationCardValidCode;
+    @FXML private TextArea accountCreationOverviewText;
+
+
     private IMatDataHandler handler = IMatDataHandler.getInstance();
 
     @Override
@@ -81,6 +107,107 @@ public class Controller implements Initializable {
         initializeMyPageRecords();
         createUser();
         populateDayComboBox();
+        if (IMatDataHandler.getInstance().isFirstRun())
+            setupAccount();
+    }
+
+    private void setupAccount() {
+        accountCreationAnchorPane.toFront();
+        accountCreationAccount.toFront();
+        accountCreationPrevButton.setDisable(true);
+        accountCreationCardType.getItems().add("MasterCard");
+        accountCreationCardType.getItems().add("Visa");
+    }
+
+    @FXML
+    public void accountCreationPrev(Event event) {
+        Node current = accountCreationStackPane.getChildren().get(accountCreationStackPane.getChildren().size() - 1);
+        Node prev = null;
+        if (current == accountCreationPersonal) {
+            prev = accountCreationAccount;
+            accountCreationPrevButton.setDisable(true);
+        } else if (current == accountCreationAddress) {
+            prev = accountCreationPersonal;
+        } else if (current == accountCreationCreditCard) {
+            prev = accountCreationAddress;
+        } else if (current == accountCreationOverview) {
+            prev = accountCreationCreditCard;
+            accountCreationNextButton.setText("Gå till nästa steg");
+        }
+        if (prev != null)
+            prev.toFront();
+    }
+
+    @FXML
+    public void accountCreationNext(Event event) {
+        Node current = accountCreationStackPane.getChildren().get(accountCreationStackPane.getChildren().size() - 1);
+        Node next = null;
+        if (current == accountCreationAccount) {
+            if (!accountCreationUser.getText().isEmpty()
+                    && !accountCreationPassword1.getText().isEmpty()
+                    && accountCreationPassword1.getText().equals(accountCreationPassword2.getText())) {
+                next = accountCreationPersonal;
+                accountCreationPrevButton.setDisable(false);
+            }
+        } else if (current == accountCreationPersonal) {
+            if (!accountCreationFirstName.getText().isEmpty()
+                && !accountCreationLastName.getText().isEmpty()
+                && (!accountCreationPhone.getText().isEmpty()
+                || !accountCreationMobile.getText().isEmpty())
+                && !accountCreationEmail.getText().isEmpty()) {
+                next = accountCreationAddress;
+            }
+        } else if (current == accountCreationAddress) {
+            if (!accountCreationHomeAddress.getText().isEmpty()
+                && !accountCreationPostAddress.getText().isEmpty()
+                && !accountCreationPostCode.getText().isEmpty()) {
+                next = accountCreationCreditCard;
+            }
+        } else if (current == accountCreationCreditCard) {
+            if (!accountCreationCardNumber.getText().isEmpty()
+                && !accountCreationCardValidMonth.getText().isEmpty()
+                && !accountCreationCardValidYear.getText().isEmpty()
+                && !accountCreationCardValidCode.getText().isEmpty()
+                && accountCreationCardType.getSelectionModel().getSelectedItem() != null) {
+                next = accountCreationOverview;
+                accountCreationNextButton.setText("Skapa konto");
+                accountCreationOverviewText.setText(
+                        "Användarnamn: " + accountCreationUser.getText() + "\n\n" +
+                                "Förnamn: " + accountCreationFirstName.getText() + "\n\n" +
+                                "Efternamn: " + accountCreationLastName.getText() + "\n\n" +
+                                "Hemtelefonnummer: " + accountCreationPhone.getText() + "\n\n" +
+                                "Mobiltelefonnummer: " + accountCreationMobile.getText() + "\n\n" +
+                                "E-postadress: " + accountCreationEmail.getText() + "\n\n" +
+                                "Gatuadress: " + accountCreationHomeAddress.getText() + "\n\n" +
+                                "Ort: " + accountCreationPostAddress.getText() + "\n\n" +
+                                "Postnummer: " + accountCreationPostCode.getText()
+                );
+            }
+        } else if (current == accountCreationOverview) {
+            User user = IMatDataHandler.getInstance().getUser();
+            user.setUserName(accountCreationUser.getText());
+            user.setPassword(accountCreationPassword1.getText());
+
+            Customer customer = IMatDataHandler.getInstance().getCustomer();
+            customer.setFirstName(accountCreationFirstName.getText());
+            customer.setLastName(accountCreationLastName.getText());
+            customer.setPhoneNumber(accountCreationPhone.getText());
+            customer.setMobilePhoneNumber(accountCreationMobile.getText());
+            customer.setEmail(accountCreationEmail.getText());
+            customer.setAddress(accountCreationHomeAddress.getText());
+            customer.setPostAddress(accountCreationPostAddress.getText());
+            customer.setPostCode(accountCreationPostCode.getText());
+
+            CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+            card.setCardNumber(accountCreationCardNumber.getText());
+            card.setCardType((String)accountCreationCardType.getSelectionModel().getSelectedItem());
+            card.setHoldersName(customer.getFirstName() + " " + customer.getLastName());
+            card.setValidMonth(Integer.parseInt(accountCreationCardValidMonth.getText()));
+            card.setValidYear(Integer.parseInt(accountCreationCardValidYear.getText()));
+            card.setVerificationCode(Integer.parseInt(accountCreationCardValidCode.getText()));
+        }
+        if (next != null)
+            next.toFront();
     }
 
     private void updateCategoryList(){

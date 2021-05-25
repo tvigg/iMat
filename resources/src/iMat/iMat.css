@@ -31,6 +31,15 @@
     -fx-font-weight: bold;
 }
 
+.right-text {
+    -fx-font-size: 16px;
+    -fx-text-alignment: right;
+}
+
+.normal-text {
+    -fx-font-size: 16px;
+}
+
 .centered-text {
     -fx-font-size: 16px;
     -fx-text-alignment: center;
