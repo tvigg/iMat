@@ -1,4 +1,6 @@
 package iMat;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.*;
@@ -35,18 +37,23 @@ public class Controller implements Initializable {
     @FXML private AnchorPane paymentDeliveryDateAnchorPane;
     @FXML private TextField addressTextField;
     @FXML private TextField postCodeTextField;
+    @FXML private TextField paymentCardNumberTextField;
+    @FXML private TextField paymentExpirationMonthTextField;
+    @FXML private TextField paymentExpirationYearTextField;
+    @FXML private TextField paymentCVCTextField;
     @FXML private Label displayAddressLabel;
     @FXML private Label displayPostCodeLabel;
     @FXML private Label noAddressEnteredLabel;
     @FXML private Label noPostCodeEnteredLabel;
-    @FXML private Button saveAddressButton;
-    @FXML private Button clearFieldsButton;
-    @FXML private Button useCurrentAddressButton;
-    @FXML private Button goToCartButton;
-    @FXML private Button goToCreditCardButton;
+    @FXML private Label  confirmOrderAddressLabel;
+    @FXML private Label  confirmOrderPostCodeLabel;
+    @FXML private Label  confirmOrderDeliveryDateLabel;
+    @FXML private Label  confirmOrderDeliveryTimeLabel;
+    @FXML private Label  confirmOrderCreditCardLabel;
+
+    @FXML private Button goToDatesButton;
     @FXML private ComboBox dayComboBox;
     @FXML private ComboBox timeComboBox;
-    @FXML private ComboBox monthComboBox;
 
     //Orders
     @FXML private FlowPane orderHistoryDetailFlowPane;
@@ -72,6 +79,7 @@ public class Controller implements Initializable {
     @FXML private TextField myPageRecordsPostCode;
 
     private IMatDataHandler handler = IMatDataHandler.getInstance();
+    private DeliveryDate deliveryDate = new DeliveryDate();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -80,7 +88,12 @@ public class Controller implements Initializable {
         updateProductList();
         initializeMyPageRecords();
         createUser();
-        populateDayComboBox();
+        dayComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            deliveryDate.setDate(newValue.toString());
+        });
+        timeComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            deliveryDate.setTime(newValue.toString());
+        });
     }
 
     private void updateCategoryList(){
@@ -91,7 +104,6 @@ public class Controller implements Initializable {
             var button = new IMatCategoryListItem(category, this);
             categoryListFlowPane.getChildren().add(button);
         }
-
     }
 
     private void updateProductList(){
@@ -103,7 +115,6 @@ public class Controller implements Initializable {
             var button = new IMatProductListItem(product, this);
             productListFlowPane.getChildren().add(button);
         }
-
     }
 
     private void initializeOrderHistory() {
@@ -202,6 +213,7 @@ public class Controller implements Initializable {
     }
 
     public void onClickPayments(Event event) {
+        createUser();
         betalaAnchorpane.toFront();
     }
 
@@ -210,24 +222,26 @@ public class Controller implements Initializable {
     }
 
     //===============Payments=================//
-    public void createUser(){
-        //IMatDataHandler.getInstance().getCustomer().setAddress("cool street 1337");
-        //if there is an address, display it
-
-        if(IMatDataHandler.getInstance().getCustomer().getAddress().isBlank() || IMatDataHandler.getInstance().getCustomer().getPostAddress().isBlank()){
+    @FXML public void createUser(){
+        populateDayComboBox();
+        populateTimeComboBox();
+        if(IMatDataHandler.getInstance().getCustomer().getAddress().isBlank() || IMatDataHandler.getInstance().getCustomer().getPostCode().isBlank()){
             savedAddressAnchorPane.setVisible(false);
         }
         else {
             displayAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
-            displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());
+            displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostCode());
+            confirmOrderAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
+            confirmOrderPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostCode());
             savedAddressAnchorPane.setVisible(true);
         }
     }
 
-    public void updateCustomerAddress(Event event){
+    @FXML public void updateCustomerAddress(Event event){
         if (addressTextField.getText().isEmpty() || postCodeTextField.getText().isEmpty()){
             noAddressEnteredLabel.setText("Var vänlig fyll i fältet.");
             noPostCodeEnteredLabel.setText("Var vänlig fyll i fältet.");
+            goToDatesButton.setDisable(true);
             if (!addressTextField.getText().isEmpty()) {
                 noAddressEnteredLabel.setText("");
             }
@@ -237,13 +251,16 @@ public class Controller implements Initializable {
         }
         else {
             savedAddressAnchorPane.setVisible(true);
+            goToDatesButton.setDisable(false);
             //useCurrentAddressButton.setVisible(false);
             noAddressEnteredLabel.setText("");
             noPostCodeEnteredLabel.setText("");
             IMatDataHandler.getInstance().getCustomer().setAddress(addressTextField.getText());
             IMatDataHandler.getInstance().getCustomer().setPostCode(postCodeTextField.getText());
             displayAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
-            displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());
+            displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostCode());
+            confirmOrderAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
+            confirmOrderPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostCode());
         }
     }
 
@@ -254,10 +271,10 @@ public class Controller implements Initializable {
         }
     }
 
-    public void showAlert(){
+    @FXML public void showAlert(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Bekräftelse");
-        alert.setHeaderText("Tämma båda fälten");
+        alert.setHeaderText("Tömma båda fälten");
         alert.setContentText("Är du säker på att du vill tömma fälten address och postnummer?");
 
         ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.APPLY);
@@ -269,25 +286,35 @@ public class Controller implements Initializable {
         if (result.get() == ButtonType.OK){
             emptyAddressFields();
         } else {
-            // ... user chose CANCEL or closed the dialog
+            // close alert
         }
     }
 
-    public void emptyAddressFields(){
+    @FXML public void emptyAddressFields(){
         addressTextField.setText("");
         postCodeTextField.setText("");
     }
 
-    private void populateDayComboBox(){
+    @FXML private void populateDayComboBox(){
         dayComboBox.getItems().addAll(generateDates(31));
     }
 
-    private Integer[] generateDates(int limit){
-        Integer[] res = new Integer[limit];
+    private String[] generateDates(int limit){
+        String[] res = new String[limit];
         for (int i = 1; i < res.length; i++) {
-            res[i] = i;
+            if (i >= 27 ){
+                res[i] = i + " Maj";
+            }
+            else{
+                res[i] = i + " Juni";
+            }
         }
         return res;
+    }
+
+    @FXML private void populateTimeComboBox(){
+        String[] times = new String[] {"08:00-11:00", "11:00-13:00", "13:00-16:00", "16:00-19:00"};
+        timeComboBox.getItems().addAll(times);
     }
 
     @FXML public void onClickShowDeliveryDates(Event event){
@@ -295,7 +322,24 @@ public class Controller implements Initializable {
     }
 
     @FXML public void onClickShowCart(Event event){
+        System.out.println(deliveryDate.getDate() + " at " + deliveryDate.getTime() + " o'clock.");
+        confirmOrderDeliveryDateLabel.setText(deliveryDate.getDate());
+        confirmOrderDeliveryTimeLabel.setText(deliveryDate.getTime());
         paymentCartAnchorPane.toFront();
+    }
+
+    @FXML public void populateOrderConfirmation(){
+        CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
+        confirmOrderCreditCardLabel.setText(creditCard.getCardNumber());
+    }
+
+    @FXML public void saveCreditCardInformation(){
+        CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
+        creditCard.setCardNumber(paymentCardNumberTextField.getText());
+        //hack
+        creditCard.setValidMonth(Integer.parseInt(paymentExpirationMonthTextField.getText()));
+        creditCard.setValidYear(Integer.parseInt(paymentExpirationYearTextField.getText()));
+        creditCard.setVerificationCode(Integer.parseInt(paymentCVCTextField.getText()));
     }
 
     @FXML public void onClickShowCreditCard(Event event){
@@ -303,7 +347,29 @@ public class Controller implements Initializable {
     }
 
     @FXML public void onClickShowOrderConfirmation(Event event){
+        populateOrderConfirmation();
         confirmPurchaseAnchorPane.toFront();
+
+    }
+
+    //Class for keeping track of current delivery date and time
+    public class DeliveryDate{
+        String date;
+        String time;
+
+        public String getDate(){
+            return date;
+        }
+        public String getTime(){
+            return time;
+        }
+        public void setDate(String newDate){
+            date = newDate;
+        }
+        public void setTime(String newTime){
+            time = newTime;
+        }
     }
 
 }
+
