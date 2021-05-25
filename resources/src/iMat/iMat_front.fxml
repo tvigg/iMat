@@ -706,7 +706,7 @@
                                           </StackPane>
                                        </content>
                                     </ScrollPane>
-                                    <Pane layoutY="149.0" prefHeight="233.0" prefWidth="1186.0" />
+                                    <Pane layoutY="149.0" prefHeight="233.0" prefWidth="1290.0" />
                                  </children></AnchorPane>
                            </children>
                         </AnchorPane>

@@ -70,6 +70,11 @@ public class Controller implements Initializable {
     @FXML private TextField myPageRecordsMobileNumber;
     @FXML private TextField myPageRecordsPostAddress;
     @FXML private TextField myPageRecordsPostCode;
+//
+//    @FXML protected void onCategoryClicked(Event event){
+//        updateProductList();
+//        //parentController.up(productCategory); //updateProductList(ProductCategory.ROOT_VEGETABLE);
+//    }
 
     private IMatDataHandler handler = IMatDataHandler.getInstance();
 
@@ -77,9 +82,8 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeOrderHistory();
         updateCategoryList();
-        //ProductCategory.BREAD //+ ProductCategory.BERRY;
         //updateSubCategory(ProductCategory.BERRY);
-        updateProductList(ProductCategory.FRUIT);
+        updateProductList(ProductCategory.ROOT_VEGETABLE);
         initializeMyPageRecords();
         createUser();
         populateDayComboBox();
@@ -120,22 +124,6 @@ public class Controller implements Initializable {
             productListFlowPane.getChildren().add(button);
         }
 
-    }
-
-//    private void updateSubCategory(ProductCategory category){
-//        productListFlowPane.getChildren().clear();
-//        List<Product> productList = IMatDataHandler.getInstance().getProducts(category);
-//        //System.out.println("productListLength " + productList.size()); // =0? List<Product>getProducts()
-//
-//        for (Product product : productList){
-//            var button = new IMatSubCategory(category, this);
-//            productListFlowPane.getChildren().add(button);
-//        }
-//
-//    }
-
-    public void openRecipeView(ProductCategory category) {
-        updateProductList(category);
     }
 
     private void initializeOrderHistory() {
@@ -338,4 +326,8 @@ public class Controller implements Initializable {
         confirmPurchaseAnchorPane.toFront();
     }
 
+    public void onClickedCategory(ProductCategory category) {
+        updateProductList(category);
+        System.out.println(category);
+    }
 }
