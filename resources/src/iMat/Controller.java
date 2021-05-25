@@ -205,6 +205,7 @@ public class Controller implements Initializable {
             card.setValidMonth(Integer.parseInt(accountCreationCardValidMonth.getText()));
             card.setValidYear(Integer.parseInt(accountCreationCardValidYear.getText()));
             card.setVerificationCode(Integer.parseInt(accountCreationCardValidCode.getText()));
+            categoryAnchorPane.toFront();
         }
         if (next != null)
             next.toFront();
