@@ -77,7 +77,9 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeOrderHistory();
         updateCategoryList();
-        updateProductList();
+        //ProductCategory.BREAD //+ ProductCategory.BERRY;
+        //updateSubCategory(ProductCategory.BERRY);
+        updateProductList(ProductCategory.FRUIT);
         initializeMyPageRecords();
         createUser();
         populateDayComboBox();
@@ -85,9 +87,9 @@ public class Controller implements Initializable {
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
-        OurProductCategory[] categoryList = getCategories();
+        OurProductCategory.OurCategory[] categoryList = getCategories();
 
-        for (OurProductCategory category : categoryList){
+        for (OurProductCategory.OurCategory category : categoryList){
             var button = new IMatCategoryListItem(category, this);
             categoryListFlowPane.getChildren().add(button);
         }
@@ -104,6 +106,36 @@ public class Controller implements Initializable {
             productListFlowPane.getChildren().add(button);
         }
 
+    }
+
+
+
+    private void updateProductList(ProductCategory productCategory){
+        productListFlowPane.getChildren().clear();
+        List<Product> productList = IMatDataHandler.getInstance().getProducts(productCategory);
+        System.out.println("productListLength " + productList.size()); // =0? List<Product>getProducts()
+
+        for (Product product : productList){
+            var button = new IMatProductListItem(product, this);
+            productListFlowPane.getChildren().add(button);
+        }
+
+    }
+
+//    private void updateSubCategory(ProductCategory category){
+//        productListFlowPane.getChildren().clear();
+//        List<Product> productList = IMatDataHandler.getInstance().getProducts(category);
+//        //System.out.println("productListLength " + productList.size()); // =0? List<Product>getProducts()
+//
+//        for (Product product : productList){
+//            var button = new IMatSubCategory(category, this);
+//            productListFlowPane.getChildren().add(button);
+//        }
+//
+//    }
+
+    public void openRecipeView(ProductCategory category) {
+        updateProductList(category);
     }
 
     private void initializeOrderHistory() {
@@ -205,8 +237,8 @@ public class Controller implements Initializable {
         betalaAnchorpane.toFront();
     }
 
-    public OurProductCategory[] getCategories(){
-        return OurProductCategory.values();
+    public OurProductCategory.OurCategory[] getCategories(){
+        return OurProductCategory.OurCategory.values();
     }
 
     //===============Payments=================//
