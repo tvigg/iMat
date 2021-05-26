@@ -70,11 +70,7 @@ public class Controller implements Initializable {
     @FXML private TextField myPageRecordsMobileNumber;
     @FXML private TextField myPageRecordsPostAddress;
     @FXML private TextField myPageRecordsPostCode;
-//
-//    @FXML protected void onCategoryClicked(Event event){
-//        updateProductList();
-//        //parentController.up(productCategory); //updateProductList(ProductCategory.ROOT_VEGETABLE);
-//    }
+
 
     private IMatDataHandler handler = IMatDataHandler.getInstance();
 
@@ -82,7 +78,6 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeOrderHistory();
         updateCategoryList();
-        //updateSubCategory(ProductCategory.BERRY);
         updateProductList(ProductCategory.ROOT_VEGETABLE);
         initializeMyPageRecords();
         createUser();
@@ -115,7 +110,6 @@ public class Controller implements Initializable {
     private void updateProductList(ProductCategory productCategory){
         productListFlowPane.getChildren().clear();
         List<Product> productList = IMatDataHandler.getInstance().getProducts(productCategory);
-        System.out.println("productListLength " + productList.size()); // =0? List<Product>getProducts()
 
         for (Product product : productList){
             var button = new IMatProductListItem(product, this);

@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
@@ -46,7 +47,7 @@ public class IMatProductListItem extends AnchorPane {
         try {
             String imagePath = System.getProperty("user.home") + "/.dat215/imat/images/" + product.getImageName();
             Image image = new Image(new FileInputStream(imagePath));
-            productImage.setImage(image);
+            productImage.setImage(IMatDataHandler.getInstance().getFXImage(product, 221, 165));
         } catch (Exception e) {
             System.err.println("Failed to load image: " + e);
         }
