@@ -27,9 +27,9 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button id="remove-button" fx:id="removeOne" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" styleClass="product-button" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button id="remove-button" fx:id="removeOne" mnemonicParsing="false" onMouseClicked="#removeOne" prefHeight="25.0" prefWidth="28.0" styleClass="product-button" text="-" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label fx:id="productAmount" styleClass="centered-text" stylesheets="@iMat.css" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Button id="add-button" fx:id="addOne" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" styleClass="product-button" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button id="add-button" fx:id="addOne" mnemonicParsing="false" onMouseClicked="#addOne" prefHeight="25.0" prefWidth="28.0" styleClass="product-button" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>

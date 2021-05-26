@@ -1,5 +1,6 @@
 package iMat;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -7,8 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import se.chalmers.cse.dat216.project.Product;
-import se.chalmers.cse.dat216.project.ProductCategory;
+import se.chalmers.cse.dat216.project.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -51,6 +51,50 @@ public class IMatProductListItem extends AnchorPane {
         productText.setText(product.getName());
         productPrice.setText(String.valueOf(product.getPrice()));
         productPieces.setText(product.getUnit());
-        productAmount.setText("1");
+        ShoppingItem item = getShoppingItem();
+        double amount = item != null ? item.getAmount() : 0.0;
+        String amountString = String.valueOf((int)amount);
+
+        productAmount.setText(amountString);
+    }
+
+    public void updateAmount(ShoppingItem item) {
+        productAmount.setText(String.valueOf((int)item.getAmount()));
+    }
+
+    private ShoppingItem getShoppingItem() {
+        for (ShoppingItem item : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
+            if (item.getProduct().equals(product))
+                return item;
+        }
+        return null;
+    }
+
+    @FXML
+    public void addOne(Event event) {
+        ShoppingItem item = getShoppingItem();
+        if (item != null) {
+            item.setAmount(item.getAmount() + 1.0);
+        } else {
+            item = new ShoppingItem(product, 1.0);
+            IMatDataHandler.getInstance().getShoppingCart().addItem(item);
+        }
+        updateAmount(item);
+    }
+    @FXML
+    public void removeOne(Event event) {
+        ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
+        ShoppingItem item = getShoppingItem();
+        if (item != null) {
+            item.setAmount(item.getAmount() - 1.0);
+            if (item.getAmount() <= 0.0) {
+                cart.removeItem(item);
+            }
+            updateAmount(item);
+        }
+    }
+
+    private ShoppingCart getCart() {
+        return IMatDataHandler.getInstance().getShoppingCart();
     }
 }
