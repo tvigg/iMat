@@ -6,7 +6,6 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
    <children>
@@ -762,19 +761,34 @@
                   </StackPane>
                     <AnchorPane prefHeight="150.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Pane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
+                        <AnchorPane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
                            <children>
-                              <ImageView fitHeight="108.0" fitWidth="153.0" layoutX="1767.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button layoutX="1707.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#goToOrders" text="Beställningar" />
-                              <Button layoutX="1596.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#goToMyPage" text="Min sida" />
-                              <Button fx:id="betala_btn" layoutX="1486.0" layoutY="61.0" mnemonicParsing="false" onMousePressed="#onClickPayments" text="Till betala" />
+                              <HBox alignment="CENTER" layoutX="1279.0" layoutY="39.0" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="betala_btn" alignment="CENTER" mnemonicParsing="false" onMousePressed="#onClickPayments" text="Till betala">
+                                       <styleClass>
+                                          <String fx:value="big-button" />
+                                          <String fx:value="cyan-hoverable" />
+                                       </styleClass></Button>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#goToMyPage" text="Min sida">
+                                       <styleClass>
+                                          <String fx:value="big-button" />
+                                          <String fx:value="cyan-hoverable" />
+                                       </styleClass></Button>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#goToOrders" text="Beställningar">
+                                       <styleClass>
+                                          <String fx:value="big-button" />
+                                          <String fx:value="cyan-hoverable" />
+                                       </styleClass></Button>
+                                 </children>
+                              </HBox>
                               <ImageView fx:id="imatLogga" fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="36.0" onMouseClicked="#onClickIMat" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@resources/images/logga.png" />
                                  </image>
                               </ImageView>
                            </children>
-                        </Pane>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </children>
