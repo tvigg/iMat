@@ -43,7 +43,7 @@ public class IMatProductListItem extends AnchorPane {
         try {
             String imagePath = System.getProperty("user.home") + "/.dat215/imat/images/" + product.getImageName();
             Image image = new Image(new FileInputStream(imagePath));
-            productImage.setImage(image);
+            productImage.setImage(IMatDataHandler.getInstance().getFXImage(product, 221, 165));
         } catch (Exception e) {
             System.err.println("Failed to load image: " + e);
         }

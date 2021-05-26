@@ -744,11 +744,14 @@
                               </AnchorPane>
                               <AnchorPane layoutX="290.0" layoutY="148.0" prefHeight="1081.0" prefWidth="1327.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ScrollPane layoutX="7.0" layoutY="381.0" prefHeight="700.0" prefWidth="1290.0">
+                                    <ScrollPane layoutX="7.0" layoutY="151.0" prefHeight="930.0" prefWidth="1290.0">
                                        <content>
                                           <StackPane maxHeight="700.0" prefHeight="700.0" prefWidth="1231.0">
                                              <children>
-                                                <FlowPane fx:id="productListFlowPane" layoutY="290.0" maxHeight="758.0" prefHeight="700.0" prefWidth="1224.0" />
+                                                <FlowPane fx:id="productListFlowPane" alignment="TOP_CENTER" layoutY="290.0" maxHeight="758.0" prefHeight="695.0" prefWidth="1231.0" styleClass="products">
+                                                   <padding>
+                                                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                   </padding></FlowPane>
                                              </children>
                                           </StackPane>
                                        </content>

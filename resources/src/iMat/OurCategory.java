@@ -51,7 +51,7 @@ public class OurCategory {
                 str = ("Rotfrukter");               //    ROOT_VEGETABLE,
                 break;
             case VEGETABLE_FRUIT:
-                str = ("Stenfrukter");             //    VEGETABLE_FRUIT
+                str = ("Bärfrukter");             //    VEGETABLE_FRUIT
                 break;
             case HERB:
                 str = ("Örter");                              //    HERB;
