@@ -9,7 +9,7 @@ public class OurCategory {
 
     OurCategory(ProductCategory category) {
         this.category = category;
-        String str = null;
+        String str = "";
         switch (category) {
             case HOT_DRINKS:
                 str = ("Varma drycker");                //    HOT_DRINKS,
@@ -74,6 +74,8 @@ public class OurCategory {
             case SWEET:
                 str = ("Konfekt");                           //    SWEET;
                 break;
+            default:
+                System.out.println(category);
         }
         this.name = str;
     }

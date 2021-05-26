@@ -31,6 +31,7 @@ public class IMatProductListItem extends AnchorPane {
 
 
 
+
     public IMatProductListItem(Product product, Controller iMatCategoryController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMatListProducts.fxml"));
         fxmlLoader.setRoot(this);

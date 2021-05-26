@@ -86,7 +86,8 @@ public class Controller implements Initializable {
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
-
+        var button1 = new IMatCategoryListItem(new OurCategory(), this);
+        categoryListFlowPane.getChildren().add(button1);
         for (ProductCategory category : ProductCategory.values()){
             var button = new IMatCategoryListItem(new OurCategory(category), this);
             categoryListFlowPane.getChildren().add(button);
@@ -161,6 +162,7 @@ public class Controller implements Initializable {
     public void goToOrders(Event event) {
         orderHistoryAnchorPane.toFront();
         storeAnchorPane.toFront();
+        headline.setText("Beställningar");
     }
 
     @FXML
@@ -168,6 +170,7 @@ public class Controller implements Initializable {
         myPageAnchorPane.toFront();
         myPageHome.toFront();
         storeAnchorPane.toFront();
+        headline.setText("Min Sida");
     }
 
     @FXML
@@ -197,6 +200,7 @@ public class Controller implements Initializable {
     @FXML
     public void onClickIMat(Event event) {
         categoryAnchorPane.toFront();
+        headline.setText("Startsidan");
     }
 
     @FXML
@@ -215,6 +219,7 @@ public class Controller implements Initializable {
 
     public void onClickPayments(Event event) {
         betalaAnchorpane.toFront();
+        headline.setText("Betala");
     }
 
     //===============Payments=================//
@@ -317,4 +322,7 @@ public class Controller implements Initializable {
     public void onClickedCategory(ProductCategory category) {
         updateProductList(category);
     }
+
+    @FXML private Label headline;
+    public void updateHeadline(String name) {headline.setText(name);}
 }

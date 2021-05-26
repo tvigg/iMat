@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="200.0" maxWidth="267.0" prefHeight="122.0" prefWidth="267.0" styleClass="category-button" stylesheets="@iMat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="200.0" maxWidth="267.0" prefHeight="122.0" prefWidth="267.0" type="AnchorPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane maxHeight="200.0" maxWidth="260.0" prefHeight="110.0" prefWidth="260.0">
          <center>
             <TilePane alignment="CENTER" prefHeight="130.0" prefWidth="240.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="categoryLabel" mnemonicParsing="false" onMouseClicked="#onClickCategory" prefHeight="119.0" prefWidth="263.0" style="-fx-background-color: white;" text="LabelLabelLabel">
+                  <Button fx:id="categoryLabel" mnemonicParsing="false" onMouseClicked="#onClickCategory" prefHeight="119.0" prefWidth="263.0" styleClass="category-button" stylesheets="@iMat.css" text="LabelLabelLabel">
                      <font>
                         <Font size="26.0" />
                      </font>

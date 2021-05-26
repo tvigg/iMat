@@ -54,6 +54,7 @@
 
 .category-button {
     /*-fx-border-color: black;*/
+    -fx-background-color: white;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-border-width: 2px;
@@ -61,7 +62,15 @@
 }
 
 .category-button:hover {
-    /*-fx-border-color: black;*/
+    -fx-background-color: "#E8E8E8";
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.button:pressed {
+    -fx-background-color: "#D3D3D3";
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-border-width: 2px;
@@ -72,6 +81,10 @@
     -fx-background-color: "#457b9d";
     -fx-text-fill: "#ffffff";
     -fx-font-weight: bold;
+}
+
+.product-button:hover {
+    -fx-background-color: "#558bad";
 }
 
 #add-button {
