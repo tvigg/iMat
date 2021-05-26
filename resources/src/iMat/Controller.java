@@ -1,4 +1,5 @@
 package iMat;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import se.chalmers.cse.dat216.project.*;
 
@@ -23,6 +24,7 @@ public class Controller implements Initializable {
     @FXML private AnchorPane myPageAnchorPane;
     @FXML private AnchorPane orderHistoryLightbox;
     @FXML private AnchorPane categoryAnchorPane;
+    @FXML private ImageView imatLogga;
     //Payments
     @FXML private AnchorPane betalaAnchorpane;
     @FXML private AnchorPane savedAddressAnchorPane;
@@ -97,6 +99,10 @@ public class Controller implements Initializable {
     @FXML private TextField accountCreationCardValidYear;
     @FXML private TextField accountCreationCardValidCode;
     @FXML private TextArea accountCreationOverviewText;
+
+    // Buttons
+    @FXML private Button myPageButton;
+    @FXML private Button ordersButton;
 
     // Shopping cart
     @FXML private FlowPane shoppingCartFlowPane;
@@ -232,6 +238,9 @@ public class Controller implements Initializable {
         accountCreationAnchorPane.toFront();
         accountCreationAccount.toFront();
         accountCreationPrevButton.setDisable(true);
+        myPageButton.setVisible(false);
+        ordersButton.setVisible(false);
+        imatLogga.setDisable(true);
     }
 
     @FXML
@@ -322,6 +331,9 @@ public class Controller implements Initializable {
             card.setVerificationCode(Integer.parseInt(accountCreationCardValidCode.getText()));
             categoryAnchorPane.toFront();
             setupMyPage(false);
+            myPageButton.setVisible(true);
+            ordersButton.setVisible(true);
+            imatLogga.setDisable(false);
         }
         if (next != null)
             next.toFront();
@@ -329,8 +341,6 @@ public class Controller implements Initializable {
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
-        var button1 = new IMatCategoryListItem(new OurCategory(), this);
-        categoryListFlowPane.getChildren().add(button1);
         for (ProductCategory category : ProductCategory.values()){
             var button = new IMatCategoryListItem(new OurCategory(category), this);
             categoryListFlowPane.getChildren().add(button);
@@ -348,7 +358,9 @@ public class Controller implements Initializable {
 
     private void updateProductList(ProductCategory productCategory){
         productListFlowPane.getChildren().clear();
-        List<Product> productList = IMatDataHandler.getInstance().getProducts(productCategory);
+        List<Product> productList = productCategory != null
+                ? handler.getProducts(productCategory)
+                : handler.getProducts();
 
         for (Product product : productList){
             productListFlowPane.getChildren().add(productListItemMap.get(product));
@@ -425,6 +437,7 @@ public class Controller implements Initializable {
     @FXML
     public void onClickIMat(Event event) {
         categoryAnchorPane.toFront();
+        updateProductList(null);
         headline.setText("Startsidan");
     }
 
