@@ -47,11 +47,11 @@ public class IMatShoppingListItem extends AnchorPane {
 
         productText.setText(item.getProduct().getName());
         productPrice.setText(String.valueOf(item.getProduct().getPrice()));
-        productAmount.setText(String.valueOf((int)item.getAmount()));
+        updateAmount();
     }
 
     public void updateAmount() {
-        productAmount.setText(String.valueOf((int)item.getAmount()));
+        productAmount.setText(String.valueOf((int)item.getAmount()) + " " + item.getProduct().getUnitSuffix());
     }
 
     @FXML

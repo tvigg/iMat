@@ -109,6 +109,8 @@ public class Controller implements Initializable {
     private Map<ShoppingItem, IMatShoppingListItem> shoppingListItemMap = new HashMap<>();
     private Map<Product, IMatProductListItem> productListItemMap = new HashMap<>();
 
+    @FXML private AnchorPane categoryListStartPage;
+
     private IMatDataHandler handler = IMatDataHandler.getInstance();
 
     @Override
@@ -116,7 +118,7 @@ public class Controller implements Initializable {
         initializeOrderHistory();
         updateCategoryList();
         initializeProductList();
-        updateProductList(ProductCategory.ROOT_VEGETABLE);
+        updateProductList(null);
         createUser();
         populateDayComboBox();
         accountCreationCardType.getItems().add("MasterCard");
@@ -341,6 +343,7 @@ public class Controller implements Initializable {
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
+        categoryListFlowPane.getChildren().add(categoryListStartPage);
         for (ProductCategory category : ProductCategory.values()){
             var button = new IMatCategoryListItem(new OurCategory(category), this);
             categoryListFlowPane.getChildren().add(button);
@@ -360,12 +363,12 @@ public class Controller implements Initializable {
         productListFlowPane.getChildren().clear();
         List<Product> productList = productCategory != null
                 ? handler.getProducts(productCategory)
-                : handler.getProducts();
-
-        for (Product product : productList){
-            productListFlowPane.getChildren().add(productListItemMap.get(product));
+                : handler.getProducts().subList(0,8);
+        for (Product product : productList) {
+            IMatProductListItem item = productListItemMap.get(product);
+            item.setSale(productCategory == null);
+            productListFlowPane.getChildren().add(item);
         }
-
     }
 
     private void initializeOrderHistory() {
@@ -541,6 +544,18 @@ public class Controller implements Initializable {
         return res;
     }
 
+    @FXML
+    public void confirmPurchase(Event event) {
+        Order order = handler.placeOrder();
+        OrderHistoryItem orderItem = new OrderHistoryItem(order,this);
+        List<OrderItem> items = new ArrayList<OrderItem>();
+        for (ShoppingItem i : order.getItems())
+            items.add(new OrderItem(i,this));
+        orderItemMap.put(order.getOrderNumber(), items);
+        orderHistoryFlowPane.getChildren().add(1,orderItem);
+        goToOrders(null);
+    }
+
     @FXML public void onClickShowDeliveryDates(Event event){
         paymentDeliveryDateAnchorPane.toFront();
     }
@@ -563,4 +578,11 @@ public class Controller implements Initializable {
 
     @FXML private Label headline;
     public void updateHeadline(String name) {headline.setText(name);}
+
+    public static String priceFormat(double price) {
+        String str = String.format("%.2f", price);
+        if (str.endsWith(".00"))
+            str = String.valueOf((int)price);
+        return str;
+    }
 }

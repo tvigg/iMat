@@ -22,10 +22,10 @@ public class IMatProductListItem extends AnchorPane {
     @FXML private ImageView productImage;
     @FXML private Label productText;
     @FXML private Label productPrice;
-    @FXML private Label productPieces;
     @FXML private Label productAmount;
     @FXML private Button removeOne;
     @FXML private Button addOne;
+    @FXML private Label sale;
 
     public IMatProductListItem(Product product, Controller iMatCategoryController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMatListProducts.fxml"));
@@ -49,21 +49,18 @@ public class IMatProductListItem extends AnchorPane {
         }
 
         productText.setText(product.getName());
-        productPrice.setText(String.valueOf(product.getPrice()));
-        productPieces.setText(product.getUnit());
+        productPrice.setText(Controller.priceFormat(product.getPrice()) + " " + product.getUnit());
         ShoppingItem item = getShoppingItem();
         double amount = item != null ? item.getAmount() : 0.0;
-        String amountString = String.valueOf((int)amount);
+        sale.setVisible(false);
 
-        productAmount.setText(amountString);
+        updateAmount(item);
     }
 
     public void updateAmount(ShoppingItem item) {
-        if (item != null) {
-            productAmount.setText(String.valueOf((int)item.getAmount()));
-        } else {
-            productAmount.setText("0");
-        }
+        removeOne.setDisable(item == null ? true : !(item.getAmount() > 0));
+        double value = item == null ? 0.0 : item.getAmount();
+        productAmount.setText(Controller.priceFormat(value) + " " + product.getUnitSuffix());
     }
 
     private ShoppingItem getShoppingItem() {
@@ -102,5 +99,9 @@ public class IMatProductListItem extends AnchorPane {
 
     private ShoppingCart getCart() {
         return IMatDataHandler.getInstance().getShoppingCart();
+    }
+
+    public void setSale(boolean isSale) {
+        sale.setVisible(isSale);
     }
 }

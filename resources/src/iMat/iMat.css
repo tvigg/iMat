@@ -122,3 +122,11 @@
     -fx-hgap: 40;
     -fx-vgap: 20;
 }
+
+.sale-label {
+    -fx-background-radius: 50% 50% 50% 50%;
+    -fx-background-color: "#f64956";
+    -fx-text-fill: "#ffffff";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
