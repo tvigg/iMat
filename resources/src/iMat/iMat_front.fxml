@@ -810,6 +810,11 @@
                                     <Image url="@resources/images/logga.png" />
                                  </image>
                               </ImageView>
+                              <Label fx:id="headline" alignment="CENTER" contentDisplay="CENTER" layoutX="780.0" layoutY="40.0" prefHeight="90.0" prefWidth="360.0" style="-fx-text-fill: white;" text="Välkommen">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </children>
