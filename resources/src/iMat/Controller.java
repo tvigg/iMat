@@ -68,6 +68,11 @@ public class Controller implements Initializable {
     @FXML private TextField myPageRecordsMobileNumber;
     @FXML private TextField myPageRecordsPostAddress;
     @FXML private TextField myPageRecordsPostCode;
+//
+//    @FXML protected void onCategoryClicked(Event event){
+//        updateProductList();
+//        //parentController.up(productCategory); //updateProductList(ProductCategory.ROOT_VEGETABLE);
+//    }
 
     // Account creation
     @FXML private AnchorPane accountCreationAnchorPane;
@@ -104,7 +109,8 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeOrderHistory();
         updateCategoryList();
-        updateProductList();
+        //updateSubCategory(ProductCategory.BERRY);
+        updateProductList(ProductCategory.ROOT_VEGETABLE);
         createUser();
         populateDayComboBox();
         accountCreationCardType.getItems().add("MasterCard");
@@ -267,10 +273,9 @@ public class Controller implements Initializable {
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
-        OurProductCategory[] categoryList = getCategories();
 
-        for (OurProductCategory category : categoryList){
-            var button = new IMatCategoryListItem(category, this);
+        for (ProductCategory category : ProductCategory.values()){
+            var button = new IMatCategoryListItem(new OurCategory(category), this);
             categoryListFlowPane.getChildren().add(button);
         }
 
@@ -279,6 +284,19 @@ public class Controller implements Initializable {
     private void updateProductList(){
         productListFlowPane.getChildren().clear();
         List<Product> productList = IMatDataHandler.getInstance().getProducts();
+
+        for (Product product : productList){
+            var button = new IMatProductListItem(product, this);
+            productListFlowPane.getChildren().add(button);
+        }
+
+    }
+
+
+
+    private void updateProductList(ProductCategory productCategory){
+        productListFlowPane.getChildren().clear();
+        List<Product> productList = IMatDataHandler.getInstance().getProducts(productCategory);
         System.out.println("productListLength " + productList.size()); // =0? List<Product>getProducts()
 
         for (Product product : productList){
@@ -373,10 +391,6 @@ public class Controller implements Initializable {
 
     public void onClickPayments(Event event) {
         betalaAnchorpane.toFront();
-    }
-
-    public OurProductCategory[] getCategories(){
-        return OurProductCategory.values();
     }
 
     //===============Payments=================//
@@ -476,4 +490,7 @@ public class Controller implements Initializable {
         confirmPurchaseAnchorPane.toFront();
     }
 
+    public void onClickedCategory(ProductCategory category) {
+        updateProductList(category);
+    }
 }
