@@ -50,7 +50,7 @@ public class Controller implements Initializable {
     @FXML private AnchorPane orderItemHeader;
     @FXML private Label orderHistoryLightboxHeader;
     @FXML private VBox categoryListFlowPane;
-    private final Map<Integer, List<OrderItem>> orderItemMap = new HashMap<>();
+    private Map<Integer, List<OrderItem>> orderItemMap = new HashMap<>();
 
     // Products
     @FXML private FlowPane productListFlowPane;
@@ -98,6 +98,10 @@ public class Controller implements Initializable {
     @FXML private TextField accountCreationCardValidCode;
     @FXML private TextArea accountCreationOverviewText;
 
+    // Shopping cart
+    @FXML private FlowPane shoppingCartFlowPane;
+    private Map<ShoppingItem, IMatShoppingListItem> shoppingListItemMap = new HashMap<>();
+    private Map<Product, IMatProductListItem> productListItemMap = new HashMap<>();
 
     private IMatDataHandler handler = IMatDataHandler.getInstance();
 
@@ -105,6 +109,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeOrderHistory();
         updateCategoryList();
+        initializeProductList();
         updateProductList(ProductCategory.ROOT_VEGETABLE);
         createUser();
         populateDayComboBox();
@@ -114,6 +119,62 @@ public class Controller implements Initializable {
             setupAccount();
         else
             setupMyPage(true);
+        setupShoppingList();
+        Controller controller = this;
+        handler.getShoppingCart().addShoppingCartListener(new ShoppingCartListener() {
+            @Override
+            public void shoppingCartChanged(CartEvent cartEvent) {
+                ShoppingItem item = cartEvent.getShoppingItem();
+                if (item == null) {
+                    shoppingCartFlowPane.getChildren().clear();
+                    shoppingListItemMap.clear();
+                    for (Product product : handler.getProducts()) {
+                        productListItemMap.get(product).updateAmount(null);
+                    }
+                    return;
+                }
+                IMatShoppingListItem shoppingListItem = shoppingListItemMap.get(item);
+                IMatProductListItem productListItem = productListItemMap.get(item.getProduct());
+                if (cartEvent.isAddEvent()) {
+                    if (shoppingListItem != null) {
+                        shoppingListItem.updateAmount();
+                    } else {
+                        shoppingListItem = new IMatShoppingListItem(item, controller);
+                        shoppingListItemMap.put(item, shoppingListItem);
+                        shoppingCartFlowPane.getChildren().add(shoppingListItem);
+                    }
+                    productListItem.updateAmount(item);
+                } else {
+                    if (shoppingListItem != null) {
+                        if (shoppingListItem.getItem().getAmount() <= 0.0) {
+                            shoppingListItemMap.remove(shoppingListItem);
+                            shoppingCartFlowPane.getChildren().remove(shoppingListItem);
+                        } else {
+                            shoppingListItem.updateAmount();
+                        }
+                    }
+                    productListItem.updateAmount(item);
+                }
+            }
+        });
+    }
+
+    private void setupShoppingList() {
+        for (ShoppingItem item : handler.getShoppingCart().getItems()) {
+            IMatShoppingListItem listItem = new IMatShoppingListItem(item, this);
+            shoppingCartFlowPane.getChildren().add(listItem);
+            shoppingListItemMap.put(item, listItem);
+        }
+    }
+
+    @FXML
+    public void clearShoppingCart(Event event) {
+        handler.getShoppingCart().clear();
+    }
+
+    public void removeShoppingItem(IMatShoppingListItem item) {
+        shoppingCartFlowPane.getChildren().remove(item);
+        shoppingListItemMap.remove(item.getItem());
     }
 
     private void setupMyPage(boolean loadUser) {
@@ -276,26 +337,20 @@ public class Controller implements Initializable {
 
     }
 
-    private void updateProductList(){
-        productListFlowPane.getChildren().clear();
-        List<Product> productList = IMatDataHandler.getInstance().getProducts();
-
-        for (Product product : productList){
-            var button = new IMatProductListItem(product, this);
-            productListFlowPane.getChildren().add(button);
+    private void initializeProductList() {
+        List<Product> productList = handler.getProducts();
+        for (Product product : productList) {
+            IMatProductListItem listItem = new IMatProductListItem(product, this);
+            productListItemMap.put(product,listItem);
         }
-
     }
-
-
 
     private void updateProductList(ProductCategory productCategory){
         productListFlowPane.getChildren().clear();
         List<Product> productList = IMatDataHandler.getInstance().getProducts(productCategory);
 
         for (Product product : productList){
-            var button = new IMatProductListItem(product, this);
-            productListFlowPane.getChildren().add(button);
+            productListFlowPane.getChildren().add(productListItemMap.get(product));
         }
 
     }

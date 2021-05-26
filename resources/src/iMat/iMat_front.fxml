@@ -758,6 +758,31 @@
                                     </ScrollPane>
                                     <Pane layoutY="149.0" prefHeight="233.0" prefWidth="1290.0" />
                                  </children></AnchorPane>
+                              <AnchorPane layoutX="1675.0" layoutY="212.0" prefHeight="1081.0" prefWidth="306.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+                                 <children>
+                                    <VBox alignment="CENTER" layoutY="160.0" spacing="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
+                                       <children>
+                                          <Label alignment="CENTER" styleClass="big-bold-text" text="Kundkorg" />
+                                          <Button id="empty-cart-button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#clearShoppingCart" text="Töm kundkorg">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                    <Button fx:id="betala_btn" alignment="CENTER" layoutX="29.0" layoutY="978.0" mnemonicParsing="false" onMousePressed="#onClickPayments" text="Gå till kassan" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+                                       <styleClass>
+                                          <String fx:value="big-button" />
+                                          <String fx:value="cyan-hoverable" />
+                                       </styleClass></Button>
+                                    <ScrollPane layoutX="53.0" layoutY="181.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="120.0">
+                                       <content>
+                                          <FlowPane fx:id="shoppingCartFlowPane" prefHeight="200.0" prefWidth="200.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <Label alignment="CENTER" layoutX="137.0" layoutY="780.0" styleClass="big-bold-text" text="Label" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="760.0" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
@@ -768,11 +793,6 @@
                            <children>
                               <HBox alignment="CENTER" layoutX="1279.0" layoutY="39.0" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="betala_btn" alignment="CENTER" mnemonicParsing="false" onMousePressed="#onClickPayments" text="Till betala">
-                                       <styleClass>
-                                          <String fx:value="big-button" />
-                                          <String fx:value="cyan-hoverable" />
-                                       </styleClass></Button>
                                     <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#goToMyPage" text="Min sida">
                                        <styleClass>
                                           <String fx:value="big-button" />

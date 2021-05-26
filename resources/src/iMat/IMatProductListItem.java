@@ -59,7 +59,11 @@ public class IMatProductListItem extends AnchorPane {
     }
 
     public void updateAmount(ShoppingItem item) {
-        productAmount.setText(String.valueOf((int)item.getAmount()));
+        if (item != null) {
+            productAmount.setText(String.valueOf((int)item.getAmount()));
+        } else {
+            productAmount.setText("0");
+        }
     }
 
     private ShoppingItem getShoppingItem() {
@@ -75,6 +79,7 @@ public class IMatProductListItem extends AnchorPane {
         ShoppingItem item = getShoppingItem();
         if (item != null) {
             item.setAmount(item.getAmount() + 1.0);
+            IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(item,true);
         } else {
             item = new ShoppingItem(product, 1.0);
             IMatDataHandler.getInstance().getShoppingCart().addItem(item);
@@ -91,6 +96,7 @@ public class IMatProductListItem extends AnchorPane {
                 cart.removeItem(item);
             }
             updateAmount(item);
+            IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(item,false);
         }
     }
 

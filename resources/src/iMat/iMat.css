@@ -83,12 +83,30 @@
     -fx-font-weight: bold;
 }
 
+.product-button:hover {
+    -fx-background-color: "#558bad"
+}
+
 #add-button {
     -fx-background-radius: 5% 50% 50% 5%;
 }
 
 #remove-button {
     -fx-background-radius: 50% 5% 5% 50%;
+}
+
+#empty-cart-button {
+    -fx-background-color: "#E63946";
+    -fx-font-size: 24px;
+    -fx-text-fill: "#ffffff";
+    -fx-border-color: "#000000";
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 2px;
+}
+
+#empty-cart-button:hover {
+    -fx-background-color: "#f64956";
 }
 
 .products {
