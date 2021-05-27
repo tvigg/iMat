@@ -1,8 +1,8 @@
 package iMat;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import se.chalmers.cse.dat216.project.*;
 
 import java.util.List;
@@ -14,8 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -28,6 +26,7 @@ public class Controller implements Initializable {
     @FXML private AnchorPane myPageAnchorPane;
     @FXML private AnchorPane orderHistoryLightbox;
     @FXML private AnchorPane categoryAnchorPane;
+    @FXML private ImageView imatLogga;
     //Payments
     @FXML private AnchorPane betalaAnchorpane;
     @FXML private AnchorPane savedAddressAnchorPane;
@@ -60,7 +59,7 @@ public class Controller implements Initializable {
     @FXML private AnchorPane orderItemHeader;
     @FXML private Label orderHistoryLightboxHeader;
     @FXML private VBox categoryListFlowPane;
-    private final Map<Integer, List<OrderItem>> orderItemMap = new HashMap<>();
+    private Map<Integer, List<OrderItem>> orderItemMap = new HashMap<>();
 
     // Products
     @FXML private FlowPane productListFlowPane;
@@ -68,6 +67,7 @@ public class Controller implements Initializable {
     // User page
     @FXML private GridPane myPageHome;
     @FXML private GridPane myPageRecords;
+    @FXML private StackPane myPageStackPane;
 
     @FXML private TextField myPageRecordsAddress;
     @FXML private TextField myPageRecordsEmail;
@@ -78,6 +78,46 @@ public class Controller implements Initializable {
     @FXML private TextField myPageRecordsPostAddress;
     @FXML private TextField myPageRecordsPostCode;
 
+
+    // Account creation
+    @FXML private AnchorPane accountCreationAnchorPane;
+    @FXML private StackPane accountCreationStackPane;
+    @FXML private AnchorPane accountCreationAccount;
+    @FXML private AnchorPane accountCreationPersonal;
+    @FXML private AnchorPane accountCreationAddress;
+    @FXML private AnchorPane accountCreationOverview;
+    @FXML private AnchorPane accountCreationCreditCard;
+    @FXML private Button accountCreationPrevButton;
+    @FXML private Button accountCreationNextButton;
+    @FXML private TextField accountCreationUser;
+    @FXML private TextField accountCreationPassword1;
+    @FXML private TextField accountCreationPassword2;
+    @FXML private TextField accountCreationFirstName;
+    @FXML private TextField accountCreationLastName;
+    @FXML private TextField accountCreationPhone;
+    @FXML private TextField accountCreationMobile;
+    @FXML private TextField accountCreationEmail;
+    @FXML private TextField accountCreationHomeAddress;
+    @FXML private TextField accountCreationPostAddress;
+    @FXML private TextField accountCreationPostCode;
+    @FXML private ComboBox accountCreationCardType;
+    @FXML private TextField accountCreationCardNumber;
+    @FXML private TextField accountCreationCardValidMonth;
+    @FXML private TextField accountCreationCardValidYear;
+    @FXML private TextField accountCreationCardValidCode;
+    @FXML private TextArea accountCreationOverviewText;
+
+    // Buttons
+    @FXML private Button myPageButton;
+    @FXML private Button ordersButton;
+
+    // Shopping cart
+    @FXML private FlowPane shoppingCartFlowPane;
+    private Map<ShoppingItem, IMatShoppingListItem> shoppingListItemMap = new HashMap<>();
+    private Map<Product, IMatProductListItem> productListItemMap = new HashMap<>();
+
+    @FXML private AnchorPane categoryListStartPage;
+
     private IMatDataHandler handler = IMatDataHandler.getInstance();
     private DeliveryDate deliveryDate = new DeliveryDate();
 
@@ -85,8 +125,8 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeOrderHistory();
         updateCategoryList();
-        updateProductList();
-        initializeMyPageRecords();
+        initializeProductList();
+        updateProductList(null);
         createUser();
         dayComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             deliveryDate.setDate(newValue.toString());
@@ -94,26 +134,253 @@ public class Controller implements Initializable {
         timeComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             deliveryDate.setTime(newValue.toString());
         });
+        populateDayComboBox();
+        accountCreationCardType.getItems().add("MasterCard");
+        accountCreationCardType.getItems().add("Visa");
+        if (IMatDataHandler.getInstance().isFirstRun())
+            setupAccount();
+        else
+            setupMyPage(true);
+        setupShoppingList();
+        Controller controller = this;
+        handler.getShoppingCart().addShoppingCartListener(new ShoppingCartListener() {
+            @Override
+            public void shoppingCartChanged(CartEvent cartEvent) {
+                ShoppingItem item = cartEvent.getShoppingItem();
+                if (item == null) {
+                    shoppingCartFlowPane.getChildren().clear();
+                    shoppingListItemMap.clear();
+                    for (Product product : handler.getProducts()) {
+                        productListItemMap.get(product).updateAmount(null);
+                    }
+                    return;
+                }
+                IMatShoppingListItem shoppingListItem = shoppingListItemMap.get(item);
+                IMatProductListItem productListItem = productListItemMap.get(item.getProduct());
+                if (cartEvent.isAddEvent()) {
+                    if (shoppingListItem != null) {
+                        shoppingListItem.updateAmount();
+                    } else {
+                        shoppingListItem = new IMatShoppingListItem(item, controller);
+                        shoppingListItemMap.put(item, shoppingListItem);
+                        shoppingCartFlowPane.getChildren().add(shoppingListItem);
+                    }
+                    productListItem.updateAmount(item);
+                } else {
+                    if (shoppingListItem != null) {
+                        if (shoppingListItem.getItem().getAmount() <= 0.0) {
+                            shoppingListItemMap.remove(shoppingListItem);
+                            shoppingCartFlowPane.getChildren().remove(shoppingListItem);
+                        } else {
+                            shoppingListItem.updateAmount();
+                        }
+                    }
+                    productListItem.updateAmount(item);
+                }
+            }
+        });
+    }
+
+    private void setupShoppingList() {
+        for (ShoppingItem item : handler.getShoppingCart().getItems()) {
+            IMatShoppingListItem listItem = new IMatShoppingListItem(item, this);
+            shoppingCartFlowPane.getChildren().add(listItem);
+            shoppingListItemMap.put(item, listItem);
+        }
+    }
+
+    @FXML
+    public void clearShoppingCart(Event event) {
+        handler.getShoppingCart().clear();
+    }
+
+    public void removeShoppingItem(IMatShoppingListItem item) {
+        shoppingCartFlowPane.getChildren().remove(item);
+        shoppingListItemMap.remove(item.getItem());
+    }
+
+    private void setupMyPage(boolean loadUser) {
+        myPageStackPane.getChildren().add(accountCreationPersonal);
+        myPageStackPane.getChildren().add(accountCreationAccount);
+        myPageStackPane.getChildren().add(accountCreationAddress);
+        myPageStackPane.getChildren().add(accountCreationCreditCard);
+        if (loadUser) {
+            User user = IMatDataHandler.getInstance().getUser();
+            accountCreationUser.setText(user.getUserName());
+            accountCreationPassword1.setText(user.getPassword());
+            accountCreationPassword2.setText(user.getPassword());
+
+            Customer customer = IMatDataHandler.getInstance().getCustomer();
+            accountCreationFirstName.setText(customer.getFirstName());
+            accountCreationLastName.setText(customer.getLastName());
+            accountCreationPhone.setText(customer.getPhoneNumber());
+            accountCreationMobile.setText(customer.getMobilePhoneNumber());
+            accountCreationEmail.setText(customer.getEmail());
+            accountCreationHomeAddress.setText(customer.getAddress());
+            accountCreationPostAddress.setText(customer.getPostAddress());
+            accountCreationPostCode.setText(customer.getPostCode());
+
+            CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+            accountCreationCardNumber.setText(card.getCardNumber());
+            accountCreationCardType.getSelectionModel().select(card.getCardType());
+            accountCreationCardValidMonth.setText(String.valueOf(card.getValidMonth()));
+            accountCreationCardValidYear.setText(String.valueOf(card.getValidYear()));
+            accountCreationCardValidCode.setText(String.valueOf(card.getVerificationCode()));
+        }
+        myPageHome.toFront();
+    }
+
+    @FXML
+    public void goToMyPageAccount(Event event) {
+        accountCreationAccount.toFront();
+    }
+
+    @FXML
+    public void goToMyPagePersonal(Event event) {
+        accountCreationPersonal.toFront();
+    }
+
+    @FXML
+    public void goToMyPageAddress(Event event) {
+        accountCreationAddress.toFront();
+    }
+
+    @FXML
+    public void goToMyPageCreditCard(Event event) {
+        accountCreationCreditCard.toFront();
+    }
+
+    private void setupAccount() {
+        accountCreationAnchorPane.toFront();
+        accountCreationAccount.toFront();
+        accountCreationPrevButton.setDisable(true);
+        myPageButton.setVisible(false);
+        ordersButton.setVisible(false);
+        imatLogga.setDisable(true);
+    }
+
+    @FXML
+    public void accountCreationPrev(Event event) {
+        Node current = accountCreationStackPane.getChildren().get(accountCreationStackPane.getChildren().size() - 1);
+        Node prev = null;
+        if (current == accountCreationPersonal) {
+            prev = accountCreationAccount;
+            accountCreationPrevButton.setDisable(true);
+        } else if (current == accountCreationAddress) {
+            prev = accountCreationPersonal;
+        } else if (current == accountCreationCreditCard) {
+            prev = accountCreationAddress;
+        } else if (current == accountCreationOverview) {
+            prev = accountCreationCreditCard;
+            accountCreationNextButton.setText("Gå till nästa steg");
+        }
+        if (prev != null)
+            prev.toFront();
+    }
+
+    @FXML
+    public void accountCreationNext(Event event) {
+        Node current = accountCreationStackPane.getChildren().get(accountCreationStackPane.getChildren().size() - 1);
+        Node next = null;
+        if (current == accountCreationAccount) {
+            if (!accountCreationUser.getText().isEmpty()
+                    && !accountCreationPassword1.getText().isEmpty()
+                    && accountCreationPassword1.getText().equals(accountCreationPassword2.getText())) {
+                next = accountCreationPersonal;
+                accountCreationPrevButton.setDisable(false);
+            }
+        } else if (current == accountCreationPersonal) {
+            if (!accountCreationFirstName.getText().isEmpty()
+                && !accountCreationLastName.getText().isEmpty()
+                && (!accountCreationPhone.getText().isEmpty()
+                || !accountCreationMobile.getText().isEmpty())
+                && !accountCreationEmail.getText().isEmpty()) {
+                next = accountCreationAddress;
+            }
+        } else if (current == accountCreationAddress) {
+            if (!accountCreationHomeAddress.getText().isEmpty()
+                && !accountCreationPostAddress.getText().isEmpty()
+                && !accountCreationPostCode.getText().isEmpty()) {
+                next = accountCreationCreditCard;
+            }
+        } else if (current == accountCreationCreditCard) {
+            if (!accountCreationCardNumber.getText().isEmpty()
+                && !accountCreationCardValidMonth.getText().isEmpty()
+                && !accountCreationCardValidYear.getText().isEmpty()
+                && !accountCreationCardValidCode.getText().isEmpty()
+                && accountCreationCardType.getSelectionModel().getSelectedItem() != null) {
+                next = accountCreationOverview;
+                accountCreationNextButton.setText("Skapa konto");
+                accountCreationOverviewText.setText(
+                        "Användarnamn: " + accountCreationUser.getText() + "\n\n" +
+                                "Förnamn: " + accountCreationFirstName.getText() + "\n\n" +
+                                "Efternamn: " + accountCreationLastName.getText() + "\n\n" +
+                                "Hemtelefonnummer: " + accountCreationPhone.getText() + "\n\n" +
+                                "Mobiltelefonnummer: " + accountCreationMobile.getText() + "\n\n" +
+                                "E-postadress: " + accountCreationEmail.getText() + "\n\n" +
+                                "Gatuadress: " + accountCreationHomeAddress.getText() + "\n\n" +
+                                "Ort: " + accountCreationPostAddress.getText() + "\n\n" +
+                                "Postnummer: " + accountCreationPostCode.getText()
+                );
+            }
+        } else if (current == accountCreationOverview) {
+            User user = IMatDataHandler.getInstance().getUser();
+            user.setUserName(accountCreationUser.getText());
+            user.setPassword(accountCreationPassword1.getText());
+
+            Customer customer = IMatDataHandler.getInstance().getCustomer();
+            customer.setFirstName(accountCreationFirstName.getText());
+            customer.setLastName(accountCreationLastName.getText());
+            customer.setPhoneNumber(accountCreationPhone.getText());
+            customer.setMobilePhoneNumber(accountCreationMobile.getText());
+            customer.setEmail(accountCreationEmail.getText());
+            customer.setAddress(accountCreationHomeAddress.getText());
+            customer.setPostAddress(accountCreationPostAddress.getText());
+            customer.setPostCode(accountCreationPostCode.getText());
+
+            CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+            card.setCardNumber(accountCreationCardNumber.getText());
+            card.setCardType((String)accountCreationCardType.getSelectionModel().getSelectedItem());
+            card.setHoldersName(customer.getFirstName() + " " + customer.getLastName());
+            card.setValidMonth(Integer.parseInt(accountCreationCardValidMonth.getText()));
+            card.setValidYear(Integer.parseInt(accountCreationCardValidYear.getText()));
+            card.setVerificationCode(Integer.parseInt(accountCreationCardValidCode.getText()));
+            categoryAnchorPane.toFront();
+            setupMyPage(false);
+            myPageButton.setVisible(true);
+            ordersButton.setVisible(true);
+            imatLogga.setDisable(false);
+        }
+        if (next != null)
+            next.toFront();
     }
 
     private void updateCategoryList(){
         categoryListFlowPane.getChildren().clear();
-        OurProductCategory[] categoryList = getCategories();
-
-        for (OurProductCategory category : categoryList){
-            var button = new IMatCategoryListItem(category, this);
+        categoryListFlowPane.getChildren().add(categoryListStartPage);
+        for (ProductCategory category : ProductCategory.values()){
+            var button = new IMatCategoryListItem(new OurCategory(category), this);
             categoryListFlowPane.getChildren().add(button);
         }
     }
 
-    private void updateProductList(){
-        productListFlowPane.getChildren().clear();
-        List<Product> productList = IMatDataHandler.getInstance().getProducts();
-        System.out.println("productListLength " + productList.size()); // =0? List<Product>getProducts()
+    private void initializeProductList() {
+        List<Product> productList = handler.getProducts();
+        for (Product product : productList) {
+            IMatProductListItem listItem = new IMatProductListItem(product, this);
+            productListItemMap.put(product,listItem);
+        }
+    }
 
-        for (Product product : productList){
-            var button = new IMatProductListItem(product, this);
-            productListFlowPane.getChildren().add(button);
+    private void updateProductList(ProductCategory productCategory){
+        productListFlowPane.getChildren().clear();
+        List<Product> productList = productCategory != null
+                ? handler.getProducts(productCategory)
+                : handler.getProducts().subList(0,8);
+        for (Product product : productList) {
+            IMatProductListItem item = productListItemMap.get(product);
+            item.setSale(productCategory == null);
+            productListFlowPane.getChildren().add(item);
         }
     }
 
@@ -132,18 +399,6 @@ public class Controller implements Initializable {
         orderHistoryLightbox.toBack();
     }
 
-    private void initializeMyPageRecords() {
-        Customer customer = IMatDataHandler.getInstance().getCustomer();
-        myPageRecordsAddress.setText(customer.getAddress());
-        myPageRecordsEmail.setText(customer.getEmail());
-        myPageRecordsFirstName.setText(customer.getFirstName());
-        myPageRecordsLastName.setText(customer.getLastName());
-        myPageRecordsPhoneNumber.setText(customer.getPhoneNumber());
-        myPageRecordsMobileNumber.setText(customer.getMobilePhoneNumber());
-        myPageRecordsPostAddress.setText(customer.getPostAddress());
-        myPageRecordsPostCode.setText(customer.getPostCode());
-    }
-
     public void onClickOrderHistory(Order order) {
         populateOrderHistoryLightbox(order);
         orderHistoryLightbox.toFront();
@@ -160,6 +415,7 @@ public class Controller implements Initializable {
     public void goToOrders(Event event) {
         orderHistoryAnchorPane.toFront();
         storeAnchorPane.toFront();
+        headline.setText("Beställningar");
     }
 
     @FXML
@@ -167,6 +423,7 @@ public class Controller implements Initializable {
         myPageAnchorPane.toFront();
         myPageHome.toFront();
         storeAnchorPane.toFront();
+        headline.setText("Min Sida");
     }
 
     @FXML
@@ -196,6 +453,8 @@ public class Controller implements Initializable {
     @FXML
     public void onClickIMat(Event event) {
         categoryAnchorPane.toFront();
+        updateProductList(null);
+        headline.setText("Startsidan");
     }
 
     @FXML
@@ -215,10 +474,7 @@ public class Controller implements Initializable {
     public void onClickPayments(Event event) {
         createUser();
         betalaAnchorpane.toFront();
-    }
-
-    public OurProductCategory[] getCategories(){
-        return OurProductCategory.values();
+        headline.setText("Betala");
     }
 
     //===============Payments=================//
@@ -317,6 +573,18 @@ public class Controller implements Initializable {
         timeComboBox.getItems().addAll(times);
     }
 
+    @FXML
+    public void confirmPurchase(Event event) {
+        Order order = handler.placeOrder();
+        OrderHistoryItem orderItem = new OrderHistoryItem(order,this);
+        List<OrderItem> items = new ArrayList<OrderItem>();
+        for (ShoppingItem i : order.getItems())
+            items.add(new OrderItem(i,this));
+        orderItemMap.put(order.getOrderNumber(), items);
+        orderHistoryFlowPane.getChildren().add(1,orderItem);
+        goToOrders(null);
+    }
+
     @FXML public void onClickShowDeliveryDates(Event event){
         paymentDeliveryDateAnchorPane.toFront();
     }
@@ -371,5 +639,18 @@ public class Controller implements Initializable {
         }
     }
 
+    public void onClickedCategory(ProductCategory category) {
+        updateProductList(category);
+    }
+
+    @FXML private Label headline;
+    public void updateHeadline(String name) {headline.setText(name);}
+
+    public static String priceFormat(double price) {
+        String str = String.format("%.2f", price);
+        if (str.endsWith(".00"))
+            str = String.valueOf((int)price);
+        return str;
+    }
 }
 

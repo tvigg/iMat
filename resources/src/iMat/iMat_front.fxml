@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -85,119 +73,47 @@
                      <children>
                         <AnchorPane fx:id="myPageAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                            <children>
-                              <AnchorPane AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="278.0">
+                              <StackPane fx:id="myPageStackPane" layoutX="161.0" layoutY="279.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="310.0">
                                  <children>
-                                    <StackPane fx:id="myPageStackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <GridPane fx:id="myPageHome" styleClass="normal">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
                                        <children>
-                                          <GridPane fx:id="myPageHome" styleClass="normal">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <Button mnemonicParsing="false" onMouseClicked="#editUserRecords" text="Mina uppgifter" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                   <styleClass>
-                                                      <String fx:value="cyan-hoverable" />
-                                                      <String fx:value="big-button" />
-                                                   </styleClass>
-                                                </Button>
-                                                <Button mnemonicParsing="false" onMouseClicked="#goToOrders" text="Mina beställningar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                   <styleClass>
-                                                      <String fx:value="cyan-hoverable" />
-                                                      <String fx:value="big-button" />
-                                                   </styleClass>
-                                                </Button>
-                                             </children>
-                                          </GridPane>
-                                          <GridPane fx:id="myPageRecords">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <TextField fx:id="myPageRecordsAddress" GridPane.columnIndex="1" />
-                                                <TextField fx:id="myPageRecordsEmail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField fx:id="myPageRecordsFirstName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <TextField fx:id="myPageRecordsLastName" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <TextField fx:id="myPageRecordsPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <TextField fx:id="myPageRecordsMobileNumber" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <TextField fx:id="myPageRecordsPostAddress" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <TextField fx:id="myPageRecordsPostCode" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label text="Adress" GridPane.halignment="RIGHT">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="476.0" layoutY="35.0" text="Email" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="476.0" layoutY="35.0" text="Förnamn" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="10.0" layoutY="35.0" text="Efternamn" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="476.0" layoutY="35.0" text="Telefonnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="10.0" layoutY="35.0" text="Mobiltelefonnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="10.0" layoutY="35.0" text="Postadress" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label layoutX="10.0" layoutY="35.0" text="Postnummer" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets right="12.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Button mnemonicParsing="false" onMouseClicked="#saveUserRecords" text="Spara" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="12.0" />
-                                                   </GridPane.margin>
-                                                   <styleClass>
-                                                      <String fx:value="big-button" />
-                                                      <String fx:value="cyan-hoverable" />
-                                                   </styleClass></Button>
-                                             </children>
+                                          <Button mnemonicParsing="false" onMouseClicked="#goToMyPageAccount" prefWidth="296.0" text="Konto" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                              <styleClass>
-                                                <String fx:value="normal" />
-                                                <String fx:value="big-text" />
+                                                <String fx:value="cyan-hoverable" />
+                                                <String fx:value="big-button" />
                                              </styleClass>
-                                          </GridPane>
+                                          </Button>
+                                          <Button layoutX="273.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#goToMyPageAddress" prefWidth="296.0" text="Adress" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="cyan-hoverable" />
+                                                <String fx:value="big-button" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button mnemonicParsing="false" onMouseClicked="#goToMyPagePersonal" text="Personuppgifter" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="big-button" />
+                                                <String fx:value="cyan-hoverable" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button layoutX="1134.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#goToMyPageCreditCard" prefWidth="296.0" text="Kreditkort" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="big-button" />
+                                                <String fx:value="cyan-hoverable" />
+                                             </styleClass>
+                                          </Button>
                                        </children>
-                                    </StackPane>
+                                    </GridPane>
                                  </children>
-                              </AnchorPane>
+                              </StackPane>
                            </children></AnchorPane>
                         <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                            <children>
@@ -724,7 +640,7 @@
                                           <Font name="SansSerif Regular" size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="1487.0" layoutY="835.0" mnemonicParsing="false" onMouseClicked="#goToOrders" text="Gå till 'Beställningar'">
+                                    <Button layoutX="1499.0" layoutY="833.0" mnemonicParsing="false" onMouseClicked="#confirmPurchase" text="Genomför köp">
                                        <font>
                                           <Font name="SansSerif Regular" size="24.0" />
                                        </font>
@@ -743,23 +659,253 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
+                        <AnchorPane fx:id="accountCreationAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <StackPane fx:id="accountCreationStackPane" layoutX="406.0" layoutY="417.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="310.0">
+                                 <children>
+                                    <AnchorPane fx:id="accountCreationOverview" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;" styleClass="normal">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="784.0" layoutY="37.0" style="-fx-text-alignment: center;" styleClass="big-bold-text" text="Översikt" textAlignment="CENTER" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="40.0" />
+                                          <TextArea fx:id="accountCreationOverviewText" editable="false" layoutX="617.0" layoutY="109.0" prefHeight="200.0" prefWidth="200.0" styleClass="centered-text" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="480.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="120.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="accountCreationAddress" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;" styleClass="normal">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="784.0" layoutY="37.0" style="-fx-text-alignment: center;" styleClass="big-bold-text" text="Adress" textAlignment="CENTER" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="40.0" />
+                                          <Label layoutX="701.0" layoutY="130.0" styleClass="right-text" text="Gatuadress" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationHomeAddress" layoutX="799.0" layoutY="120.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="762.0" layoutY="190.0" styleClass="right-text" text="Ort" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationPostAddress" layoutX="799.0" layoutY="180.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="688.0" layoutY="250.0" styleClass="right-text" text="Postnummer" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationPostCode" layoutX="799.0" layoutY="240.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="accountCreationAccount" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;" styleClass="normal">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="784.0" layoutY="37.0" style="-fx-text-alignment: center;" styleClass="big-bold-text" text="Konto" textAlignment="CENTER" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="40.0" />
+                                          <Label layoutX="670.0" layoutY="130.0" styleClass="right-text" text="Användarnamn" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationUser" layoutX="799.0" layoutY="120.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="716.0" layoutY="190.0" styleClass="right-text" text="Lösenord" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationPassword1" layoutX="799.0" layoutY="180.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="715.0" layoutY="250.0" styleClass="right-text" text="Lösenord" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationPassword2" layoutX="799.0" layoutY="240.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="accountCreationPersonal" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;" styleClass="normal">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="784.0" layoutY="37.0" style="-fx-text-alignment: center;" styleClass="big-bold-text" text="Personuppgifter" textAlignment="CENTER" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="40.0" />
+                                          <Label layoutX="718.0" layoutY="130.0" styleClass="right-text" text="Förnamn" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationFirstName" layoutX="799.0" layoutY="120.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="707.0" layoutY="190.0" styleClass="right-text" text="Efternamn" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationLastName" layoutX="799.0" layoutY="180.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="630.0" layoutY="250.0" styleClass="right-text" text="Hemtelefonnummer" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationPhone" layoutX="799.0" layoutY="240.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="627.0" layoutY="310.0" styleClass="right-text" text="Mobiltelefonnummer" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationMobile" layoutX="799.0" layoutY="300.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <TextField fx:id="accountCreationEmail" layoutX="799.0" layoutY="360.0" prefHeight="42.0" prefWidth="160.0" AnchorPane.rightAnchor="640.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="621.0" layoutY="370.0" styleClass="right-text" text="E-postadress" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="accountCreationCreditCard" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;" styleClass="normal">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="784.0" layoutY="37.0" style="-fx-text-alignment: center;" styleClass="big-bold-text" text="Kreditkort" textAlignment="CENTER" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="40.0" />
+                                          <Label layoutX="759.0" layoutY="130.0" styleClass="right-text" text="Typ" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <ComboBox fx:id="accountCreationCardType" layoutX="799.0" layoutY="120.0" prefHeight="42.0" prefWidth="160.0" />
+                                          <Label layoutX="723.0" layoutY="190.0" styleClass="right-text" text="Nummer" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationCardNumber" layoutX="799.0" layoutY="180.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="703.0" layoutY="250.0" styleClass="right-text" text="Måndad/år" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationCardValidMonth" layoutX="799.0" layoutY="240.0" prefHeight="42.0" prefWidth="66.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label alignment="CENTER" layoutX="757.0" layoutY="310.0" styleClass="right-text" text="CVC" textAlignment="RIGHT" AnchorPane.rightAnchor="812.0" />
+                                          <TextField fx:id="accountCreationCardValidCode" layoutX="799.0" layoutY="300.0" prefHeight="42.0" prefWidth="160.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <TextField fx:id="accountCreationCardValidYear" layoutX="886.0" layoutY="240.0" prefHeight="42.0" prefWidth="66.0" AnchorPane.rightAnchor="640.0">
+                                             <padding>
+                                                <Insets bottom="12.0" left="12.0" top="12.0" />
+                                             </padding>
+                                          </TextField>
+                                          <Label layoutX="875.0" layoutY="244.0" text="/" textAlignment="RIGHT">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </StackPane>
+                              <Button fx:id="accountCreationNextButton" layoutX="1557.0" layoutY="985.0" mnemonicParsing="false" onMouseClicked="#accountCreationNext" text="Gå till nästa steg" />
+                              <Button fx:id="accountCreationPrevButton" layoutX="313.0" layoutY="985.0" mnemonicParsing="false" onMouseClicked="#accountCreationPrev" text="Gå till föregående steg" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="categoryAnchorPane" prefHeight="905.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
+                           <children>
+                              <AnchorPane prefHeight="1081.0" prefWidth="299.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ScrollPane layoutY="151.0" prefHeight="930.0" prefWidth="299.0" style="-fx-background-color: #F4F4F4;">
+                                       <content>
+                                          <StackPane prefHeight="926.0" prefWidth="289.0">
+                                             <children>
+                                                <VBox fx:id="categoryListFlowPane" alignment="CENTER" prefHeight="926.0" prefWidth="262.0" spacing="10.0">
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                   <children>
+                                                      <AnchorPane fx:id="categoryListStartPage" prefHeight="122.0" prefWidth="267.0">
+                                                         <children>
+                                                            <BorderPane maxHeight="200.0" maxWidth="260.0" prefHeight="110.0" prefWidth="260.0">
+                                                               <center>
+                                                                  <TilePane alignment="CENTER" prefHeight="130.0" prefWidth="240.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <Button mnemonicParsing="false" onMouseClicked="#onClickIMat" prefHeight="119.0" prefWidth="263.0" styleClass="category-button" stylesheets="@iMat.css" text="Startsidan">
+                                                                           <font>
+                                                                              <Font size="26.0" />
+                                                                           </font>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </TilePane>
+                                                               </center>
+                                                            </BorderPane>
+                                                         </children>
+                                                         <effect>
+                                                            <DropShadow />
+                                                         </effect>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </StackPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="290.0" layoutY="148.0" prefHeight="1081.0" prefWidth="1327.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ScrollPane layoutX="7.0" layoutY="151.0" prefHeight="930.0" prefWidth="1290.0">
+                                       <content>
+                                          <StackPane maxHeight="700.0" prefHeight="700.0" prefWidth="1231.0">
+                                             <children>
+                                                <FlowPane fx:id="productListFlowPane" alignment="TOP_CENTER" layoutY="290.0" maxHeight="758.0" prefHeight="695.0" prefWidth="1231.0" styleClass="products">
+                                                   <padding>
+                                                      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                   </padding></FlowPane>
+                                             </children>
+                                          </StackPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children></AnchorPane>
+                              <AnchorPane layoutX="1675.0" layoutY="212.0" prefHeight="1081.0" prefWidth="306.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+                                 <children>
+                                    <VBox alignment="CENTER" layoutY="160.0" spacing="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
+                                       <children>
+                                          <Label alignment="CENTER" styleClass="big-bold-text" text="Kundkorg" />
+                                          <Button id="empty-cart-button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#clearShoppingCart" text="Töm kundkorg">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                    <Button fx:id="betala_btn" alignment="CENTER" layoutX="29.0" layoutY="978.0" mnemonicParsing="false" onMousePressed="#onClickPayments" text="Gå till kassan" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0">
+                                       <styleClass>
+                                          <String fx:value="big-button" />
+                                          <String fx:value="cyan-hoverable" />
+                                       </styleClass></Button>
+                                    <ScrollPane layoutX="53.0" layoutY="181.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="120.0">
+                                       <content>
+                                          <FlowPane fx:id="shoppingCartFlowPane" prefHeight="200.0" prefWidth="200.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <Label alignment="CENTER" layoutX="137.0" layoutY="780.0" styleClass="big-bold-text" text="Label" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="760.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </StackPane>
                     <AnchorPane prefHeight="150.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Pane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
+                        <AnchorPane prefHeight="150.0" prefWidth="1920.0" style="-fx-background-color: #457B9D;">
                            <children>
-                              <ImageView fitHeight="108.0" fitWidth="153.0" layoutX="1767.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button layoutX="1707.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#goToOrders" text="Beställningar" />
-                              <Button layoutX="1596.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#goToMyPage" text="Min sida" />
-                              <Button fx:id="betala_btn" layoutX="1486.0" layoutY="61.0" mnemonicParsing="false" onMousePressed="#onClickPayments" text="Till betala" />
+                              <HBox alignment="CENTER" layoutX="1279.0" layoutY="39.0" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="myPageButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#goToMyPage" text="Min sida">
+                                       <styleClass>
+                                          <String fx:value="big-button" />
+                                          <String fx:value="cyan-hoverable" />
+                                       </styleClass></Button>
+                                    <Button fx:id="ordersButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#goToOrders" text="Beställningar">
+                                       <styleClass>
+                                          <String fx:value="big-button" />
+                                          <String fx:value="cyan-hoverable" />
+                                       </styleClass></Button>
+                                 </children>
+                              </HBox>
                               <ImageView fx:id="imatLogga" fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="36.0" onMouseClicked="#onClickIMat" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@resources/images/logga.png" />
                                  </image>
                               </ImageView>
+                              <Label fx:id="headline" alignment="CENTER" contentDisplay="CENTER" layoutX="780.0" layoutY="40.0" prefHeight="90.0" prefWidth="360.0" style="-fx-text-fill: white;" text="Välkommen">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
                            </children>
-                        </Pane>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </children>

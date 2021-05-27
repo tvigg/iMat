@@ -38,9 +38,9 @@ public class OrderItem extends AnchorPane {
         this.item = item;
         this.parentController = controller;
         this.orderItemName.setText(item.getProduct().getName());
-        this.orderItemPrice.setText(String.valueOf(item.getProduct().getPrice()) + " kr");
-        this.orderItemCount.setText(String.valueOf(item.getAmount()) + " st");
-        this.orderItemSum.setText(String.valueOf(item.getTotal()) + " kr");
+        this.orderItemPrice.setText(Controller.priceFormat(item.getProduct().getPrice())+ " " + item.getProduct().getUnit());
+        this.orderItemCount.setText(Controller.priceFormat(item.getAmount()) + " " + item.getProduct().getUnitSuffix());
+        this.orderItemSum.setText(Controller.priceFormat(item.getTotal()) + " kr");
 
         try {
             String imagePath = System.getProperty("user.home") + "/.dat215/imat/images/" + item.getProduct().getImageName();

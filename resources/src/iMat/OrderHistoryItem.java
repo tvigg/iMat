@@ -37,7 +37,7 @@ public class OrderHistoryItem extends AnchorPane {
         this.orderHistoryItemDate.setText(order.getDate().toString());
         this.orderHistoryItemId.setText(String.valueOf(order.getOrderNumber()));
         double price = order.getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
-        this.orderHistoryItemPrice.setText(price + " kr");
+        this.orderHistoryItemPrice.setText(Controller.priceFormat(price) + " kr");
     }
 
     @FXML

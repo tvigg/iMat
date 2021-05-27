@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="300.0" stylesheets="@iMat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FlowPane alignment="CENTER_LEFT" hgap="4.0" layoutX="24.0" layoutY="39.0" prefHeight="28.0" prefWidth="150.0">
+         <children>
+            <Button id="remove-button" fx:id="removeOne" mnemonicParsing="false" onMouseClicked="#removeOne" prefHeight="25.0" prefWidth="28.0" styleClass="product-button" text="-" />
+            <Label fx:id="productAmount" styleClass="centered-text" stylesheets="@iMat.css" text="0" textAlignment="CENTER" />
+            <Button id="add-button" fx:id="addOne" mnemonicParsing="false" onMouseClicked="#addOne" prefHeight="25.0" prefWidth="28.0" styleClass="product-button" text="+" />
+         </children>
+      </FlowPane>
+      <Label fx:id="productText" alignment="TOP_CENTER" contentDisplay="TOP" prefWidth="225.0" text="Kyckling av en annan sort" wrapText="true" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="productPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="77.0" text="105,90" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="24.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>

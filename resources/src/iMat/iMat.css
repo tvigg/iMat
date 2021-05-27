@@ -31,6 +31,15 @@
     -fx-font-weight: bold;
 }
 
+.right-text {
+    -fx-font-size: 16px;
+    -fx-text-alignment: right;
+}
+
+.normal-text {
+    -fx-font-size: 16px;
+}
+
 .centered-text {
     -fx-font-size: 16px;
     -fx-text-alignment: center;
@@ -52,8 +61,25 @@
     -fx-font-weight: bold;
 }
 
-#category-button {
-    -fx-border-color: black;
+.category-button {
+    /*-fx-border-color: black;*/
+    -fx-background-color: white;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.category-button:hover {
+    -fx-background-color: "#E8E8E8";
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.button:pressed {
+    -fx-background-color: "#D3D3D3";
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-border-width: 2px;
@@ -76,4 +102,31 @@
 
 #remove-button {
     -fx-background-radius: 50% 5% 5% 50%;
+}
+
+#empty-cart-button {
+    -fx-background-color: "#E63946";
+    -fx-font-size: 24px;
+    -fx-text-fill: "#ffffff";
+    -fx-border-color: "#000000";
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 2px;
+}
+
+#empty-cart-button:hover {
+    -fx-background-color: "#f64956";
+}
+
+.products {
+    -fx-hgap: 40;
+    -fx-vgap: 20;
+}
+
+.sale-label {
+    -fx-background-radius: 50% 50% 50% 50%;
+    -fx-background-color: "#f64956";
+    -fx-text-fill: "#ffffff";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
 }
