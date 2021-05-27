@@ -869,7 +869,7 @@
                                           <FlowPane fx:id="shoppingCartFlowPane" prefHeight="200.0" prefWidth="200.0" />
                                        </content>
                                     </ScrollPane>
-                                    <Label alignment="CENTER" layoutX="137.0" layoutY="780.0" styleClass="big-bold-text" text="Label" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="760.0" />
+                                    <Label fx:id="shoppingCartTotalPrice" alignment="CENTER" layoutX="137.0" layoutY="780.0" styleClass="big-bold-text" text="Label" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="760.0" />
                                  </children>
                               </AnchorPane>
                            </children>

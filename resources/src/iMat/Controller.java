@@ -115,6 +115,7 @@ public class Controller implements Initializable {
     @FXML private FlowPane shoppingCartFlowPane;
     private Map<ShoppingItem, IMatShoppingListItem> shoppingListItemMap = new HashMap<>();
     private Map<Product, IMatProductListItem> productListItemMap = new HashMap<>();
+    @FXML private Label shoppingCartTotalPrice;
 
     @FXML private AnchorPane categoryListStartPage;
 
@@ -177,6 +178,8 @@ public class Controller implements Initializable {
                     }
                     productListItem.updateAmount(item);
                 }
+                double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
+                shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
             }
         });
     }
@@ -187,6 +190,8 @@ public class Controller implements Initializable {
             shoppingCartFlowPane.getChildren().add(listItem);
             shoppingListItemMap.put(item, listItem);
         }
+        double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
+        shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
     }
 
     @FXML

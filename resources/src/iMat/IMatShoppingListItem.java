@@ -46,12 +46,12 @@ public class IMatShoppingListItem extends AnchorPane {
         this.parentController = iMatCategoryController;
 
         productText.setText(item.getProduct().getName());
-        productPrice.setText(String.valueOf(item.getProduct().getPrice()));
         updateAmount();
     }
 
     public void updateAmount() {
         productAmount.setText(String.valueOf((int)item.getAmount()) + " " + item.getProduct().getUnitSuffix());
+        productPrice.setText(Controller.priceFormat(item.getProduct().getPrice() * item.getAmount()) + " kr");
     }
 
     @FXML
