@@ -54,6 +54,15 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
+.medium-button {
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 3px;
+    -fx-font-size: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
 #order-history-lightbox-header {
     -fx-text-fill: "#ffffff";
     -fx-text-alignment: center;

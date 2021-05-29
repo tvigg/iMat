@@ -65,9 +65,10 @@ public class Controller implements Initializable {
     @FXML private FlowPane productListFlowPane;
 
     // User page
-    @FXML private GridPane myPageHome;
+    @FXML private AnchorPane myPageHome;
     @FXML private GridPane myPageRecords;
     @FXML private StackPane myPageStackPane;
+    @FXML private Button myPageSaveButton;
 
     @FXML private TextField myPageRecordsAddress;
     @FXML private TextField myPageRecordsEmail;
@@ -138,10 +139,12 @@ public class Controller implements Initializable {
         populateDayComboBox();
         accountCreationCardType.getItems().add("MasterCard");
         accountCreationCardType.getItems().add("Visa");
+        initializeAccountFieldListeners();
+        loadUser();
         if (IMatDataHandler.getInstance().isFirstRun())
             setupAccount();
         else
-            setupMyPage(true);
+            setupMyPage();
         setupShoppingList();
         Controller controller = this;
         handler.getShoppingCart().addShoppingCartListener(new ShoppingCartListener() {
@@ -204,54 +207,75 @@ public class Controller implements Initializable {
         shoppingListItemMap.remove(item.getItem());
     }
 
-    private void setupMyPage(boolean loadUser) {
+    private void setupMyPage() {
         myPageStackPane.getChildren().add(accountCreationPersonal);
         myPageStackPane.getChildren().add(accountCreationAccount);
         myPageStackPane.getChildren().add(accountCreationAddress);
         myPageStackPane.getChildren().add(accountCreationCreditCard);
-        if (loadUser) {
-            User user = IMatDataHandler.getInstance().getUser();
-            accountCreationUser.setText(user.getUserName());
-            accountCreationPassword1.setText(user.getPassword());
-            accountCreationPassword2.setText(user.getPassword());
-
-            Customer customer = IMatDataHandler.getInstance().getCustomer();
-            accountCreationFirstName.setText(customer.getFirstName());
-            accountCreationLastName.setText(customer.getLastName());
-            accountCreationPhone.setText(customer.getPhoneNumber());
-            accountCreationMobile.setText(customer.getMobilePhoneNumber());
-            accountCreationEmail.setText(customer.getEmail());
-            accountCreationHomeAddress.setText(customer.getAddress());
-            accountCreationPostAddress.setText(customer.getPostAddress());
-            accountCreationPostCode.setText(customer.getPostCode());
-
-            CreditCard card = IMatDataHandler.getInstance().getCreditCard();
-            accountCreationCardNumber.setText(card.getCardNumber());
-            accountCreationCardType.getSelectionModel().select(card.getCardType());
-            accountCreationCardValidMonth.setText(String.valueOf(card.getValidMonth()));
-            accountCreationCardValidYear.setText(String.valueOf(card.getValidYear()));
-            accountCreationCardValidCode.setText(String.valueOf(card.getVerificationCode()));
-        }
         myPageHome.toFront();
+    }
+
+    private void loadUser() {
+        User user = IMatDataHandler.getInstance().getUser();
+        accountCreationUser.setText(user.getUserName());
+        accountCreationPassword1.setText(user.getPassword());
+        accountCreationPassword2.setText(user.getPassword());
+
+        Customer customer = IMatDataHandler.getInstance().getCustomer();
+        accountCreationFirstName.setText(customer.getFirstName());
+        accountCreationLastName.setText(customer.getLastName());
+        accountCreationPhone.setText(customer.getPhoneNumber());
+        accountCreationMobile.setText(customer.getMobilePhoneNumber());
+        accountCreationEmail.setText(customer.getEmail());
+        accountCreationHomeAddress.setText(customer.getAddress());
+        accountCreationPostAddress.setText(customer.getPostAddress());
+        accountCreationPostCode.setText(customer.getPostCode());
+
+        CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+        accountCreationCardNumber.setText(card.getCardNumber());
+        accountCreationCardType.getSelectionModel().select(card.getCardType());
+        accountCreationCardValidMonth.setText(String.valueOf(card.getValidMonth()));
+        accountCreationCardValidYear.setText(String.valueOf(card.getValidYear()));
+        accountCreationCardValidCode.setText(String.valueOf(card.getVerificationCode()));
     }
 
     @FXML
     public void goToMyPageAccount(Event event) {
+        myPageSaveButton.setVisible(true);
+        myPageSaveButton.setOnMouseClicked(mouseEvent -> {
+            goToMyPage(null);
+            saveUserAccount(null);
+        });
         accountCreationAccount.toFront();
     }
 
     @FXML
     public void goToMyPagePersonal(Event event) {
+        myPageSaveButton.setVisible(true);
+        myPageSaveButton.setOnMouseClicked(mouseEvent -> {
+            goToMyPage(null);
+            saveUserPersonal(null);
+        });
         accountCreationPersonal.toFront();
     }
 
     @FXML
     public void goToMyPageAddress(Event event) {
+        myPageSaveButton.setVisible(true);
+        myPageSaveButton.setOnMouseClicked(mouseEvent -> {
+            goToMyPage(null);
+            saveUserAddress(null);
+        });
         accountCreationAddress.toFront();
     }
 
     @FXML
     public void goToMyPageCreditCard(Event event) {
+        myPageSaveButton.setVisible(true);
+        myPageSaveButton.setOnMouseClicked(mouseEvent -> {
+            goToMyPage(null);
+            saveUserCreditCard(null);
+        });
         accountCreationCreditCard.toFront();
     }
 
@@ -293,6 +317,7 @@ public class Controller implements Initializable {
                     && accountCreationPassword1.getText().equals(accountCreationPassword2.getText())) {
                 next = accountCreationPersonal;
                 accountCreationPrevButton.setDisable(false);
+
             }
         } else if (current == accountCreationPersonal) {
             if (!accountCreationFirstName.getText().isEmpty()
@@ -329,29 +354,11 @@ public class Controller implements Initializable {
                 );
             }
         } else if (current == accountCreationOverview) {
-            User user = IMatDataHandler.getInstance().getUser();
-            user.setUserName(accountCreationUser.getText());
-            user.setPassword(accountCreationPassword1.getText());
-
-            Customer customer = IMatDataHandler.getInstance().getCustomer();
-            customer.setFirstName(accountCreationFirstName.getText());
-            customer.setLastName(accountCreationLastName.getText());
-            customer.setPhoneNumber(accountCreationPhone.getText());
-            customer.setMobilePhoneNumber(accountCreationMobile.getText());
-            customer.setEmail(accountCreationEmail.getText());
-            customer.setAddress(accountCreationHomeAddress.getText());
-            customer.setPostAddress(accountCreationPostAddress.getText());
-            customer.setPostCode(accountCreationPostCode.getText());
-
-            CreditCard card = IMatDataHandler.getInstance().getCreditCard();
-            card.setCardNumber(accountCreationCardNumber.getText());
-            card.setCardType((String)accountCreationCardType.getSelectionModel().getSelectedItem());
-            card.setHoldersName(customer.getFirstName() + " " + customer.getLastName());
-            card.setValidMonth(Integer.parseInt(accountCreationCardValidMonth.getText()));
-            card.setValidYear(Integer.parseInt(accountCreationCardValidYear.getText()));
-            card.setVerificationCode(Integer.parseInt(accountCreationCardValidCode.getText()));
+            saveUserAccount(null);
+            saveUserPersonal(null);
+            saveUserAddress(null);
+            saveUserCreditCard(null);
             categoryAnchorPane.toFront();
-            setupMyPage(false);
             myPageButton.setVisible(true);
             ordersButton.setVisible(true);
             imatLogga.setDisable(false);
@@ -428,26 +435,42 @@ public class Controller implements Initializable {
         myPageAnchorPane.toFront();
         myPageHome.toFront();
         storeAnchorPane.toFront();
+        myPageSaveButton.setVisible(false);
         headline.setText("Min Sida");
     }
 
     @FXML
-    public void editUserRecords(Event event) {
-        myPageRecords.toFront();
+    public void saveUserAccount(Event event) {
+        User user = IMatDataHandler.getInstance().getUser();
+        user.setUserName(accountCreationUser.getText());
+        user.setPassword(accountCreationPassword1.getText());
     }
-
     @FXML
-    public void saveUserRecords(Event event) {
+    public void saveUserPersonal(Event event) {
         Customer customer = IMatDataHandler.getInstance().getCustomer();
-        customer.setAddress(myPageRecordsAddress.getText());
-        customer.setEmail(myPageRecordsEmail.getText());
-        customer.setFirstName(myPageRecordsFirstName.getText());
-        customer.setLastName(myPageRecordsLastName.getText());
-        customer.setPhoneNumber(myPageRecordsPhoneNumber.getText());
-        customer.setMobilePhoneNumber(myPageRecordsMobileNumber.getText());
-        customer.setPostAddress(myPageRecordsPostAddress.getText());
-        customer.setPostCode(myPageRecordsPostCode.getText());
-        System.out.println("Set the customer's records.");
+        customer.setFirstName(accountCreationFirstName.getText());
+        customer.setLastName(accountCreationLastName.getText());
+        customer.setPhoneNumber(accountCreationPhone.getText());
+        customer.setMobilePhoneNumber(accountCreationMobile.getText());
+        customer.setEmail(accountCreationEmail.getText());
+    }
+    @FXML
+    public void saveUserAddress(Event event) {
+        Customer customer = IMatDataHandler.getInstance().getCustomer();
+        customer.setAddress(accountCreationHomeAddress.getText());
+        customer.setPostAddress(accountCreationPostAddress.getText());
+        customer.setPostCode(accountCreationPostCode.getText());
+    }
+    @FXML
+    public void saveUserCreditCard(Event event) {
+        Customer customer = IMatDataHandler.getInstance().getCustomer();
+        CreditCard card = IMatDataHandler.getInstance().getCreditCard();
+        card.setCardNumber(accountCreationCardNumber.getText());
+        card.setCardType((String)accountCreationCardType.getSelectionModel().getSelectedItem());
+        card.setHoldersName(customer.getFirstName() + " " + customer.getLastName());
+        card.setValidMonth(Integer.parseInt(accountCreationCardValidMonth.getText()));
+        card.setValidYear(Integer.parseInt(accountCreationCardValidYear.getText()));
+        card.setVerificationCode(Integer.parseInt(accountCreationCardValidCode.getText()));
     }
 
     @FXML
@@ -623,6 +646,40 @@ public class Controller implements Initializable {
         populateOrderConfirmation();
         confirmPurchaseAnchorPane.toFront();
 
+    }
+
+    private void initializeAccountFieldListeners() {
+        //accountCreationUser.textProperty().;
+        //accountCreationPassword1;
+        //accountCreationPassword2;
+        //accountCreationFirstName;
+        //accountCreationLastName;
+        accountCreationPhone.textProperty().addListener(new IntStringChangeListener(accountCreationPhone, 10));
+        accountCreationMobile.textProperty().addListener(new IntStringChangeListener(accountCreationMobile, 10));
+        //accountCreationEmail;
+        //accountCreationHomeAddress;
+        //accountCreationPostAddress;
+        accountCreationPostCode.textProperty().addListener(new IntStringChangeListener(accountCreationPostCode, 5));
+        accountCreationCardNumber.textProperty().addListener(new IntStringChangeListener(accountCreationCardNumber, 16));
+        accountCreationCardValidMonth.textProperty().addListener(new IntStringChangeListener(accountCreationCardValidMonth, 2));
+        accountCreationCardValidYear.textProperty().addListener(new IntStringChangeListener(accountCreationCardValidYear,2));
+        accountCreationCardValidCode.textProperty().addListener(new IntStringChangeListener(accountCreationCardValidCode,3));
+    }
+
+    private class IntStringChangeListener implements ChangeListener<String> {
+        TextField field;
+        int maxLength = Integer.MAX_VALUE;
+        public IntStringChangeListener(TextField field, int maxLength) {
+            this.field = field;
+            this.maxLength = maxLength;
+        }
+        public  IntStringChangeListener(TextField field) {
+            this.field = field;
+        }
+        public void changed(ObservableValue<? extends String> observableValue, String from, String to) {
+            if (!to.matches("\\d*") || to.length() > maxLength)
+                field.setText(from);
+        }
     }
 
     //Class for keeping track of current delivery date and time
