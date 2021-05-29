@@ -44,11 +44,12 @@ public class Controller implements Initializable {
     @FXML private Label displayPostCodeLabel;
     @FXML private Label noAddressEnteredLabel;
     @FXML private Label noPostCodeEnteredLabel;
-    @FXML private Label  confirmOrderAddressLabel;
-    @FXML private Label  confirmOrderPostCodeLabel;
-    @FXML private Label  confirmOrderDeliveryDateLabel;
-    @FXML private Label  confirmOrderDeliveryTimeLabel;
-    @FXML private Label  confirmOrderCreditCardLabel;
+    @FXML private Label confirmOrderAddressLabel;
+    @FXML private Label confirmOrderPostCodeLabel;
+    @FXML private Label confirmOrderDeliveryDateLabel;
+    @FXML private Label confirmOrderDeliveryTimeLabel;
+    @FXML private Label confirmOrderCreditCardLabel;
+    @FXML private Label paymentSumLabel;
 
     @FXML private Button goToDatesButton;
     @FXML private ComboBox dayComboBox;
@@ -136,6 +137,7 @@ public class Controller implements Initializable {
             deliveryDate.setTime(newValue.toString());
         });
         populateDayComboBox();
+        populateTimeComboBox();
         accountCreationCardType.getItems().add("MasterCard");
         accountCreationCardType.getItems().add("Visa");
         if (IMatDataHandler.getInstance().isFirstRun())
@@ -484,8 +486,6 @@ public class Controller implements Initializable {
 
     //===============Payments=================//
     @FXML public void createUser(){
-        populateDayComboBox();
-        populateTimeComboBox();
         if(IMatDataHandler.getInstance().getCustomer().getAddress().isBlank() || IMatDataHandler.getInstance().getCustomer().getPostCode().isBlank()){
             savedAddressAnchorPane.setVisible(false);
         }
@@ -563,12 +563,7 @@ public class Controller implements Initializable {
     private String[] generateDates(int limit){
         String[] res = new String[limit];
         for (int i = 1; i < res.length; i++) {
-            if (i >= 27 ){
-                res[i] = i + " Maj";
-            }
-            else{
-                res[i] = i + " Juni";
-            }
+            res[i] = i >= 27 ? i + " Maj" : i + " Juni";
         }
         return res;
     }
@@ -595,9 +590,9 @@ public class Controller implements Initializable {
     }
 
     @FXML public void onClickShowCart(Event event){
-        System.out.println(deliveryDate.getDate() + " at " + deliveryDate.getTime() + " o'clock.");
         confirmOrderDeliveryDateLabel.setText(deliveryDate.getDate());
         confirmOrderDeliveryTimeLabel.setText(deliveryDate.getTime());
+        paymentSumLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + "kr");
         paymentCartAnchorPane.toFront();
     }
 
@@ -606,6 +601,8 @@ public class Controller implements Initializable {
         confirmOrderCreditCardLabel.setText(creditCard.getCardNumber());
     }
 
+    //TODO gör det omöjligt att skriva in bokstäver
+    //TODO lägg till fält för namn
     @FXML public void saveCreditCardInformation(){
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
         creditCard.setCardNumber(paymentCardNumberTextField.getText());
