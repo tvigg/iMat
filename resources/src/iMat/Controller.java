@@ -50,6 +50,8 @@ public class Controller implements Initializable {
     @FXML private Label confirmOrderDeliveryTimeLabel;
     @FXML private Label confirmOrderCreditCardLabel;
     @FXML private Label paymentSumLabel;
+    @FXML private Label paymentExpirationPleaseLabel;
+    @FXML private Label paymentCVCPleaseLabel;
 
     @FXML private Button goToDatesButton;
     @FXML private ComboBox dayComboBox;
@@ -647,14 +649,23 @@ public class Controller implements Initializable {
     //TODO lägg till fält för namn
     @FXML public void saveCreditCardInformation(){
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
-        creditCard.setCardNumber(paymentCardNumberTextField.getText());
-        //hack
-        creditCard.setValidMonth(Integer.parseInt(paymentExpirationMonthTextField.getText()));
-        creditCard.setValidYear(Integer.parseInt(paymentExpirationYearTextField.getText()));
-        creditCard.setVerificationCode(Integer.parseInt(paymentCVCTextField.getText()));
+        try{
+            creditCard.setCardNumber(paymentCardNumberTextField.getText());
+            creditCard.setValidMonth(Integer.parseInt(paymentExpirationMonthTextField.getText()));
+            creditCard.setValidYear(Integer.parseInt(paymentExpirationYearTextField.getText()));
+            creditCard.setVerificationCode(Integer.parseInt(paymentCVCTextField.getText()));
+        }
+        catch(NumberFormatException e){
+            paymentExpirationPleaseLabel.setVisible(true);
+            paymentCVCPleaseLabel.setVisible(true);
+        }
+
+
     }
 
     @FXML public void onClickShowCreditCard(Event event){
+        paymentExpirationPleaseLabel.setVisible(false);
+        paymentCVCPleaseLabel.setVisible(false);
         paymentCreditCardAnchorPane.toFront();
     }
 
