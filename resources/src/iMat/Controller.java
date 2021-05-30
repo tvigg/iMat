@@ -70,6 +70,8 @@ public class Controller implements Initializable {
     @FXML private GridPane myPageRecords;
     @FXML private StackPane myPageStackPane;
     @FXML private Button myPageSaveButton;
+    @FXML private ImageView backMyPageButton;
+    @FXML private Label backMyPageLabel;
 
     @FXML private TextField myPageRecordsAddress;
     @FXML private TextField myPageRecordsEmail;
@@ -271,6 +273,8 @@ public class Controller implements Initializable {
             saveUserAccount(null);
         });
         accountCreationAccount.toFront();
+        backMyPageButton.setVisible(true);
+        backMyPageLabel.setVisible(true);
     }
 
     @FXML
@@ -281,6 +285,8 @@ public class Controller implements Initializable {
             saveUserPersonal(null);
         });
         accountCreationPersonal.toFront();
+        backMyPageButton.setVisible(true);
+        backMyPageLabel.setVisible(true);
     }
 
     @FXML
@@ -291,6 +297,8 @@ public class Controller implements Initializable {
             saveUserAddress(null);
         });
         accountCreationAddress.toFront();
+        backMyPageButton.setVisible(true);
+        backMyPageLabel.setVisible(true);
     }
 
     @FXML
@@ -301,6 +309,8 @@ public class Controller implements Initializable {
             saveUserCreditCard(null);
         });
         accountCreationCreditCard.toFront();
+        backMyPageButton.setVisible(true);
+        backMyPageLabel.setVisible(true);
     }
 
     private void setupAccount() {
@@ -475,6 +485,8 @@ public class Controller implements Initializable {
         myPageHome.toFront();
         storeAnchorPane.toFront();
         myPageSaveButton.setVisible(false);
+        backMyPageButton.setVisible(false);
+        backMyPageLabel.setVisible(false);
         headline.setText("Min Sida");
     }
 
@@ -515,6 +527,13 @@ public class Controller implements Initializable {
     @FXML
     public void mouseTrap(Event event) {
         event.consume();
+    }
+
+    @FXML
+    public void onClickBackMyPage(Event event) {
+        backMyPageButton.setVisible(false);
+        backMyPageLabel.setVisible(false);
+        goToMyPage(null);
     }
 
     @FXML
