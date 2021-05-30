@@ -863,7 +863,7 @@
                                     <VBox alignment="CENTER" layoutY="160.0" spacing="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
                                        <children>
                                           <Label alignment="CENTER" styleClass="big-bold-text" text="Kundkorg" />
-                                          <Button id="empty-cart-button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#clearShoppingCart" text="Töm kundkorg">
+                                          <Button id="empty-cart-button" fx:id="clearShoppingCartButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#clearShoppingCart" text="Töm kundkorg">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
