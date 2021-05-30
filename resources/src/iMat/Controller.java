@@ -694,7 +694,6 @@ public class Controller implements Initializable {
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
         confirmOrderCreditCardLabel.setText(creditCard.getCardNumber());
     }
-
     //TODO lägg till fält för namn
     @FXML public void saveCreditCardInformation(){
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
