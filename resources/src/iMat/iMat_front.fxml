@@ -623,7 +623,7 @@
                                                                   <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="339.0" layoutY="12.0" prefWidth="107.0" text="summa">
+                                                            <Label fx:id="paymentSumLabel" layoutX="339.0" layoutY="12.0" prefWidth="107.0" text="summa">
                                                                <font>
                                                                   <Font name="SansSerif Regular" size="24.0" />
                                                                </font>

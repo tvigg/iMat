@@ -609,7 +609,8 @@ public class Controller implements Initializable {
     @FXML public void onClickShowCart(Event event){
         confirmOrderDeliveryDateLabel.setText(deliveryDate.getDate());
         confirmOrderDeliveryTimeLabel.setText(deliveryDate.getTime());
-        paymentSumLabel.setText(IMatDataHandler.getInstance().getShoppingCart().getTotal() + "kr");
+        double price = IMatDataHandler.getInstance().getShoppingCart().getTotal();
+        paymentSumLabel.setText(priceFormat(price) + "kr");
         paymentCartAnchorPane.toFront();
         populateCart();
     }
