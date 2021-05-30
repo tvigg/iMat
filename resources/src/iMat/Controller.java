@@ -670,8 +670,8 @@ public class Controller implements Initializable {
         //accountCreationPassword2;
         //accountCreationFirstName;
         //accountCreationLastName;
-        accountCreationPhone.textProperty().addListener(new IntStringChangeListener(accountCreationPhone, 10));
-        accountCreationMobile.textProperty().addListener(new IntStringChangeListener(accountCreationMobile, 10));
+        accountCreationPhone.textProperty().addListener(new IntStringChangeListener(accountCreationPhone, 15));
+        accountCreationMobile.textProperty().addListener(new IntStringChangeListener(accountCreationMobile, 15));
         //accountCreationEmail;
         //accountCreationHomeAddress;
         //accountCreationPostAddress;
