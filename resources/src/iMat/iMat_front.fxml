@@ -133,6 +133,16 @@
                                     <String fx:value="medium-button" />
                                  </styleClass>
                               </Button>
+                              <ImageView fx:id="backMyPageButton" fitHeight="91.0" fitWidth="108.0" onMouseClicked="#onClickBackMyPage" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="180.0">
+                                 <image>
+                                    <Image url="@resources/images/back-arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="backMyPageLabel" prefHeight="78.0" prefWidth="129.0" text="Tillbaka till Min sida" wrapText="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="260.0">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="24.0" />
+                                 </font>
+                              </Label>
                            </children></AnchorPane>
                         <AnchorPane fx:id="orderHistoryAnchorPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="normal">
                            <children>

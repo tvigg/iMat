@@ -72,6 +72,8 @@ public class Controller implements Initializable {
     @FXML private GridPane myPageRecords;
     @FXML private StackPane myPageStackPane;
     @FXML private Button myPageSaveButton;
+    @FXML private ImageView backMyPageButton;
+    @FXML private Label backMyPageLabel;
 
     @FXML private TextField myPageRecordsAddress;
     @FXML private TextField myPageRecordsEmail;
@@ -121,6 +123,7 @@ public class Controller implements Initializable {
     private Map<Product, IMatProductListItem> productListItemMap = new HashMap<>();
     @FXML private Label shoppingCartTotalPrice;
     @FXML private Button clearShoppingCartButton;
+    @FXML private Button betala_btn;
 
     @FXML private FlowPane betalaAddresserFlowPane1;
 
@@ -146,6 +149,10 @@ public class Controller implements Initializable {
         populateTimeComboBox();
         accountCreationCardType.getItems().add("MasterCard");
         accountCreationCardType.getItems().add("Visa");
+        paymentCardNumberTextField.textProperty().addListener(new IntStringChangeListener(paymentCardNumberTextField));
+        paymentCVCTextField.textProperty().addListener(new IntStringChangeListener(paymentCVCTextField));
+        paymentExpirationMonthTextField.textProperty().addListener(new IntStringChangeListener(paymentExpirationMonthTextField));
+        paymentExpirationYearTextField.textProperty().addListener(new IntStringChangeListener(paymentExpirationYearTextField));
         initializeAccountFieldListeners();
         loadUser();
         if (IMatDataHandler.getInstance().isFirstRun())
@@ -188,7 +195,9 @@ public class Controller implements Initializable {
                     }
                     productListItem.updateAmount(item);
                 }
-                clearShoppingCartButton.setDisable(handler.getShoppingCart().getItems().size() < 1);
+                boolean disable = handler.getShoppingCart().getItems().size() < 1;
+                clearShoppingCartButton.setDisable(disable);
+                betala_btn.setDisable(disable);
                 double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
                 shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
             }
@@ -203,7 +212,9 @@ public class Controller implements Initializable {
         }
         double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
         shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
-        clearShoppingCartButton.setDisable(handler.getShoppingCart().getItems().size() < 1);
+        boolean disable = handler.getShoppingCart().getItems().size() < 1;
+        clearShoppingCartButton.setDisable(disable);
+        betala_btn.setDisable(disable);
     }
 
     @FXML
@@ -222,7 +233,9 @@ public class Controller implements Initializable {
         if (result.get() == buttonTypeOk){
             handler.getShoppingCart().clear();
             clearShoppingCartButton.setDisable(true);
-            System.out.println("Det makear inte sense");
+            betala_btn.setDisable(true);
+            double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
+            shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
         } else {
             // close alert
         }
@@ -273,6 +286,8 @@ public class Controller implements Initializable {
             saveUserAccount(null);
         });
         accountCreationAccount.toFront();
+        backMyPageButton.setVisible(true);
+        backMyPageLabel.setVisible(true);
     }
 
     @FXML
@@ -283,6 +298,8 @@ public class Controller implements Initializable {
             saveUserPersonal(null);
         });
         accountCreationPersonal.toFront();
+        backMyPageButton.setVisible(true);
+        backMyPageLabel.setVisible(true);
     }
 
     @FXML
@@ -293,6 +310,8 @@ public class Controller implements Initializable {
             saveUserAddress(null);
         });
         accountCreationAddress.toFront();
+        backMyPageButton.setVisible(true);
+        backMyPageLabel.setVisible(true);
     }
 
     @FXML
@@ -303,6 +322,8 @@ public class Controller implements Initializable {
             saveUserCreditCard(null);
         });
         accountCreationCreditCard.toFront();
+        backMyPageButton.setVisible(true);
+        backMyPageLabel.setVisible(true);
     }
 
     private void setupAccount() {
@@ -477,6 +498,8 @@ public class Controller implements Initializable {
         myPageHome.toFront();
         storeAnchorPane.toFront();
         myPageSaveButton.setVisible(false);
+        backMyPageButton.setVisible(false);
+        backMyPageLabel.setVisible(false);
         headline.setText("Min Sida");
     }
 
@@ -517,6 +540,13 @@ public class Controller implements Initializable {
     @FXML
     public void mouseTrap(Event event) {
         event.consume();
+    }
+
+    @FXML
+    public void onClickBackMyPage(Event event) {
+        backMyPageButton.setVisible(false);
+        backMyPageLabel.setVisible(false);
+        goToMyPage(null);
     }
 
     @FXML
@@ -664,7 +694,6 @@ public class Controller implements Initializable {
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
         confirmOrderCreditCardLabel.setText(creditCard.getCardNumber());
     }
-    
     //TODO lägg till fält för namn
     @FXML public void saveCreditCardInformation(){
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
@@ -686,6 +715,11 @@ public class Controller implements Initializable {
         paymentExpirationPleaseLabel.setVisible(false);
         paymentCVCPleaseLabel.setVisible(false);
         paymentCreditCardAnchorPane.toFront();
+        CreditCard card = handler.getCreditCard();
+        paymentExpirationYearTextField.setText(String.valueOf(card.getValidYear()));
+        paymentExpirationMonthTextField.setText(String.valueOf(card.getValidMonth()));
+        paymentCardNumberTextField.setText(String.valueOf(card.getCardNumber()));
+        paymentCVCTextField.setText(String.valueOf(card.getVerificationCode()));
     }
 
     @FXML public void onClickShowOrderConfirmation(Event event){
