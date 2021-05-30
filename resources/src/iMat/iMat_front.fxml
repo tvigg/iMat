@@ -839,7 +839,7 @@
                                           <Font name="SansSerif Regular" size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="1309.0" layoutY="788.0" mnemonicParsing="false" onMouseClicked="#confirmPurchase" prefHeight="116.0" prefWidth="426.0" text="Genomför köp och gå till &quot;Tidigare beställningar&quot;" wrapText="true">
+                                    <Button layoutX="1249.0" layoutY="788.0" mnemonicParsing="false" onMouseClicked="#confirmPurchase" prefHeight="116.0" prefWidth="486.0" text="Genomför köp och gå till &quot;Tidigare beställningar&quot;" wrapText="true">
                                        <font>
                                           <Font name="SansSerif Regular" size="24.0" />
                                        </font>
