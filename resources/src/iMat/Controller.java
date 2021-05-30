@@ -117,6 +117,8 @@ public class Controller implements Initializable {
     private Map<Product, IMatProductListItem> productListItemMap = new HashMap<>();
     @FXML private Label shoppingCartTotalPrice;
 
+    @FXML private FlowPane betalaAddresserFlowPane1;
+
     @FXML private AnchorPane categoryListStartPage;
 
     private IMatDataHandler handler = IMatDataHandler.getInstance();
@@ -416,6 +418,21 @@ public class Controller implements Initializable {
         orderHistoryDetailFlowPane.getChildren().addAll(orderItemMap.get(order.getOrderNumber()));
     }
 
+    private void populateCart() {
+        //List<ShoppingItem> item = handler.getShoppingCart().getItems();
+        betalaAddresserFlowPane1.getChildren().clear();
+        for (ShoppingItem item : handler.getShoppingCart().getItems()) {
+            IMatShoppingListItem listItem = new IMatShoppingListItem(1, item, this);
+            betalaAddresserFlowPane1.getChildren().add(listItem);
+
+            //shoppingListItemMap.put(item, listItem);
+        }
+        //ShoppingItem item = cartEvent.getShoppingItem();
+
+        //betalaAddresserFlowPane1.getChildren().add(shoppingListItemMap.get(item));
+        //TODO
+    }
+
     @FXML
     public void goToOrders(Event event) {
         orderHistoryAnchorPane.toFront();
@@ -599,6 +616,7 @@ public class Controller implements Initializable {
         confirmOrderDeliveryDateLabel.setText(deliveryDate.getDate());
         confirmOrderDeliveryTimeLabel.setText(deliveryDate.getTime());
         paymentCartAnchorPane.toFront();
+        populateCart();
     }
 
     @FXML public void populateOrderConfirmation(){
