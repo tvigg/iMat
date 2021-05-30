@@ -818,8 +818,16 @@
                                     </AnchorPane>
                                  </children>
                               </StackPane>
-                              <Button fx:id="accountCreationNextButton" layoutX="1557.0" layoutY="985.0" mnemonicParsing="false" onMouseClicked="#accountCreationNext" text="Gå till nästa steg" />
-                              <Button fx:id="accountCreationPrevButton" layoutX="313.0" layoutY="985.0" mnemonicParsing="false" onMouseClicked="#accountCreationPrev" text="Gå till föregående steg" />
+                              <Button fx:id="accountCreationNextButton" layoutX="1557.0" layoutY="985.0" mnemonicParsing="false" onMouseClicked="#accountCreationNext" text="Gå till nästa steg" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="320.0">
+                                 <styleClass>
+                                    <String fx:value="cyan-hoverable" />
+                                    <String fx:value="medium-button" />
+                                 </styleClass></Button>
+                              <Button fx:id="accountCreationPrevButton" layoutX="313.0" layoutY="985.0" mnemonicParsing="false" onMouseClicked="#accountCreationPrev" text="Gå till föregående steg" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="320.0">
+                                 <styleClass>
+                                    <String fx:value="cyan-hoverable" />
+                                    <String fx:value="medium-button" />
+                                 </styleClass></Button>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="categoryAnchorPane" prefHeight="905.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
