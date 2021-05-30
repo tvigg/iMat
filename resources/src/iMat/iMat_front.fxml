@@ -23,9 +23,9 @@
                                     <AnchorPane fx:id="orderItemHeader" prefHeight="64.0" prefWidth="1662.0">
                                        <children>
                                           <Label text="Vara" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="0.0" />
-                                          <Label text="Styckpris" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="900.0" AnchorPane.topAnchor="0.0" />
-                                          <Label text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1200.0" AnchorPane.topAnchor="0.0" />
-                                          <Label text="Summa" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1500.0" AnchorPane.topAnchor="0.0" />
+                                          <Label text="Styckpris" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="637.0" AnchorPane.topAnchor="0.0" />
+                                          <Label text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="831.0" AnchorPane.topAnchor="0.0" />
+                                          <Label text="Summa" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1147.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                        <styleClass>
                                           <String fx:value="cyan" />
