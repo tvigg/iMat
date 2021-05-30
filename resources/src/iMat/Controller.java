@@ -123,6 +123,7 @@ public class Controller implements Initializable {
     private Map<Product, IMatProductListItem> productListItemMap = new HashMap<>();
     @FXML private Label shoppingCartTotalPrice;
     @FXML private Button clearShoppingCartButton;
+    @FXML private Button betala_btn;
 
     @FXML private FlowPane betalaAddresserFlowPane1;
 
@@ -190,7 +191,9 @@ public class Controller implements Initializable {
                     }
                     productListItem.updateAmount(item);
                 }
-                clearShoppingCartButton.setDisable(handler.getShoppingCart().getItems().size() < 1);
+                boolean disable = handler.getShoppingCart().getItems().size() < 1;
+                clearShoppingCartButton.setDisable(disable);
+                betala_btn.setDisable(disable);
                 double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
                 shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
             }
@@ -205,7 +208,9 @@ public class Controller implements Initializable {
         }
         double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
         shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
-        clearShoppingCartButton.setDisable(handler.getShoppingCart().getItems().size() < 1);
+        boolean disable = handler.getShoppingCart().getItems().size() < 1;
+        clearShoppingCartButton.setDisable(disable);
+        betala_btn.setDisable(disable);
     }
 
     @FXML
@@ -224,6 +229,7 @@ public class Controller implements Initializable {
         if (result.get() == buttonTypeOk){
             handler.getShoppingCart().clear();
             clearShoppingCartButton.setDisable(true);
+            betala_btn.setDisable(true);
             double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
             shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
         } else {
