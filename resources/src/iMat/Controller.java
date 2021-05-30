@@ -236,8 +236,7 @@ public class Controller implements Initializable {
             handler.getShoppingCart().clear();
             clearShoppingCartButton.setDisable(true);
             betala_btn.setDisable(true);
-            double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
-            shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
+            shoppingCartTotalPrice.setText("0 kr");
         } else {
             // close alert
         }
@@ -682,6 +681,7 @@ public class Controller implements Initializable {
         goToOrders(null);
         clearShoppingCartButton.setDisable(true);
         betala_btn.setDisable(true);
+        shoppingCartTotalPrice.setText("0 kr");
     }
 
     @FXML public void onClickShowDeliveryDates(Event event){
