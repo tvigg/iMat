@@ -109,7 +109,7 @@
                                                       <String fx:value="big-button" />
                                                    </styleClass>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onMouseClicked="#goToMyPagePersonal" text="Personuppgifter">
+                                                <Button mnemonicParsing="false" onMouseClicked="#goToMyPagePersonal" prefWidth="296.0" text="Personuppgifter">
                                                    <styleClass>
                                                       <String fx:value="big-button" />
                                                       <String fx:value="cyan-hoverable" />
