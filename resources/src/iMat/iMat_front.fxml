@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.Controller">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -182,7 +197,7 @@
                            <children>
                               <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
                                  <children>
-                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
+                                    <ScrollPane layoutX="232.0" layoutY="223.0" prefHeight="550.0" prefWidth="1503.0">
                                        <content>
                                           <FlowPane fx:id="betalaAddresserFlowPane1" prefHeight="619.0" prefWidth="1501.0">
                                              <children>
@@ -191,13 +206,17 @@
                                           </FlowPane>
                                        </content>
                                     </ScrollPane>
-                                    <AnchorPane fx:id="orderHistoryAnchorPaneHeader11" layoutX="232.0" layoutY="66.0" prefHeight="92.0" prefWidth="1502.0">
+                                    <AnchorPane fx:id="orderHistoryAnchorPaneHeader11" layoutX="232.0" layoutY="66.0" prefHeight="138.0" prefWidth="1502.0">
                                        <children>
-                                          <Label layoutX="666.0" prefHeight="92.0" prefWidth="307.0" styleClass="blue" text="Kundkorgen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="666.0" AnchorPane.topAnchor="0.0">
+                                          <Label layoutX="666.0" layoutY="11.0" prefHeight="78.0" prefWidth="307.0" styleClass="blue" text="Kundkorgen" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="666.0" AnchorPane.topAnchor="11.0">
                                              <font>
                                                 <Font name="SansSerif Regular" size="36.0" />
                                              </font>
                                           </Label>
+                                          <Label layoutX="83.0" layoutY="111.0" prefHeight="43.0" prefWidth="122.0" text="Vara" />
+                                          <Label layoutX="637.0" layoutY="111.0" prefHeight="43.0" prefWidth="192.0" text="Styckpris" />
+                                          <Label layoutX="831.0" layoutY="111.0" prefHeight="43.0" prefWidth="185.0" text="Antal" />
+                                          <Label layoutX="1147.0" layoutY="111.0" prefHeight="43.0" prefWidth="160.0" text="Summa" />
                                        </children>
                                        <styleClass>
                                           <String fx:value="blue" />
@@ -362,9 +381,9 @@
                            <children>
                               <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
                                  <children>
-                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
+                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="528.0" prefWidth="1503.0">
                                        <content>
-                                          <FlowPane fx:id="betalaAddresserFlowPane13" prefHeight="619.0" prefWidth="1501.0">
+                                          <FlowPane fx:id="betalaAddresserFlowPane13" maxHeight="528.0" prefHeight="528.0" prefWidth="1501.0">
                                              <children>
                                                 <AnchorPane prefHeight="615.0" prefWidth="1492.0">
                                                    <children>
@@ -427,7 +446,7 @@
                            <children>
                               <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
                                  <children>
-                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
+                                    <ScrollPane layoutX="232.0" layoutY="162.0" prefHeight="600.0" prefWidth="1503.0">
                                        <content>
                                           <FlowPane fx:id="betalaAddresserFlowPane11" prefHeight="619.0" prefWidth="1501.0">
                                              <children>

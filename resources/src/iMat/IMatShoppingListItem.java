@@ -32,6 +32,12 @@ public class IMatShoppingListItem extends AnchorPane {
     @FXML private Button removeOne;
     @FXML private Button addOne;
 
+    @FXML private ImageView orderItemImage;
+    @FXML private Label orderItemPrice;
+    @FXML private Label orderItemCount;
+    @FXML private Label orderItemSum;
+    @FXML private Label orderItemName;
+
     public IMatShoppingListItem(ShoppingItem item, Controller iMatCategoryController){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMatShoppingItem.fxml"));
         fxmlLoader.setRoot(this);
@@ -47,6 +53,30 @@ public class IMatShoppingListItem extends AnchorPane {
 
         productText.setText(item.getProduct().getName());
         updateAmount();
+    }
+
+    public IMatShoppingListItem(int i, ShoppingItem item, Controller iMatCategoryController){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("iMat_orderitem.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try{
+            fxmlLoader.load();
+        }catch (IOException exception){
+            throw new RuntimeException(exception);
+        }
+        this.item = item;
+        this.parentController = iMatCategoryController;
+
+        orderItemImage.setImage(IMatDataHandler.getInstance().getFXImage(item.getProduct()));
+        orderItemName.setText(item.getProduct().getName());
+        orderItemPrice.setText(String.valueOf(item.getProduct().getPrice() + item.getProduct().getUnit()));
+
+        orderItemCount.setText(String.valueOf(item.getAmount()));
+        orderItemSum.setText("Summa");
+        orderItemSum.setText(Controller.priceFormat(item.getProduct().getPrice() * item.getAmount()) + " kr");
+
+        //updateAmount();
     }
 
     public void updateAmount() {

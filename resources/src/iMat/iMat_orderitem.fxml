@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<fx:root prefHeight="64.0" prefWidth="1662.0" styleClass="big-text" stylesheets="@iMat.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="76.0" prefWidth="1274.0" styleClass="big-text" stylesheets="@iMat.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="orderItemImage" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0" />
-      <Label fx:id="orderItemPrice" layoutX="236.0" layoutY="41.0" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="900.0" AnchorPane.topAnchor="0.0" />
-      <Label fx:id="orderItemCount" layoutX="551.0" layoutY="41.0" text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1200.0" AnchorPane.topAnchor="0.0" />
-      <Label fx:id="orderItemSum" layoutX="1511.0" layoutY="29.0" text="Summa" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1500.0" AnchorPane.topAnchor="0.0" />
-      <Label fx:id="orderItemName" layoutX="83.0" layoutY="21.0" prefHeight="76.0" prefWidth="812.0" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="76.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="orderItemPrice" layoutX="637.0" text="Pris" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="637.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="orderItemCount" layoutX="831.0" text="Antal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="831.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="orderItemSum" layoutX="1147.0" text="Summa" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1147.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="orderItemName" layoutX="83.0" layoutY="21.0" prefHeight="76.0" prefWidth="541.0" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="76.0" AnchorPane.topAnchor="0.0" />
    </children>
 </fx:root>
