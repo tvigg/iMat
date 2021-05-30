@@ -224,7 +224,8 @@ public class Controller implements Initializable {
         if (result.get() == buttonTypeOk){
             handler.getShoppingCart().clear();
             clearShoppingCartButton.setDisable(true);
-            System.out.println("Det makear inte sense");
+            double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
+            shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
         } else {
             // close alert
         }
