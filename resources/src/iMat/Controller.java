@@ -120,6 +120,7 @@ public class Controller implements Initializable {
     private Map<ShoppingItem, IMatShoppingListItem> shoppingListItemMap = new HashMap<>();
     private Map<Product, IMatProductListItem> productListItemMap = new HashMap<>();
     @FXML private Label shoppingCartTotalPrice;
+    @FXML private Button clearShoppingCartButton;
 
     @FXML private FlowPane betalaAddresserFlowPane1;
 
@@ -187,6 +188,7 @@ public class Controller implements Initializable {
                     }
                     productListItem.updateAmount(item);
                 }
+                clearShoppingCartButton.setDisable(handler.getShoppingCart().getItems().size() < 1);
                 double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
                 shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
             }
@@ -201,11 +203,29 @@ public class Controller implements Initializable {
         }
         double price = handler.getShoppingCart().getItems().stream().map((i) -> i.getTotal()).reduce(0.0, (a, b) -> a + b);
         shoppingCartTotalPrice.setText(Controller.priceFormat(price) + " kr");
+        clearShoppingCartButton.setDisable(handler.getShoppingCart().getItems().size() < 1);
     }
 
     @FXML
     public void clearShoppingCart(Event event) {
-        handler.getShoppingCart().clear();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Bekräftelse");
+        alert.setHeaderText("Töm kundkorgen");
+        alert.setContentText("Är du säker på att du vill tömma kundkorgen?");
+
+        ButtonType buttonTypeCancel = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.APPLY);
+
+        alert.getButtonTypes().setAll(buttonTypeCancel, buttonTypeOk);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeOk){
+            handler.getShoppingCart().clear();
+            clearShoppingCartButton.setDisable(true);
+            System.out.println("Det makear inte sense");
+        } else {
+            // close alert
+        }
     }
 
     public void removeShoppingItem(IMatShoppingListItem item) {
@@ -586,7 +606,7 @@ public class Controller implements Initializable {
         alert.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.get() == buttonTypeOk){
             emptyAddressFields();
         } else {
             // close alert
@@ -681,8 +701,8 @@ public class Controller implements Initializable {
         //accountCreationPassword2;
         //accountCreationFirstName;
         //accountCreationLastName;
-        accountCreationPhone.textProperty().addListener(new IntStringChangeListener(accountCreationPhone, 10));
-        accountCreationMobile.textProperty().addListener(new IntStringChangeListener(accountCreationMobile, 10));
+        accountCreationPhone.textProperty().addListener(new IntStringChangeListener(accountCreationPhone, 15));
+        accountCreationMobile.textProperty().addListener(new IntStringChangeListener(accountCreationMobile, 15));
         //accountCreationEmail;
         //accountCreationHomeAddress;
         //accountCreationPostAddress;
