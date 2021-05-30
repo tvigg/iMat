@@ -41,6 +41,7 @@ public class Controller implements Initializable {
     @FXML private TextField paymentExpirationYearTextField;
     @FXML private TextField paymentCVCTextField;
     @FXML private Label displayAddressLabel;
+    @FXML private Label displayOrt;
     @FXML private Label displayPostCodeLabel;
     @FXML private Label noAddressEnteredLabel;
     @FXML private Label noPostCodeEnteredLabel;
@@ -112,6 +113,7 @@ public class Controller implements Initializable {
     @FXML private TextField accountCreationCardValidYear;
     @FXML private TextField accountCreationCardValidCode;
     @FXML private TextArea accountCreationOverviewText;
+    @FXML private TextField postaddressTextField;
 
     // Buttons
     @FXML private Button myPageButton;
@@ -609,8 +611,10 @@ public class Controller implements Initializable {
             noAddressEnteredLabel.setText("");
             noPostCodeEnteredLabel.setText("");
             IMatDataHandler.getInstance().getCustomer().setAddress(addressTextField.getText());
+            IMatDataHandler.getInstance().getCustomer().setPostAddress(postaddressTextField.getText());
             IMatDataHandler.getInstance().getCustomer().setPostCode(postCodeTextField.getText());
             displayAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
+            displayOrt.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());
             displayPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostCode());
             confirmOrderAddressLabel.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
             confirmOrderPostCodeLabel.setText(IMatDataHandler.getInstance().getCustomer().getPostCode());
@@ -645,6 +649,7 @@ public class Controller implements Initializable {
 
     @FXML public void emptyAddressFields(){
         addressTextField.setText("");
+        postCodeTextField.setText("");
         postCodeTextField.setText("");
     }
 

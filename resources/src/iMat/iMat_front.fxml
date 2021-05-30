@@ -282,22 +282,32 @@
                                                                   <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
                                                             </Label>
+                                                            <Label fx:id="displayOrt" layoutX="234.0" layoutY="173.0" prefHeight="35.0" prefWidth="320.0">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
                                                             <Label fx:id="displayPostCodeLabel" layoutX="234.0" layoutY="216.0" prefHeight="40.0" prefWidth="284.0">
                                                                <font>
                                                                   <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="91.0" layoutY="136.0" text="Address:">
+                                                            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="91.0" layoutY="136.0" text="Address:" AnchorPane.rightAnchor="410.0">
                                                                <font>
-                                                                  <Font name="SansSerif Bold" size="24.0" />
+                                                                  <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="46.0" layoutY="222.0" text="Postnummer:">
+                                                            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="93.0" layoutY="176.0" prefHeight="27.0" prefWidth="104.0" text="Ort:" AnchorPane.rightAnchor="410.0">
                                                                <font>
-                                                                  <Font name="SansSerif Bold" size="24.0" />
+                                                                  <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="180.0" layoutY="20.0" text="Sparad address">
+                                                            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="46.0" layoutY="222.0" text="Postnummer:" AnchorPane.rightAnchor="410.0">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="180.0" layoutY="20.0" text="Sparad address" AnchorPane.bottomAnchor="478.0" AnchorPane.topAnchor="20.0">
                                                                <font>
                                                                   <Font name="SansSerif Regular" size="36.0" />
                                                                </font>
@@ -316,17 +326,27 @@
                                                                   <Font name="SansSerif Regular" size="18.0" />
                                                                </font>
                                                             </TextField>
+                                                            <TextField fx:id="postaddressTextField" layoutX="160.0" layoutY="200.0" prefHeight="39.0" prefWidth="342.0" promptText="Ort">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="18.0" />
+                                                               </font>
+                                                            </TextField>
                                                             <TextField fx:id="postCodeTextField" layoutX="160.0" layoutY="248.0" prefHeight="35.0" prefWidth="176.0" promptText="Post nr.">
                                                                <font>
                                                                   <Font name="SansSerif Regular" size="18.0" />
                                                                </font>
                                                             </TextField>
-                                                            <Label alignment="CENTER_RIGHT" layoutX="11.0" layoutY="153.0" prefHeight="27.0" prefWidth="135.0" text="Address:">
+                                                            <Label alignment="CENTER_RIGHT" layoutX="7.0" layoutY="147.0" maxHeight="150.0" prefHeight="27.0" prefWidth="150.0" text="Address:" AnchorPane.rightAnchor="610.0">
                                                                <font>
                                                                   <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="8.0" layoutY="252.0" prefHeight="27.0" prefWidth="150.0" text="Postnummer:">
+                                                            <Label alignment="CENTER_RIGHT" layoutX="7.0" layoutY="205.0" prefHeight="27.0" prefWidth="143.0" text="Ort:" AnchorPane.rightAnchor="610.0">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label alignment="CENTER_RIGHT" layoutX="7.0" layoutY="252.0" prefHeight="35.0" prefWidth="150.0" text="Postnummer:" AnchorPane.bottomAnchor="256.0" AnchorPane.rightAnchor="610.0">
                                                                <font>
                                                                   <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
@@ -341,17 +361,17 @@
                                                                   <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
                                                             </Button>
-                                                            <Label fx:id="noAddressEnteredLabel" layoutX="509.0" layoutY="145.0" prefHeight="40.0" prefWidth="234.0">
+                                                            <Label fx:id="noAddressEnteredLabel" layoutX="148.0" layoutY="23.0" prefHeight="44.0" prefWidth="222.0" text="Ny Address" AnchorPane.bottomAnchor="480.0" AnchorPane.leftAnchor="147.0" AnchorPane.topAnchor="22.0">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="36.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="noPostCodeEnteredLabel" layoutX="362.0" layoutY="244.0" prefHeight="40.0" prefWidth="234.0" AnchorPane.leftAnchor="362.0" AnchorPane.topAnchor="202.0">
                                                                <font>
                                                                   <Font name="SansSerif Italic" size="24.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="noPostCodeEnteredLabel" layoutX="362.0" layoutY="244.0" prefHeight="40.0" prefWidth="234.0">
-                                                               <font>
-                                                                  <Font name="SansSerif Italic" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="287.0" layoutY="48.0" text="Ny address">
+                                                            <Label layoutX="364.0" layoutY="48.0" prefHeight="42.0" prefWidth="192.0" AnchorPane.bottomAnchor="254.0" AnchorPane.leftAnchor="363.0">
                                                                <font>
                                                                   <Font name="SansSerif Regular" size="36.0" />
                                                                </font>
@@ -364,9 +384,9 @@
                                           </FlowPane>
                                        </content>
                                     </ScrollPane>
-                                    <AnchorPane fx:id="orderHistoryAnchorPaneHeader1" layoutX="232.0" layoutY="66.0" prefHeight="92.0" prefWidth="1502.0">
+                                    <AnchorPane fx:id="orderHistoryAnchorPaneHeader1" layoutX="229.0" layoutY="66.0" prefHeight="92.0" prefWidth="1500.0" AnchorPane.leftAnchor="235.0">
                                        <children>
-                                          <Label layoutX="198.0" prefHeight="64.0" prefWidth="1095.0" styleClass="blue" text="Välj en address dit varorna ska skickas, eller skriv in en ny address" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="0.0">
+                                          <Label alignment="CENTER" prefHeight="92.0" prefWidth="1500.0" styleClass="blue" text="Välj en address dit varorna ska skickas, eller skriv in en ny address" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.topAnchor="0.0">
                                              <font>
                                                 <Font name="SansSerif Regular" size="36.0" />
                                              </font>
