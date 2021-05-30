@@ -675,6 +675,8 @@ public class Controller implements Initializable {
         orderItemMap.put(order.getOrderNumber(), items);
         orderHistoryFlowPane.getChildren().add(1,orderItem);
         goToOrders(null);
+        clearShoppingCartButton.setDisable(true);
+        betala_btn.setDisable(true);
     }
 
     @FXML public void onClickShowDeliveryDates(Event event){
