@@ -149,6 +149,10 @@ public class Controller implements Initializable {
         populateTimeComboBox();
         accountCreationCardType.getItems().add("MasterCard");
         accountCreationCardType.getItems().add("Visa");
+        paymentCardNumberTextField.textProperty().addListener(new IntStringChangeListener(paymentCardNumberTextField));
+        paymentCVCTextField.textProperty().addListener(new IntStringChangeListener(paymentCVCTextField));
+        paymentExpirationMonthTextField.textProperty().addListener(new IntStringChangeListener(paymentExpirationMonthTextField));
+        paymentExpirationYearTextField.textProperty().addListener(new IntStringChangeListener(paymentExpirationYearTextField));
         initializeAccountFieldListeners();
         loadUser();
         if (IMatDataHandler.getInstance().isFirstRun())
@@ -691,7 +695,6 @@ public class Controller implements Initializable {
         confirmOrderCreditCardLabel.setText(creditCard.getCardNumber());
     }
 
-    //TODO gör det omöjligt att skriva in bokstäver
     //TODO lägg till fält för namn
     @FXML public void saveCreditCardInformation(){
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
@@ -713,6 +716,11 @@ public class Controller implements Initializable {
         paymentExpirationPleaseLabel.setVisible(false);
         paymentCVCPleaseLabel.setVisible(false);
         paymentCreditCardAnchorPane.toFront();
+        CreditCard card = handler.getCreditCard();
+        paymentExpirationYearTextField.setText(String.valueOf(card.getValidYear()));
+        paymentExpirationMonthTextField.setText(String.valueOf(card.getValidMonth()));
+        paymentCardNumberTextField.setText(String.valueOf(card.getCardNumber()));
+        paymentCVCTextField.setText(String.valueOf(card.getVerificationCode()));
     }
 
     @FXML public void onClickShowOrderConfirmation(Event event){
