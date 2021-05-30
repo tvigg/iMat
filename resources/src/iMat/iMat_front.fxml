@@ -496,6 +496,16 @@
                                                                   <Font name="SansSerif Regular" size="24.0" />
                                                                </font>
                                                             </TextField>
+                                                            <Label fx:id="paymentExpirationPleaseLabel" layoutX="550.0" layoutY="135.0" prefHeight="27.0" prefWidth="340.0" text="Vänligen använd endast siffror">
+                                                               <font>
+                                                                  <Font name="SansSerif Italic" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="paymentCVCPleaseLabel" layoutX="550.0" layoutY="199.0" prefHeight="27.0" prefWidth="340.0" text="Vänligen använd endast siffror">
+                                                               <font>
+                                                                  <Font name="SansSerif Italic" size="24.0" />
+                                                               </font>
+                                                            </Label>
                                                          </children>
                                                       </AnchorPane>
                                                       <Button layoutX="1192.0" layoutY="495.0" mnemonicParsing="false" onMouseClicked="#saveCreditCardInformation" text="Spara kortuppgifter">
