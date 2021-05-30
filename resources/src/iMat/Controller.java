@@ -664,8 +664,7 @@ public class Controller implements Initializable {
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
         confirmOrderCreditCardLabel.setText(creditCard.getCardNumber());
     }
-
-    //TODO gör det omöjligt att skriva in bokstäver
+    
     //TODO lägg till fält för namn
     @FXML public void saveCreditCardInformation(){
         CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
