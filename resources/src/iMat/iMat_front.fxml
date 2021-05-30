@@ -584,139 +584,6 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="confirmPurchaseAnchorPane" prefHeight="1080.0" prefWidth="1930.0">
-                           <children>
-                              <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
-                                 <children>
-                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
-                                       <content>
-                                          <FlowPane fx:id="betalaAddresserFlowPane111" prefHeight="619.0" prefWidth="1501.0">
-                                             <children>
-                                                <AnchorPane prefHeight="615.0" prefWidth="1492.0">
-                                                   <children>
-                                                      <AnchorPane layoutX="196.0" layoutY="319.0" prefHeight="50.0" prefWidth="660.0">
-                                                         <children>
-                                                            <Label layoutY="12.0" text="Kreditkort:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="confirmOrderCreditCardLabel" layoutX="339.0" layoutY="12.0" text="Kreditkort">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane layoutX="196.0" layoutY="72.0" prefHeight="90.0" prefWidth="660.0">
-                                                         <children>
-                                                            <Label layoutY="9.0" text="Address:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="confirmOrderAddressLabel" layoutX="339.0" layoutY="9.0" text="address">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutY="54.0" text="Postnummer:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="confirmOrderPostCodeLabel" layoutX="339.0" layoutY="54.0" prefHeight="27.0" prefWidth="97.0" text="postnr">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane layoutX="196.0" layoutY="224.0" prefHeight="50.0" prefWidth="773.0">
-                                                         <children>
-                                                            <Label layoutY="12.0" prefHeight="27.0" prefWidth="228.0" text="Leveransdag och tid:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="confirmOrderDeliveryDateLabel" layoutX="339.0" layoutY="12.0" text="dag">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="confirmOrderDeliveryTimeLabel" layoutX="574.0" layoutY="12.0" prefHeight="27.0" prefWidth="185.0" text="tid">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="449.0" layoutY="12.0" prefHeight="27.0" prefWidth="101.0" text="klockan:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <AnchorPane layoutX="196.0" layoutY="463.0" prefHeight="50.0" prefWidth="660.0">
-                                                         <children>
-                                                            <Label layoutY="12.0" text="Att betala:">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="paymentSumLabel" layoutX="339.0" layoutY="12.0" prefWidth="107.0" text="summa">
-                                                               <font>
-                                                                  <Font name="SansSerif Regular" size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                </AnchorPane>
-                                             </children>
-                                          </FlowPane>
-                                       </content>
-                                    </ScrollPane>
-                                    <AnchorPane layoutX="232.0" layoutY="66.0" prefHeight="92.0" prefWidth="1502.0">
-                                       <children>
-                                          <Label layoutX="590.0" prefHeight="92.0" prefWidth="383.0" styleClass="blue" text="Genomför köp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="590.0" AnchorPane.topAnchor="0.0">
-                                             <font>
-                                                <Font name="SansSerif Regular" size="36.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                       <styleClass>
-                                          <String fx:value="blue" />
-                                          <String fx:value="big-bold-text" />
-                                       </styleClass>
-                                    </AnchorPane>
-                                    <ImageView fitHeight="91.0" fitWidth="108.0" layoutX="29.0" layoutY="26.0" onMouseClicked="#onClickIMat" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@resources/images/back-arrow.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label layoutX="30.0" layoutY="110.0" prefHeight="78.0" prefWidth="129.0" text="Tillbaka till affären" wrapText="true">
-                                       <font>
-                                          <Font name="SansSerif Regular" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Button layoutX="1312.0" layoutY="813.0" mnemonicParsing="false" onMouseClicked="#confirmPurchase" text="Godkänn och genomför köp">
-                                       <font>
-                                          <Font name="SansSerif Regular" size="24.0" />
-                                       </font>
-                                       <styleClass>
-                                          <String fx:value="big-button" />
-                                          <String fx:value="cyan-hoverable" />
-                                       </styleClass>
-                                    </Button>
-                                    <Button layoutX="232.0" layoutY="813.0" mnemonicParsing="false" onMouseClicked="#onClickShowCreditCard" text="Till föregående sida">
-                                       <font>
-                                          <Font name="SansSerif Regular" size="24.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
                         <AnchorPane fx:id="accountCreationAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                            <children>
                               <StackPane fx:id="accountCreationStackPane" layoutX="406.0" layoutY="417.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="310.0">
@@ -855,6 +722,139 @@
                                     <String fx:value="cyan-hoverable" />
                                     <String fx:value="medium-button" />
                                  </styleClass></Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="confirmPurchaseAnchorPane" prefHeight="1080.0" prefWidth="1930.0">
+                           <children>
+                              <AnchorPane layoutY="150.0" prefHeight="930.0" prefWidth="1920.0" styleClass="normal">
+                                 <children>
+                                    <ScrollPane layoutX="232.0" layoutY="159.0" prefHeight="618.0" prefWidth="1503.0">
+                                       <content>
+                                          <FlowPane fx:id="betalaAddresserFlowPane111" prefHeight="619.0" prefWidth="1501.0">
+                                             <children>
+                                                <AnchorPane prefHeight="615.0" prefWidth="1492.0">
+                                                   <children>
+                                                      <AnchorPane layoutX="196.0" layoutY="319.0" prefHeight="50.0" prefWidth="660.0">
+                                                         <children>
+                                                            <Label layoutY="12.0" text="Kreditkort:">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="confirmOrderCreditCardLabel" layoutX="339.0" layoutY="12.0" text="Kreditkort">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="196.0" layoutY="72.0" prefHeight="90.0" prefWidth="660.0">
+                                                         <children>
+                                                            <Label layoutY="9.0" text="Address:">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="confirmOrderAddressLabel" layoutX="339.0" layoutY="9.0" text="address">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutY="54.0" text="Postnummer:">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="confirmOrderPostCodeLabel" layoutX="339.0" layoutY="54.0" prefHeight="27.0" prefWidth="97.0" text="postnr">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="196.0" layoutY="224.0" prefHeight="50.0" prefWidth="773.0">
+                                                         <children>
+                                                            <Label layoutY="12.0" prefHeight="27.0" prefWidth="228.0" text="Leveransdag och tid:">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="confirmOrderDeliveryDateLabel" layoutX="339.0" layoutY="12.0" text="dag">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="confirmOrderDeliveryTimeLabel" layoutX="574.0" layoutY="12.0" prefHeight="27.0" prefWidth="185.0" text="tid">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="449.0" layoutY="12.0" prefHeight="27.0" prefWidth="101.0" text="klockan:">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="196.0" layoutY="463.0" prefHeight="50.0" prefWidth="660.0">
+                                                         <children>
+                                                            <Label layoutY="12.0" text="Att betala:">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="paymentSumLabel" layoutX="339.0" layoutY="12.0" prefWidth="107.0" text="summa">
+                                                               <font>
+                                                                  <Font name="SansSerif Regular" size="24.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </FlowPane>
+                                       </content>
+                                    </ScrollPane>
+                                    <AnchorPane layoutX="232.0" layoutY="66.0" prefHeight="92.0" prefWidth="1502.0">
+                                       <children>
+                                          <Label layoutX="590.0" prefHeight="92.0" prefWidth="383.0" styleClass="blue" text="Genomför köp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="590.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="SansSerif Regular" size="36.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="blue" />
+                                          <String fx:value="big-bold-text" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <ImageView fitHeight="91.0" fitWidth="108.0" layoutX="29.0" layoutY="26.0" onMouseClicked="#onClickIMat" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/back-arrow.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="30.0" layoutY="110.0" prefHeight="78.0" prefWidth="129.0" text="Tillbaka till affären" wrapText="true">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="1309.0" layoutY="788.0" mnemonicParsing="false" onMouseClicked="#confirmPurchase" prefHeight="116.0" prefWidth="426.0" text="Genomför köp och gå till &quot;Tidigare beställningar&quot;" wrapText="true">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="24.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="big-button" />
+                                          <String fx:value="cyan-hoverable" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button layoutX="232.0" layoutY="813.0" mnemonicParsing="false" onMouseClicked="#onClickShowCreditCard" text="Till föregående sida">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="24.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="categoryAnchorPane" prefHeight="905.0" prefWidth="1920.0" style="-fx-background-color: #F4F4F4;">
