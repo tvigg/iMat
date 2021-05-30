@@ -206,7 +206,24 @@ public class Controller implements Initializable {
 
     @FXML
     public void clearShoppingCart(Event event) {
-        handler.getShoppingCart().clear();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Bekräftelse");
+        alert.setHeaderText("Töm kundkorgen");
+        alert.setContentText("Är du säker på att du vill tömma kundkorgen?");
+
+        ButtonType buttonTypeCancel = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.APPLY);
+
+        alert.getButtonTypes().setAll(buttonTypeCancel, buttonTypeOk);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeOk){
+            handler.getShoppingCart().clear();
+            clearShoppingCartButton.setDisable(true);
+            System.out.println("Det makear inte sense");
+        } else {
+            // close alert
+        }
     }
 
     public void removeShoppingItem(IMatShoppingListItem item) {
@@ -587,7 +604,7 @@ public class Controller implements Initializable {
         alert.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.get() == buttonTypeOk){
             emptyAddressFields();
         } else {
             // close alert
